@@ -11,7 +11,7 @@ namespace Football
 		virtual void Update( float dt ) = 0;
 		virtual void Draw( float dt ) = 0;
 
-		virtual void Pause() = 0;
-		virtual void Resume() = 0;
+		virtual void Pause() {}
+		virtual void Resume() {}
 	};
 }

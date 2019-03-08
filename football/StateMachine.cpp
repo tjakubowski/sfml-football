@@ -36,11 +36,11 @@ namespace Football
 				else
 					this->_states.top()->Pause();
 			}
-		}
 
-		this->_states.push(std::move(this->_newState));
-		this->_states.top()->Init();
-		this->_isAdding = false;
+			this->_states.push(std::move(this->_newState));
+			this->_states.top()->Init();
+			this->_isAdding = false;
+		}
 	}
 
 	StateRef& StateMachine::GetActiveState()
