@@ -1,8 +1,5 @@
-#include <sstream>
 #include "GameState.hpp"
 #include "DEFINITIONS.hpp"
-
-#include <iostream>
 
 namespace Football
 {
@@ -16,10 +13,11 @@ namespace Football
 	{
 		_data->assets.LoadTexture("Football pitch", TEX_FOOTBALL_PITCH);
 		_data->assets.LoadTexture("Footballer", TEX_FOOTBALLER);
+		_data->assets.LoadTexture("Player", TEX_PLAYER);
 
 		_background.setTexture(this->_data->assets.GetTexture("Football pitch"));
 
-		footballer = new Footballer(_data);
+		player = new Player(_data);
 	}
 
 	void GameState::HandleInput()
@@ -35,7 +33,7 @@ namespace Football
 
 	void GameState::Update(float dt)
 	{
-
+		player->Update( dt );
 	}
 
 	void GameState::Draw(float dt)
@@ -43,12 +41,9 @@ namespace Football
 		_data->window.clear();
 
 		_data->window.draw(_background);
-		footballer->Draw();
+		player->Draw();
 
 		_data->window.display();
 	}
-
-
-
 
 }

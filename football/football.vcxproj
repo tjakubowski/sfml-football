@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AIPlayer.cpp" />
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="Footballer.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -150,10 +151,12 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="SplashState.cpp" />
     <ClCompile Include="StateMachine.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AIPlayer.hpp" />
     <ClInclude Include="AssetManager.hpp" />
     <ClInclude Include="DEFINITIONS.hpp" />
     <ClInclude Include="Footballer.hpp" />
@@ -161,6 +164,7 @@
     <ClInclude Include="GameState.hpp" />
     <ClInclude Include="InputManager.hpp" />
     <ClInclude Include="MenuState.hpp" />
+    <ClInclude Include="Player.hpp" />
     <ClInclude Include="SplashState.hpp" />
     <ClInclude Include="State.hpp" />
     <ClInclude Include="StateMachine.hpp" />

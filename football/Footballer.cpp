@@ -4,12 +4,11 @@ namespace Football
 {
 	Footballer::Footballer(GameDataRef data) : _data(data)
 	{
-		_sprite.setTexture(_data->assets.GetTexture("Footballer"));
+
 	}
 
-	void Footballer::Draw()
+	void Footballer::Draw() const
 	{
 		_data->window.draw(_sprite);
 	}
 }
-
