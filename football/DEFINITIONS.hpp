@@ -1,8 +1,10 @@
 #pragma once
+#include <string>
 
-#define SCREEN_WIDTH 768
-#define SCREEN_HEIGHT 1024
+const int SCREEN_WIDTH = 936;
+const int SCREEN_HEIGHT = 587;
 
-#define SPLASH_STATE_SHOW_TIME 3.0f
+const float SPLASH_STATE_SHOW_TIME = 1.0f;
 
-#define SPLASH_SCENE_BACKGROUND_FILEPATH "Resources/res/SplashBg.jpg"
+const std::string TEX_SPLASH_SCREEN_BG = "Resources/res/SplashBg.jpg";
+const std::string TEX_FOOTBALL_PITCH = "Resources/res/football_pitch.png";
