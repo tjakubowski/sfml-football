@@ -3,6 +3,7 @@
 #include "DEFINITIONS.hpp"
 
 #include <iostream>
+#include "GameState.hpp"
 
 namespace Football
 {
@@ -14,9 +15,9 @@ namespace Football
 
 	void SplashState::Init()
 	{
-		_data->assets.LoadTexture("Splash State Background", SPLASH_SCENE_BACKGROUND_FILEPATH);
+		_data->assets.LoadTexture("Splash background", TEX_SPLASH_SCREEN_BG);
 
-		_background.setTexture(this->_data->assets.GetTexture( "Splash State Background" ));
+		_background.setTexture(this->_data->assets.GetTexture( "Splash background" ));
 	}
 
 	void SplashState::HandleInput()
@@ -34,7 +35,7 @@ namespace Football
 	{
 		if (_clock.getElapsedTime().asSeconds() > SPLASH_STATE_SHOW_TIME )
 		{
-			std::cout << "Go to main menu" << std::endl;
+			_data->machine.AddState(StateRef(new GameState(_data)));
 		}
 	}
 
