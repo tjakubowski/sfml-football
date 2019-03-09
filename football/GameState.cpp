@@ -15,8 +15,11 @@ namespace Football
 	void GameState::Init()
 	{
 		_data->assets.LoadTexture("Football pitch", TEX_FOOTBALL_PITCH);
+		_data->assets.LoadTexture("Footballer", TEX_FOOTBALLER);
 
 		_background.setTexture(this->_data->assets.GetTexture("Football pitch"));
+
+		footballer = new Footballer(_data);
 	}
 
 	void GameState::HandleInput()
@@ -40,6 +43,7 @@ namespace Football
 		_data->window.clear();
 
 		_data->window.draw(_background);
+		footballer->Draw();
 
 		_data->window.display();
 	}

@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "State.hpp"
 #include "Game.hpp"
+#include "Footballer.hpp"
 
 namespace Football
 {
@@ -24,5 +25,7 @@ namespace Football
 
 		sf::Texture _backgroundTexture;
 		sf::Sprite _background;
+
+		Footballer *footballer;
 	};
 }
