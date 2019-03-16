@@ -154,6 +154,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SplashState.cpp" />
     <ClCompile Include="StateMachine.cpp" />
+    <ClCompile Include="Team.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AIPlayer.hpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="SplashState.hpp" />
     <ClInclude Include="State.hpp" />
     <ClInclude Include="StateMachine.hpp" />
+    <ClInclude Include="Team.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\SplashBg.jpg" />
