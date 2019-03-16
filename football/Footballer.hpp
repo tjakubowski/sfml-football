@@ -11,6 +11,7 @@ namespace Football
 
 		void Draw() const;
 		virtual void Update(float dt) = 0;
+		void SetName(const std::string& name);
 	protected:
 		GameDataRef _data;
 		std::string name;

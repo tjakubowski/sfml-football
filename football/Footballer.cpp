@@ -11,4 +11,8 @@ namespace Football
 	{
 		_data->window.draw(_sprite);
 	}
+	void Footballer::SetName(const std::string& name) 
+	{
+		this->name = name;
+	}
 }
