@@ -10,5 +10,6 @@ namespace Football
 	void AIPlayer::Update(float dt)
 	{
 		std::cout << "AI" << std::endl;
+		_sprite.setPosition(position);
 	}
 }

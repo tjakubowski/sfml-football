@@ -22,6 +22,9 @@ namespace Football
 		void Draw(float dt);
 
 	private:
+		std::vector<std::shared_ptr<Footballer>> GetAllFootballers() const;
+		std::vector<std::shared_ptr<Footballer>> GetAllFootballersSorted() const;
+
 		GameDataRef _data;
 
 		sf::Clock _clock;

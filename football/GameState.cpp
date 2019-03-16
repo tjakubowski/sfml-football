@@ -25,8 +25,8 @@ namespace Football
 		leftTeam = std::make_unique<Team>("Left Team");
 		rightTeam = std::make_unique<Team>("Right Team");
 
-		auto player = std::make_unique<Player>(_data, "Player");
-		auto aiPlayer = std::make_unique<AIPlayer>(_data, "Footballer");
+		auto player = std::make_shared<Player>(_data, "Player");
+		auto aiPlayer = std::make_shared<AIPlayer>(_data, "Footballer");
 
 		leftTeam->AddPlayer(std::move(player));
 		leftTeam->AddPlayer(std::move(aiPlayer));
@@ -55,10 +55,30 @@ namespace Football
 
 		_data->window.draw(_background);
 
-		for (auto& fb : leftTeam->GetFootballers())
+		for (auto& fb : GetAllFootballersSorted())
 			fb->Draw();
 
 		_data->window.display();
+	}
+
+	std::vector<std::shared_ptr<Footballer>> GameState::GetAllFootballers() const
+	{
+		std::vector<std::shared_ptr<Footballer>> allFootballers;
+
+		allFootballers.reserve(leftTeam->GetFootballers().size() + rightTeam->GetFootballers().size());
+		allFootballers.insert(allFootballers.end(), leftTeam->GetFootballers().begin(), leftTeam->GetFootballers().end());
+		allFootballers.insert(allFootballers.end(), rightTeam->GetFootballers().begin(), rightTeam->GetFootballers().end());
+
+		return allFootballers;
+	}
+
+	std::vector<std::shared_ptr<Footballer>> GameState::GetAllFootballersSorted() const
+	{
+		auto footballersSorted = GetAllFootballers();
+
+		std::sort(footballersSorted.begin(), footballersSorted.end());
+
+		return footballersSorted;
 	}
 
 }

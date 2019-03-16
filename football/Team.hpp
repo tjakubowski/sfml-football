@@ -8,15 +8,15 @@ namespace Football {
 	{
 	private:
 		int points;
-		std::vector<std::unique_ptr<Footballer>> footballers;
+		std::vector<std::shared_ptr<Footballer>> footballers;
 
 	public:
 		Team(const std::string& name);
 		~Team();
-		void AddPlayer(std::unique_ptr<Footballer> footballer);
+		void AddPlayer(std::shared_ptr<Footballer> footballer);
 		void AddPoint();
 		int GetPoints() const;
-		std::vector<std::unique_ptr<Footballer>> const& GetFootballers() const;
+		std::vector<std::shared_ptr<Footballer>> const& GetFootballers() const;
 
 		std::string name;
 	};

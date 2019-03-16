@@ -5,7 +5,7 @@ namespace Football {
 
 	Team::Team(const std::string& name) : name(name)
 	{
-		footballers = std::vector<std::unique_ptr<Footballer>>();
+		footballers = std::vector<std::shared_ptr<Footballer>>();
 		points = 0;
 	}
 
@@ -24,12 +24,12 @@ namespace Football {
 		return points;
 	}
 
-	std::vector<std::unique_ptr<Footballer>> const & Team::GetFootballers() const
+	std::vector<std::shared_ptr<Footballer>> const & Team::GetFootballers() const
 	{
 		return footballers;
 	}
 
-	void Team::AddPlayer(std::unique_ptr<Footballer> footballer)
+	void Team::AddPlayer(std::shared_ptr<Footballer> footballer)
 	{
 		footballers.push_back(std::move(footballer));
 	}

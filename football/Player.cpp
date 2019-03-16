@@ -14,22 +14,22 @@ namespace Football
 
 	void Player::HandleInput(float dt)
 	{
+		int x = 0;
+		int y = 0;
+
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-		{
-			_sprite.move(-FOOTBALLER_SPEED * dt, .0f);
-		}
+			x = -1;
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-		{
-			_sprite.move(FOOTBALLER_SPEED * dt, .0f);
-		}
+			x = 1;
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-		{
-			_sprite.move(.0f, -FOOTBALLER_SPEED * dt);
-		}
+			y = -1;
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-		{
-			_sprite.move(.0f, FOOTBALLER_SPEED * dt);
-		}
+			y = 1;
+
+		const auto transformVector = sf::Vector2f(x, y) * FOOTBALLER_SPEED * dt;
+
+		position += transformVector;
+		_sprite.setPosition(position);
 	}
 }
