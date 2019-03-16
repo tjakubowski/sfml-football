@@ -2,7 +2,7 @@
 
 namespace Football
 {
-	Player::Player(GameDataRef data) : Footballer(data)
+	Player::Player(GameDataRef data, std::string name) : Footballer(data, name)
 	{
 		_sprite.setTexture(_data->assets.GetTexture("Player"));
 	}

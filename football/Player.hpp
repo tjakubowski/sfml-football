@@ -9,7 +9,7 @@ namespace Football
 	private:
 		void HandleInput(float dt);
 	public:
-		Player(GameDataRef data);
+		Player(GameDataRef data, std::string name);
 
 		void Update(float dt) override;
 	};

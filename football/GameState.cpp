@@ -25,8 +25,8 @@ namespace Football
 		leftTeam = std::make_unique<Team>("Left Team");
 		rightTeam = std::make_unique<Team>("Right Team");
 
-		auto player = std::make_unique<Player>(_data);
-		auto aiPlayer = std::make_unique<AIPlayer>(_data);
+		auto player = std::make_unique<Player>(_data, "Player");
+		auto aiPlayer = std::make_unique<AIPlayer>(_data, "Footballer");
 
 		leftTeam->AddPlayer(std::move(player));
 		leftTeam->AddPlayer(std::move(aiPlayer));

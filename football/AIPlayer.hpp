@@ -8,7 +8,7 @@ namespace Football
 	class AIPlayer : public Footballer
 	{
 	public:
-		AIPlayer(GameDataRef data);
+		AIPlayer(GameDataRef data, std::string name);
 
 		void Update(float dt) override;
 	};

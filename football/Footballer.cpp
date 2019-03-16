@@ -2,7 +2,7 @@
 
 namespace Football
 {
-	Footballer::Footballer(GameDataRef data) : _data(data)
+	Footballer::Footballer(GameDataRef data, std::string name) : _data(data) ,name(name)
 	{
 
 	}
