@@ -4,6 +4,8 @@
 #include "State.hpp"
 #include "Game.hpp"
 #include "Player.hpp"
+#include "AIPlayer.hpp"
+#include "Team.hpp"
 
 namespace Football
 {
@@ -13,6 +15,7 @@ namespace Football
 		GameState(GameDataRef data);
 
 		void Init();
+		void InitTeams();
 
 		void HandleInput();
 		void Update(float dt);
@@ -26,6 +29,7 @@ namespace Football
 		sf::Texture _backgroundTexture;
 		sf::Sprite _background;
 
-		Player *player;
+		std::unique_ptr<Team> leftTeam;
+		std::unique_ptr<Team> rightTeam;
 	};
 }

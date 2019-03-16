@@ -17,7 +17,19 @@ namespace Football
 
 		_background.setTexture(this->_data->assets.GetTexture("Football pitch"));
 
-		player = new Player(_data);
+		InitTeams();
+	}
+
+	void GameState::InitTeams()
+	{
+		leftTeam = std::make_unique<Team>("Left Team");
+		rightTeam = std::make_unique<Team>("Right Team");
+
+		auto player = std::make_unique<Player>(_data);
+		auto aiPlayer = std::make_unique<AIPlayer>(_data);
+
+		leftTeam->AddPlayer(std::move(player));
+		leftTeam->AddPlayer(std::move(aiPlayer));
 	}
 
 	void GameState::HandleInput()
@@ -33,7 +45,8 @@ namespace Football
 
 	void GameState::Update(float dt)
 	{
-		player->Update( dt );
+		for(auto& fb : leftTeam->footballers)
+			fb->Update(dt);
 	}
 
 	void GameState::Draw(float dt)
@@ -41,7 +54,9 @@ namespace Football
 		_data->window.clear();
 
 		_data->window.draw(_background);
-		player->Draw();
+
+		for (auto& fb : leftTeam->footballers)
+			fb->Draw();
 
 		_data->window.display();
 	}
