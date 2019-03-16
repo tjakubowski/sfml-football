@@ -45,7 +45,7 @@ namespace Football
 
 	void GameState::Update(float dt)
 	{
-		for(auto& fb : leftTeam->footballers)
+		for(auto& fb : leftTeam->GetFootballers())
 			fb->Update(dt);
 	}
 
@@ -55,7 +55,7 @@ namespace Football
 
 		_data->window.draw(_background);
 
-		for (auto& fb : leftTeam->footballers)
+		for (auto& fb : leftTeam->GetFootballers())
 			fb->Draw();
 
 		_data->window.display();

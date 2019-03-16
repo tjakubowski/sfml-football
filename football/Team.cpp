@@ -24,6 +24,11 @@ namespace Football {
 		return points;
 	}
 
+	std::vector<std::unique_ptr<Footballer>> const & Team::GetFootballers() const
+	{
+		return footballers;
+	}
+
 	void Team::AddPlayer(std::unique_ptr<Footballer> footballer)
 	{
 		footballers.push_back(std::move(footballer));
