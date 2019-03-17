@@ -8,8 +8,8 @@ namespace Football
 	{
 	protected:
 		GameDataRef data;
-	public:
 		sf::Vector2f position;
+	public:
 		GameObject(GameDataRef data);
 		virtual ~GameObject();
 
