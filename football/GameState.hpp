@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "State.hpp"
 #include "Game.hpp"
+#include "GameObject.hpp"
 #include "Player.hpp"
 #include "AIPlayer.hpp"
 #include "Team.hpp"
@@ -14,16 +15,16 @@ namespace Football
 	public:
 		GameState(GameDataRef data);
 
-		void Init();
-		void InitTeams();
+		void init();
+		void initTeams();
 
-		void HandleInput();
-		void Update(float dt);
-		void Draw(float dt);
+		void handleInput();
+		void update(float dt);
+		void draw(float dt);
 
 	private:
-		std::vector<std::shared_ptr<Footballer>> GetAllFootballers() const;
-		std::vector<std::shared_ptr<Footballer>> GetAllFootballersSorted() const;
+		std::vector<std::shared_ptr<GameObject>> gameObjects;
+		void sortAllGameObjects();
 
 		GameDataRef _data;
 
@@ -31,6 +32,8 @@ namespace Football
 
 		sf::Texture _backgroundTexture;
 		sf::Sprite _background;
+
+
 
 		std::unique_ptr<Team> leftTeam;
 		std::unique_ptr<Team> rightTeam;

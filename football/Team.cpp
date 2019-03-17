@@ -14,22 +14,22 @@ namespace Football {
 	{
 	}
 
-	void Team::AddPoint()
+	void Team::addPoint()
 	{
 		points++;
 	}
 
-	int Team::GetPoints() const
+	int Team::getPoints() const
 	{
 		return points;
 	}
 
-	std::vector<std::shared_ptr<Footballer>> const & Team::GetFootballers() const
+	std::vector<std::shared_ptr<Footballer>> const & Team::getFootballers() const
 	{
 		return footballers;
 	}
 
-	void Team::AddPlayer(std::shared_ptr<Footballer> footballer)
+	void Team::addPlayer(std::shared_ptr<Footballer> footballer)
 	{
 		footballers.push_back(std::move(footballer));
 	}

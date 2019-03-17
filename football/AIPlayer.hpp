@@ -10,6 +10,6 @@ namespace Football
 	public:
 		AIPlayer(GameDataRef data, std::string name);
 
-		void Update(float dt) override;
+		void update(float dt) override;
 	};
 }

@@ -13,10 +13,11 @@ namespace Football {
 	public:
 		Team(const std::string& name);
 		~Team();
-		void AddPlayer(std::shared_ptr<Footballer> footballer);
-		void AddPoint();
-		int GetPoints() const;
-		std::vector<std::shared_ptr<Footballer>> const& GetFootballers() const;
+
+		void addPlayer(std::shared_ptr<Footballer> footballer);
+		void addPoint();
+		int getPoints() const;
+		std::vector<std::shared_ptr<Footballer>> const& getFootballers() const;
 
 		std::string name;
 	};

@@ -4,15 +4,15 @@ namespace Football
 {
 	Player::Player(GameDataRef data, std::string name) : Footballer(data, name)
 	{
-		_sprite.setTexture(_data->assets.GetTexture("Player"));
+		sprite.setTexture(this->data->assets.GetTexture("Player"));
 	}
 
-	void Player::Update(float dt)
+	void Player::update(float dt)
 	{
-		HandleInput(dt);
+		handleInput(dt);
 	}
 
-	void Player::HandleInput(float dt)
+	void Player::handleInput(float dt)
 	{
 		int x = 0;
 		int y = 0;
@@ -30,6 +30,6 @@ namespace Football
 		const auto transformVector = sf::Vector2f(x, y) * FOOTBALLER_SPEED * dt;
 
 		position += transformVector;
-		_sprite.setPosition(position);
+		sprite.setPosition(position);
 	}
 }

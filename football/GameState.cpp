@@ -9,7 +9,7 @@ namespace Football
 
 	}
 
-	void GameState::Init()
+	void GameState::init()
 	{
 		_data->assets.LoadTexture("Football pitch", TEX_FOOTBALL_PITCH);
 		_data->assets.LoadTexture("Footballer", TEX_FOOTBALLER);
@@ -17,10 +17,10 @@ namespace Football
 
 		_background.setTexture(this->_data->assets.GetTexture("Football pitch"));
 
-		InitTeams();
+		initTeams();
 	}
 
-	void GameState::InitTeams()
+	void GameState::initTeams()
 	{
 		leftTeam = std::make_unique<Team>("Left Team");
 		rightTeam = std::make_unique<Team>("Right Team");
@@ -28,11 +28,14 @@ namespace Football
 		auto player = std::make_shared<Player>(_data, "Player");
 		auto aiPlayer = std::make_shared<AIPlayer>(_data, "Footballer");
 
-		leftTeam->AddPlayer(std::move(player));
-		leftTeam->AddPlayer(std::move(aiPlayer));
+		leftTeam->addPlayer(player);
+		leftTeam->addPlayer(aiPlayer);
+
+		gameObjects.push_back(player);
+		gameObjects.push_back(aiPlayer);
 	}
 
-	void GameState::HandleInput()
+	void GameState::handleInput()
 	{
 		sf::Event event;
 
@@ -43,42 +46,29 @@ namespace Football
 		}
 	}
 
-	void GameState::Update(float dt)
+	void GameState::update(float dt)
 	{
-		for(auto& fb : leftTeam->GetFootballers())
-			fb->Update(dt);
+		sortAllGameObjects();
+
+		for(auto& fb : leftTeam->getFootballers())
+			fb->update(dt);
 	}
 
-	void GameState::Draw(float dt)
+	void GameState::draw(float dt)
 	{
 		_data->window.clear();
 
 		_data->window.draw(_background);
 
-		for (auto& fb : GetAllFootballersSorted())
-			fb->Draw();
+		for (auto& fb : gameObjects)
+			fb->draw();
 
 		_data->window.display();
 	}
 
-	std::vector<std::shared_ptr<Footballer>> GameState::GetAllFootballers() const
+	void GameState::sortAllGameObjects()
 	{
-		std::vector<std::shared_ptr<Footballer>> allFootballers;
-
-		allFootballers.reserve(leftTeam->GetFootballers().size() + rightTeam->GetFootballers().size());
-		allFootballers.insert(allFootballers.end(), leftTeam->GetFootballers().begin(), leftTeam->GetFootballers().end());
-		allFootballers.insert(allFootballers.end(), rightTeam->GetFootballers().begin(), rightTeam->GetFootballers().end());
-
-		return allFootballers;
-	}
-
-	std::vector<std::shared_ptr<Footballer>> GameState::GetAllFootballersSorted() const
-	{
-		auto footballersSorted = GetAllFootballers();
-
-		std::sort(footballersSorted.begin(), footballersSorted.end());
-
-		return footballersSorted;
+		std::sort(gameObjects.begin(), gameObjects.end());
 	}
 
 }

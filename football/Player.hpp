@@ -7,10 +7,10 @@ namespace Football
 	class Player : public Footballer
 	{
 	private:
-		void HandleInput(float dt);
+		void handleInput(float dt);
 	public:
 		Player(GameDataRef data, std::string name);
 
-		void Update(float dt) override;
+		void update(float dt) override;
 	};
 }

@@ -1,25 +1,19 @@
 #pragma once
 #include "Game.hpp"
 #include <string>
+#include "GameObject.hpp"
 
 namespace Football
 {
-	class Footballer
+	class Footballer : public GameObject
 	{
 	public:
 		Footballer(GameDataRef data, std::string name);
+		void draw() override;
+		void setName(const std::string& name);
 
-		void Draw() const;
-		virtual void Update(float dt) = 0;
-		void SetName(const std::string& name);
-		sf::Vector2f position;
 	protected:
-		GameDataRef _data;
-
 		std::string name;
-
-		sf::Sprite _sprite;
+		sf::Sprite sprite;
 	};
-
-	bool operator< (std::shared_ptr<Footballer> &a, std::shared_ptr<Footballer> &b);
 }

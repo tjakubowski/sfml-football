@@ -147,6 +147,7 @@
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="Footballer.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="DEFINITIONS.hpp" />
     <ClInclude Include="Footballer.hpp" />
     <ClInclude Include="Game.hpp" />
+    <ClInclude Include="GameObject.hpp" />
     <ClInclude Include="GameState.hpp" />
     <ClInclude Include="InputManager.hpp" />
     <ClInclude Include="MenuState.hpp" />
