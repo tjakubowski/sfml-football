@@ -38,7 +38,7 @@ namespace Football
 			}
 
 			this->_states.push(std::move(this->_newState));
-			this->_states.top()->Init();
+			this->_states.top()->init();
 			this->_isAdding = false;
 		}
 	}

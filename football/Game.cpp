@@ -32,14 +32,14 @@ namespace Football
 
 			while(accumulator >= dt)
 			{
-				this->_data->machine.GetActiveState()->HandleInput();
-				this->_data->machine.GetActiveState()->Update(dt);
+				this->_data->machine.GetActiveState()->handleInput();
+				this->_data->machine.GetActiveState()->update(dt);
 
 				accumulator -= dt;
 			}
 
 			interpolation = accumulator / dt;
-			this->_data->machine.GetActiveState()->Draw(interpolation);
+			this->_data->machine.GetActiveState()->draw(interpolation);
 		}
 	}
 

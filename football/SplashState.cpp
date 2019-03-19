@@ -13,14 +13,14 @@ namespace Football
 		
 	}
 
-	void SplashState::Init()
+	void SplashState::init()
 	{
 		_data->assets.LoadTexture("Splash background", TEX_SPLASH_SCREEN_BG);
 
 		_background.setTexture(this->_data->assets.GetTexture( "Splash background" ));
 	}
 
-	void SplashState::HandleInput()
+	void SplashState::handleInput()
 	{
 		sf::Event event;
 
@@ -31,7 +31,7 @@ namespace Football
 		}
 	}
 
-	void SplashState::Update(float dt)
+	void SplashState::update(float dt)
 	{
 		if (_clock.getElapsedTime().asSeconds() > SPLASH_STATE_SHOW_TIME )
 		{
@@ -39,7 +39,7 @@ namespace Football
 		}
 	}
 
-	void SplashState::Draw(float dt)
+	void SplashState::draw(float dt)
 	{
 		_data->window.clear();
 

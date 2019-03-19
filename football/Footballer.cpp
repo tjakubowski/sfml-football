@@ -2,13 +2,19 @@
 
 namespace Football
 {
-	Footballer::Footballer(GameDataRef data) : _data(data)
+	Footballer::Footballer(GameDataRef data, std::string name) : GameObject(data), name(name)
 	{
-
+		position = sf::Vector2f(250, 250);
+		sprite.setPosition(position);
 	}
 
-	void Footballer::Draw() const
+	void Footballer::draw()
 	{
-		_data->window.draw(_sprite);
+		data->window.draw(sprite);
+	}
+
+	void Footballer::setName(const std::string& name) 
+	{
+		this->name = name;
 	}
 }

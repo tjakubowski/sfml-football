@@ -11,11 +11,11 @@ namespace Football
 	public:
 		SplashState(GameDataRef data);
 
-		void Init();
+		void init();
 
-		void HandleInput();
-		void Update( float dt );
-		void Draw( float dt );
+		void handleInput();
+		void update( float dt );
+		void draw( float dt );
 
 	private:
 		GameDataRef _data;

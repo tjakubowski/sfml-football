@@ -1,18 +1,19 @@
 #pragma once
 #include "Game.hpp"
+#include <string>
+#include "GameObject.hpp"
 
 namespace Football
 {
-	class Footballer
+	class Footballer : public GameObject
 	{
 	public:
-		Footballer(GameDataRef data);
+		Footballer(GameDataRef data, std::string name);
+		void draw() override;
+		void setName(const std::string& name);
 
-		void Draw() const;
-		virtual void Update(float dt) = 0;
 	protected:
-		GameDataRef _data;
-
-		sf::Sprite _sprite;
+		std::string name;
+		sf::Sprite sprite;
 	};
 }
