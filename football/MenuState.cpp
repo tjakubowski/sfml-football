@@ -12,14 +12,14 @@ namespace Football
 
 	}
 
-	void MenuState::Init()
+	void MenuState::init()
 	{
 		_data->assets.LoadTexture("Menu background", TEX_MENU_BG);
 
 		_background.setTexture(this->_data->assets.GetTexture("Menu background"));
 	}
 
-	void MenuState::HandleInput()
+	void MenuState::handleInput()
 	{
 		sf::Event event;
 
@@ -30,12 +30,12 @@ namespace Football
 		}
 	}
 
-	void MenuState::Update(float dt)
+	void MenuState::update(float dt)
 	{
 
 	}
 
-	void MenuState::Draw(float dt)
+	void MenuState::draw(float dt)
 	{
 		_data->window.clear();
 
