@@ -1,7 +1,6 @@
 #pragma once
 #include "Footballer.hpp"
 #include "DEFINITIONS.hpp"
-#include <iostream>
 
 namespace Football
 {

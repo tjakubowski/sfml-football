@@ -165,6 +165,7 @@
     <ClInclude Include="Game.hpp" />
     <ClInclude Include="GameObject.hpp" />
     <ClInclude Include="GameState.hpp" />
+    <ClInclude Include="Helpers.hpp" />
     <ClInclude Include="InputManager.hpp" />
     <ClInclude Include="MenuState.hpp" />
     <ClInclude Include="Player.hpp" />

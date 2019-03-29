@@ -9,6 +9,6 @@ namespace Football
 
 	void AIPlayer::update(float dt)
 	{
-		std::cout << "AI" << std::endl;
+		move(sf::Vector2f(1, 2), dt);
 	}
 }

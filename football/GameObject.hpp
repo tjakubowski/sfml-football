@@ -1,6 +1,7 @@
 #pragma once
 #include "Game.hpp"
 #include "DEFINITIONS.hpp"
+#include "Helpers.hpp"
 
 namespace Football
 {
@@ -8,7 +9,7 @@ namespace Football
 	{
 	protected:
 		GameDataRef data;
-		sf::Vector2f position;
+		sf::Sprite sprite;
 	public:
 		GameObject(GameDataRef data);
 		virtual ~GameObject();
@@ -16,8 +17,9 @@ namespace Football
 		virtual void draw() = 0;
 		virtual void update(float dt) = 0;
 
+		sf::Vector2f getPosition() const;
+
 		friend bool operator<(std::shared_ptr<GameObject>& a, std::shared_ptr<GameObject>& b);
 	};
-
 
 }
