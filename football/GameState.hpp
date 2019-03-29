@@ -26,14 +26,12 @@ namespace Football
 		std::vector<std::shared_ptr<GameObject>> gameObjects;
 		void sortAllGameObjects();
 
-		GameDataRef _data;
+		GameDataRef data;
 
-		sf::Clock _clock;
+		sf::Clock clock;
 
-		sf::Texture _backgroundTexture;
-		sf::Sprite _background;
-
-
+		sf::Texture backgroundTexture;
+		sf::Sprite background;
 
 		std::unique_ptr<Team> leftTeam;
 		std::unique_ptr<Team> rightTeam;

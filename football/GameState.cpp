@@ -4,18 +4,18 @@
 namespace Football
 {
 
-	GameState::GameState(GameDataRef data) : _data(data)
+	GameState::GameState(GameDataRef data) : data(data)
 	{
 
 	}
 
 	void GameState::init()
 	{
-		_data->assets.LoadTexture("Football pitch", TEX_FOOTBALL_PITCH);
-		_data->assets.LoadTexture("Footballer", TEX_FOOTBALLER);
-		_data->assets.LoadTexture("Player", TEX_PLAYER);
+		data->assets.LoadTexture("Football pitch", TEX_FOOTBALL_PITCH);
+		data->assets.LoadTexture("Footballer", TEX_FOOTBALLER);
+		data->assets.LoadTexture("Player", TEX_PLAYER);
 
-		_background.setTexture(this->_data->assets.GetTexture("Football pitch"));
+		background.setTexture(this->data->assets.GetTexture("Football pitch"));
 
 		initTeams();
 	}
@@ -25,8 +25,8 @@ namespace Football
 		leftTeam = std::make_unique<Team>("Left Team");
 		rightTeam = std::make_unique<Team>("Right Team");
 
-		auto player = std::make_shared<Player>(_data, "Player");
-		auto aiPlayer = std::make_shared<AIPlayer>(_data, "Footballer");
+		auto player = std::make_shared<Player>(data, "Player");
+		auto aiPlayer = std::make_shared<AIPlayer>(data, "Bot");
 
 		leftTeam->addPlayer(player);
 		leftTeam->addPlayer(aiPlayer);
@@ -39,10 +39,13 @@ namespace Football
 	{
 		sf::Event event;
 
-		while (_data->window.pollEvent(event))
+		while (data->window.pollEvent(event))
 		{
 			if (sf::Event::Closed == event.type)
-				_data->window.close();
+				data->window.close();
+
+			if (sf::Event::KeyPressed == event.type || sf::Event::KeyReleased == event.type)
+				data->inputs.update();
 		}
 	}
 
@@ -56,14 +59,14 @@ namespace Football
 
 	void GameState::draw(float dt)
 	{
-		_data->window.clear();
+		data->window.clear();
 
-		_data->window.draw(_background);
+		data->window.draw(background);
 
 		for (auto& fb : gameObjects)
 			fb->draw();
 
-		_data->window.display();
+		data->window.display();
 	}
 
 	void GameState::sortAllGameObjects()
