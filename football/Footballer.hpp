@@ -9,6 +9,7 @@ namespace Football
 	{
 	protected:
 		std::string name;
+		float deceleration;
 		float acceleration;
 		float maxSpeed;
 		sf::Vector2f force;

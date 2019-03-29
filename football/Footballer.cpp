@@ -2,7 +2,7 @@
 
 namespace Football
 {
-	Footballer::Footballer(GameDataRef data, std::string name) : GameObject(data), name(name), acceleration(0.1), maxSpeed(150)
+	Footballer::Footballer(GameDataRef data, std::string name) : GameObject(data), name(name), acceleration(0.1), deceleration(0.05), maxSpeed(150)
 	{
 		position = sf::Vector2f(250, 250);
 		sprite.setPosition(position);
@@ -22,10 +22,11 @@ namespace Football
 	{
 		// Slow down
 		if(isZero(direction))
-			force -= force * acceleration;
+			force -= force * deceleration;
 		else
 			force = clampMagnitude(force + normalize(direction) * acceleration, 1);
 
+		// Stop completely
 		if (isZero(force))
 			return;
 
