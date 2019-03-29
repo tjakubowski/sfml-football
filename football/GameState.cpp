@@ -4,18 +4,18 @@
 namespace Football
 {
 
-	GameState::GameState(GameDataRef data) : data(data)
+	GameState::GameState()
 	{
 
 	}
 
 	void GameState::init()
 	{
-		data->assets.LoadTexture("Football pitch", TEX_FOOTBALL_PITCH);
-		data->assets.LoadTexture("Footballer", TEX_FOOTBALLER);
-		data->assets.LoadTexture("Player", TEX_PLAYER);
+		GameData::getInstance()->assets.LoadTexture("Football pitch", TEX_FOOTBALL_PITCH);
+		GameData::getInstance()->assets.LoadTexture("Footballer", TEX_FOOTBALLER);
+		GameData::getInstance()->assets.LoadTexture("Player", TEX_PLAYER);
 
-		background.setTexture(this->data->assets.GetTexture("Football pitch"));
+		background.setTexture(GameData::getInstance()->assets.GetTexture("Football pitch"));
 
 		initTeams();
 	}
@@ -25,8 +25,8 @@ namespace Football
 		leftTeam = std::make_unique<Team>("Left Team");
 		rightTeam = std::make_unique<Team>("Right Team");
 
-		auto player = std::make_shared<Player>(data, "Player");
-		auto aiPlayer = std::make_shared<AIPlayer>(data, "Bot");
+		auto player = std::make_shared<Player>("Player");
+		auto aiPlayer = std::make_shared<AIPlayer>("Bot");
 
 		leftTeam->addPlayer(player);
 		leftTeam->addPlayer(aiPlayer);
@@ -39,13 +39,13 @@ namespace Football
 	{
 		sf::Event event;
 
-		while (data->window.pollEvent(event))
+		while (GameData::getInstance()->window.pollEvent(event))
 		{
 			if (sf::Event::Closed == event.type)
-				data->window.close();
+				GameData::getInstance()->window.close();
 
 			if (sf::Event::KeyPressed == event.type || sf::Event::KeyReleased == event.type)
-				data->inputs.update();
+				GameData::getInstance()->inputs.update();
 		}
 	}
 
@@ -59,14 +59,14 @@ namespace Football
 
 	void GameState::draw(float dt)
 	{
-		data->window.clear();
+		GameData::getInstance()->window.clear();
 
-		data->window.draw(background);
+		GameData::getInstance()->window.draw(background);
 
 		for (auto& fb : gameObjects)
 			fb->draw();
 
-		data->window.display();
+		GameData::getInstance()->window.display();
 	}
 
 	void GameState::sortAllGameObjects()

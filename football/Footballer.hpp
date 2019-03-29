@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
-#include "Game.hpp"
 #include "GameObject.hpp"
+#include "CircleCollider.hpp"
 
 namespace Football
 {
@@ -16,7 +16,7 @@ namespace Football
 
 		void move(sf::Vector2f direction, float dt);
 	public:
-		Footballer(GameDataRef data, std::string name);
+		Footballer(std::string name);
 
 		void draw() override;
 

@@ -2,15 +2,17 @@
 
 namespace Football
 {
-	Footballer::Footballer(GameDataRef data, std::string name) : GameObject(data), name(name), acceleration(0.1), deceleration(0.05), maxSpeed(150)
+	Footballer::Footballer(std::string name) : name(name), deceleration(0.05), acceleration(0.1), maxSpeed(150)
 	{
-
+		collider = std::make_shared<CircleCollider>(this, sf::Vector2f(10, 10), sprite.getLocalBounds().width, true);
 		sprite.setPosition(sf::Vector2f(250, 250));
 	}
 
 	void Footballer::draw()
 	{
-		data->window.draw(sprite);
+		GameData::getInstance()->window.draw(sprite);
+
+		collider->drawDebug();
 	}
 
 	void Footballer::setName(const std::string& name) 

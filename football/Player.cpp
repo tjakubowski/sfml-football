@@ -2,9 +2,9 @@
 
 namespace Football
 {
-	Player::Player(GameDataRef data, std::string name) : Footballer(data, name)
+	Player::Player(std::string name) : Footballer(name)
 	{
-		sprite.setTexture(this->data->assets.GetTexture("Player"));
+		sprite.setTexture(GameData::getInstance()->assets.GetTexture("Player"));
 	}
 
 	void Player::update(float dt)
@@ -14,7 +14,7 @@ namespace Football
 
 	void Player::go(float dt)
 	{
-		move(data->inputs.getInputAxis(), dt);
+		move(GameData::getInstance()->inputs.getInputAxis(), dt);
 	}
 
 }

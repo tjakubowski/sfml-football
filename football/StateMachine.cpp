@@ -1,9 +1,15 @@
 #include "StateMachine.hpp"
+#include <iostream>
 
 namespace Football
 {
+	StateMachine::StateMachine() : _isRemoving(false), _isAdding(false), _isReplacing(false)
+	{
+	}
+
 	void StateMachine::AddState( StateRef newState, bool isReplacing )
 	{
+		std::cout << "AddState" << std::endl;
 		this->_isAdding = true;
 		this->_isReplacing = isReplacing;
 
@@ -19,6 +25,7 @@ namespace Football
 	{
 		if(this->_isRemoving && !this->_states.empty())
 		{
+			std::cout << "_isRemoving" << std::endl;
 			this->_states.pop();
 
 			if (!this->_states.empty())
@@ -29,6 +36,7 @@ namespace Football
 
 		if(this->_isAdding)
 		{
+			std::cout << "_isAdding" << std::endl;
 			if(!this->_states.empty())
 			{
 				if (this->_isReplacing)

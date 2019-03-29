@@ -2,9 +2,9 @@
 
 namespace Football
 {
-	AIPlayer::AIPlayer(GameDataRef data, std::string name) : Footballer(data, name)
+	AIPlayer::AIPlayer(std::string name) : Footballer(name)
 	{
-		sprite.setTexture(data->assets.GetTexture("Footballer"));
+		sprite.setTexture(GameData::getInstance()->assets.GetTexture("Footballer"));
 	}
 
 	void AIPlayer::update(float dt)

@@ -2,16 +2,18 @@
 
 namespace Football
 {
-	GameObject::GameObject(GameDataRef data) : data(data)
+	GameObject::GameObject()
 	{
 	}
-
-	GameObject::~GameObject()
-	= default;
 
 	sf::Vector2f GameObject::getPosition() const
 	{
 		return sprite.getPosition();
+	}
+
+	std::shared_ptr<Collider> GameObject::getCollider() const
+	{
+		return collider;
 	}
 
 	bool operator<(std::shared_ptr<GameObject>& a, std::shared_ptr<GameObject>& b)

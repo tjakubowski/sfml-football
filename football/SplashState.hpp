@@ -9,7 +9,7 @@ namespace Football
 	class SplashState : public State
 	{
 	public:
-		SplashState(GameDataRef data);
+		SplashState();
 
 		void init();
 
@@ -18,8 +18,6 @@ namespace Football
 		void draw( float dt );
 
 	private:
-		GameDataRef _data;
-
 		sf::Clock _clock;
 
 		sf::Texture _backgroundTexture;

@@ -9,7 +9,7 @@ namespace Football
 	class MenuState : public State
 	{
 	public:
-		MenuState(GameDataRef data);
+		MenuState();
 
 		void init();
 
@@ -18,8 +18,6 @@ namespace Football
 		void draw(float dt);
 
 	private:
-		GameDataRef _data;
-
 		sf::Clock _clock;
 
 		sf::Texture _backgroundTexture;
