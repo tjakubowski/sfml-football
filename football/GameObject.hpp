@@ -9,7 +9,6 @@ namespace Football
 	{
 	protected:
 		GameDataRef data;
-		sf::Vector2f position;
 		sf::Sprite sprite;
 	public:
 		GameObject(GameDataRef data);
@@ -17,6 +16,8 @@ namespace Football
 
 		virtual void draw() = 0;
 		virtual void update(float dt) = 0;
+
+		sf::Vector2f getPosition() const;
 
 		friend bool operator<(std::shared_ptr<GameObject>& a, std::shared_ptr<GameObject>& b);
 	};

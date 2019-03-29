@@ -4,8 +4,8 @@ namespace Football
 {
 	Footballer::Footballer(GameDataRef data, std::string name) : GameObject(data), name(name), acceleration(0.1), deceleration(0.05), maxSpeed(150)
 	{
-		position = sf::Vector2f(250, 250);
-		sprite.setPosition(position);
+
+		sprite.setPosition(sf::Vector2f(250, 250));
 	}
 
 	void Footballer::draw()
@@ -30,9 +30,8 @@ namespace Football
 		if (isZero(force))
 			return;
 
-		auto finalMove = force * maxSpeed * dt;
+		const auto finalMove = force * maxSpeed * dt;
 
-		position += finalMove;
 		sprite.move(finalMove);
 	}
 }
