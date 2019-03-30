@@ -18,8 +18,10 @@ namespace Football
 	public:
 		Footballer(std::string name);
 
+		void setName(const std::string& name);
+
 		void draw() override;
 
-		void setName(const std::string& name);
+		void onCollision(GameObject* collisionGameObject) override;
 	};
 }

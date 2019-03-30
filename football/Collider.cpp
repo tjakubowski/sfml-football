@@ -11,9 +11,24 @@ namespace Football
 		this->debug = debug;
 	}
 
+	float Collider::getWidth() const
+	{
+		return width;
+	}
+
+	float Collider::getHeight() const
+	{
+		return height;
+	}
+
 	sf::Vector2f Collider::getPosition() const
 	{
 		return gameObject->getPosition() + offset;
+	}
+
+	GameObject* Collider::getGameObject() const
+	{
+		return gameObject;
 	}
 
 	void Collider::draw()

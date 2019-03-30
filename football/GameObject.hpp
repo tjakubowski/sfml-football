@@ -23,6 +23,8 @@ namespace Football
 		sf::Vector2f getPosition() const;
 		std::shared_ptr<Collider> getCollider() const;
 
+		virtual void onCollision(GameObject* collisionGameObject) = 0;
+
 		friend bool operator<(std::shared_ptr<GameObject>& a, std::shared_ptr<GameObject>& b);
 	};
 

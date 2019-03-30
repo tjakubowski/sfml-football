@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/System/Vector2.hpp>
 #include "GameObject.hpp"
+#include <iostream>
 
 namespace Football
 {
@@ -20,7 +21,13 @@ namespace Football
 
 		void setDebug(bool debug);
 
+
+		float getWidth() const;
+		float getHeight() const;
 		sf::Vector2f getPosition() const;
+		GameObject* getGameObject() const;
+
+		virtual void checkCollision(std::shared_ptr<Collider> checkCollider) = 0;
 
 		virtual void drawDebug() = 0;
 		void draw();

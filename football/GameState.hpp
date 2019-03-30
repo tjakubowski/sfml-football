@@ -12,7 +12,6 @@ namespace Football
 	{
 	private:
 		std::vector<std::shared_ptr<GameObject>> gameObjects;
-		void sortAllGameObjects();
 
 		sf::Clock clock;
 
@@ -22,11 +21,16 @@ namespace Football
 		std::unique_ptr<Team> leftTeam;
 		std::unique_ptr<Team> rightTeam;
 
+		void checkCollisions();
+		void sortAllGameObjects();
+
 	public:
 		GameState();
 
 		void init();
 		void initTeams();
+
+		std::vector<std::shared_ptr<GameObject>> getGameObjects() const;
 
 		void handleInput();
 		void update(float dt);

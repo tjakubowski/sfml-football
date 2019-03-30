@@ -35,6 +35,11 @@ namespace Football
 		gameObjects.push_back(aiPlayer);
 	}
 
+	std::vector<std::shared_ptr<GameObject>> GameState::getGameObjects() const
+	{
+		return gameObjects;
+	}
+
 	void GameState::handleInput()
 	{
 		sf::Event event;
@@ -52,6 +57,7 @@ namespace Football
 	void GameState::update(float dt)
 	{
 		sortAllGameObjects();
+		checkCollisions();
 
 		for(auto& fb : leftTeam->getFootballers())
 			fb->update(dt);
@@ -67,6 +73,13 @@ namespace Football
 			fb->draw();
 
 		GameData::getInstance()->window.display();
+	}
+
+	void GameState::checkCollisions()
+	{
+		for (unsigned int i = 0; i < gameObjects.size() - 1; i++)
+			for (unsigned int j = i + 1; j < gameObjects.size(); j++)
+				gameObjects[i]->getCollider()->checkCollision(gameObjects[j]->getCollider());
 	}
 
 	void GameState::sortAllGameObjects()
