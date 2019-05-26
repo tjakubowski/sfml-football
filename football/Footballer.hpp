@@ -16,6 +16,6 @@ namespace Football
 
 		void draw() override;
 
-		void onCollision(GameObject* collisionGameObject) override;
+		void onCollision(GameObject* collisionGameObject, sf::Vector2f collisionPoint) override;
 	};
 }

@@ -14,22 +14,33 @@ namespace Football
 			const auto circleCollider = dynamic_cast<CircleCollider*>(checkCollider.get());
 			const auto circleRadius = circleCollider->getRadius();
 
-			const auto deltaX = circleCollider->getCircleCenter().x - std::max(getPosition().x, std::min(circleCollider->getCircleCenter().x, getPosition().x + width));
-			const auto deltaY = circleCollider->getCircleCenter().y - std::max(getPosition().y, std::min(circleCollider->getCircleCenter().y, getPosition().y + height));
+			const auto nearestX = std::max(getPosition().x, std::min(circleCollider->getCircleCenter().x, getPosition().x + width));
+			const auto nearestY = std::max(getPosition().y, std::min(circleCollider->getCircleCenter().y, getPosition().y + height));
+
+			const auto deltaX = circleCollider->getCircleCenter().x - nearestX;
+			const auto deltaY = circleCollider->getCircleCenter().y - nearestY;
 			
 			if ((deltaX * deltaX + deltaY * deltaY) < (circleRadius * circleRadius))
-				gameObject->onCollision(checkCollider->getGameObject());
+			{
+				const auto collisionPoint = sf::Vector2f(nearestX, nearestY);
+				gameObject->onCollision(checkCollider->getGameObject(), collisionPoint);
+			}
 		}
 		// Rectangle => Rectangle
 		else if (typeid(*checkCollider.get()) == typeid(RectangleCollider))
 		{
 			const auto rectCollider = dynamic_cast<RectangleCollider*>(checkCollider.get());
 
-			sf::Rect r1(getPosition(), sf::Vector2f(width, height));
-			sf::Rect r2(rectCollider->getPosition(), sf::Vector2f(rectCollider->getWidth(), rectCollider->getHeight()));
+			const sf::Rect<float> r1(getPosition(), sf::Vector2f(width, height));
+			const sf::Rect<float> r2(rectCollider->getPosition(),
+			                         sf::Vector2f(rectCollider->getWidth(), rectCollider->getHeight()));
 
-			if(r1.intersects(r2))
-				gameObject->onCollision(checkCollider->getGameObject());
+			sf::Rect<float> intersectionRect;
+			if(r1.intersects(r2, intersectionRect))
+			{
+				const auto collisionPoint = sf::Vector2f(intersectionRect.left + intersectionRect.width/2, intersectionRect.top + intersectionRect.height/2);
+				gameObject->onCollision(checkCollider->getGameObject(), collisionPoint);
+			}
 		}
 	}
 

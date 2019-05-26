@@ -17,9 +17,19 @@ namespace Football
 		collider->drawDebug();
 	}
 
-	void Footballer::onCollision(GameObject* collisionGameObject)
+	void Footballer::onCollision(GameObject* collisionGameObject, sf::Vector2f collisionPoint)
 	{
-		// TODO: Collision handling
+		// TODO: Refactor collisions
+		auto direction = getPosition() - collisionGameObject->getPosition();
+		const float forceMagnitude = magnitude(force);
+
+		std::cout << forceMagnitude << std::endl;
+
+		force = normalize(direction) * (forceMagnitude / 1.1f);
+		collisionGameObject->force = -force;
+
+		// Move if needed
+		moveImmediately(normalize(collisionPoint - getPosition()) * -1.0f);
 	}
 
 	void Footballer::setName(const std::string& name) 

@@ -31,7 +31,10 @@ namespace Football
 			const auto sqrRadius = (thisRadius + circleColliderRadius) * (thisRadius + circleColliderRadius);
 			
 			if (sqrDistance < sqrRadius)
-				gameObject->onCollision(checkCollider->getGameObject());
+			{
+				const auto collisionPoint = getPosition() + thisRadius * normalize(checkCollider->getPosition() - getPosition());
+				gameObject->onCollision(checkCollider->getGameObject(), collisionPoint);
+			}
 		}
 		// Circle => Rectangle
 		else if (typeid(*checkCollider.get()) == typeid(RectangleCollider))
@@ -39,11 +42,17 @@ namespace Football
 			const auto rectCollider = dynamic_cast<RectangleCollider*>(checkCollider.get());
 			const auto circleRadius = getRadius();
 
-			const auto deltaX = getCircleCenter().x - std::max(rectCollider->getPosition().x, std::min(getCircleCenter().x, rectCollider->getPosition().x + rectCollider->getWidth()));
-			const auto deltaY = getCircleCenter().y - std::max(rectCollider->getPosition().y, std::min(getCircleCenter().y, rectCollider->getPosition().y + rectCollider->getHeight()));
+			const auto nearestX = std::max(rectCollider->getPosition().x, std::min(getCircleCenter().x, rectCollider->getPosition().x + rectCollider->getWidth()));
+			const auto nearestY = std::max(rectCollider->getPosition().y, std::min(getCircleCenter().y, rectCollider->getPosition().y + rectCollider->getHeight()));
+
+			const auto deltaX = getCircleCenter().x - nearestX;
+			const auto deltaY = getCircleCenter().y - nearestY;
 
 			if ((deltaX * deltaX + deltaY * deltaY) < (circleRadius * circleRadius))
-				gameObject->onCollision(checkCollider->getGameObject());
+			{
+				const auto collisionPoint = sf::Vector2f(nearestX, nearestY);
+				gameObject->onCollision(checkCollider->getGameObject(), collisionPoint);
+			}
 		}
 	}
 

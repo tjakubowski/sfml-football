@@ -57,10 +57,11 @@ namespace Football
 	void GameState::update(float dt)
 	{
 		sortAllGameObjects();
-		checkCollisions();
 
 		for(auto& fb : leftTeam->getFootballers())
 			fb->update(dt);
+
+		checkCollisions();
 	}
 
 	void GameState::draw(float dt)

@@ -48,7 +48,7 @@ static sf::Vector2f normalize(sf::Vector2u vector)
 	return normalize(sf::Vector2f(vector));
 }
 
-static sf::Vector2f clampMagnitude(sf::Vector2f vector, float maxLength)
+static sf::Vector2f clampMagnitude(sf::Vector2f vector, const float& maxLength)
 {
 	if (sqrMagnitude(vector) > static_cast<double>(maxLength) * static_cast<double>(maxLength))
 		return normalize(vector) * maxLength;
@@ -56,12 +56,12 @@ static sf::Vector2f clampMagnitude(sf::Vector2f vector, float maxLength)
 	return vector;
 }
 
-static sf::Vector2f clampMagnitude(sf::Vector2i vector, float maxLength)
+static sf::Vector2f clampMagnitude(sf::Vector2i vector, const float& maxLength)
 {
 	return clampMagnitude(sf::Vector2f(vector), maxLength);
 }
 
-static sf::Vector2f clampMagnitude(sf::Vector2u vector, float maxLength)
+static sf::Vector2f clampMagnitude(sf::Vector2u vector, const float& maxLength)
 {
 	return clampMagnitude(sf::Vector2f(vector), maxLength);
 }
@@ -81,3 +81,32 @@ static bool isZero (sf::Vector2u vector)
 	return isZero(sf::Vector2f(vector));
 }
 
+static sf::Vector2f rotate(sf::Vector2f vector, float angle)
+{
+	angle *= 3.14159 / 180.0f;
+
+	return sf::Vector2f(
+		vector.x * cos(angle) - vector.y * sin(angle),
+		vector.x * sin(angle) + vector.y * cos(angle)
+	);
+}
+
+static sf::Vector2i rotate(sf::Vector2i vector, float angle)
+{
+	angle *= 3.14159 / 180.0f;
+
+	return sf::Vector2i(
+		vector.x * cos(angle) - vector.y * sin(angle),
+		vector.x * sin(angle) + vector.y * cos(angle)
+	);
+}
+
+static sf::Vector2u rotate(sf::Vector2u vector, float angle)
+{
+	angle *= 3.14159 / 180.0f;
+
+	return sf::Vector2u(
+		vector.x * cos(angle) - vector.y * sin(angle),
+		vector.x * sin(angle) + vector.y * cos(angle)
+	);
+}
