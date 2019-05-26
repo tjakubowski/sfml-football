@@ -22,7 +22,13 @@ namespace Football
 		return a->getPosition().y < b->getPosition().y;
 	}
 
-	void GameObject::move(sf::Vector2f direction, float dt)
+
+	void GameObject::moveImmediately(sf::Vector2f moveVector)
+	{
+		sprite.move(moveVector);
+	}
+
+	void GameObject::move(sf::Vector2f direction, const float& dt)
 	{
 		// Slow down
 		if (isZero(direction))

@@ -28,6 +28,7 @@ namespace Football
 		std::shared_ptr<Collider> getCollider() const;
 
 		virtual void move(sf::Vector2f direction, float dt);
+		void moveImmediately(sf::Vector2f moveVector);
 		virtual void onCollision(GameObject* collisionGameObject) = 0;
 
 		friend bool operator<(std::shared_ptr<GameObject>& a, std::shared_ptr<GameObject>& b);
