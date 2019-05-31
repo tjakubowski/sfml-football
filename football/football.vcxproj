@@ -152,6 +152,7 @@
     <ClCompile Include="GameData.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="Goal.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuState.cpp" />
@@ -172,6 +173,7 @@
     <ClInclude Include="GameData.hpp" />
     <ClInclude Include="GameObject.hpp" />
     <ClInclude Include="GameState.hpp" />
+    <ClInclude Include="Goal.hpp" />
     <ClInclude Include="Helpers.hpp" />
     <ClInclude Include="InputManager.hpp" />
     <ClInclude Include="MenuState.hpp" />

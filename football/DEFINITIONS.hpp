@@ -11,3 +11,4 @@ const std::string TEX_MENU_BG = "Resources/res/menu_bg.png";
 const std::string TEX_FOOTBALL_PITCH = "Resources/res/football_pitch.png";
 const std::string TEX_FOOTBALLER = "Resources/res/footballer.png";
 const std::string TEX_PLAYER = "Resources/res/player.png";
+const std::string TEX_GOAL = "Resources/res/goal.png";

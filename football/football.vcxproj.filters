@@ -84,6 +84,9 @@
     <ClCompile Include="StateMachine.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
+    <ClCompile Include="Goal.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.hpp">
@@ -141,6 +144,9 @@
       <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="Player.hpp">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Goal.hpp">
       <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
