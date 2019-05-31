@@ -1,6 +1,7 @@
 #include "GameState.hpp"
 #include "DEFINITIONS.hpp"
 #include "Goal.hpp"
+#include "Ball.hpp"
 
 namespace Football
 {
@@ -16,6 +17,7 @@ namespace Football
 		GameData::getInstance()->assets.LoadTexture("Footballer", TEX_FOOTBALLER);
 		GameData::getInstance()->assets.LoadTexture("Player", TEX_PLAYER);
 		GameData::getInstance()->assets.LoadTexture("Goal", TEX_GOAL);
+		GameData::getInstance()->assets.LoadTexture("Ball", TEX_BALL);
 
 		background.setTexture(GameData::getInstance()->assets.GetTexture("Football pitch"));
 
@@ -30,14 +32,18 @@ namespace Football
 		auto player = std::make_shared<Player>("Player");
 		auto aiPlayer = std::make_shared<AIPlayer>("Bot");
 
-		auto goal = std::make_shared<Goal>();
+		auto ball = std::make_shared<Ball>();
+		auto goalLeft = std::make_shared<Goal>();
+		auto goalRight = std::make_shared<Goal>();
 
 		leftTeam->addPlayer(player);
 		leftTeam->addPlayer(aiPlayer);
 
 		gameObjects.push_back(player);
 		gameObjects.push_back(aiPlayer);
-		gameObjects.push_back(goal);
+		gameObjects.push_back(ball);
+		gameObjects.push_back(goalLeft);
+		gameObjects.push_back(goalRight);
 	}
 
 	std::vector<std::shared_ptr<GameObject>> GameState::getGameObjects() const

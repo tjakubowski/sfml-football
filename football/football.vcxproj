@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClCompile Include="AIPlayer.cpp" />
     <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="Ball.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Footballer.cpp" />
@@ -165,6 +166,7 @@
   <ItemGroup>
     <ClInclude Include="AIPlayer.hpp" />
     <ClInclude Include="AssetManager.hpp" />
+    <ClInclude Include="Ball.hpp" />
     <ClInclude Include="CircleCollider.hpp" />
     <ClInclude Include="Collider.hpp" />
     <ClInclude Include="DEFINITIONS.hpp" />
