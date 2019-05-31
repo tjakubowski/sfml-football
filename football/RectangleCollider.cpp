@@ -24,6 +24,7 @@ namespace Football
 			{
 				const auto collisionPoint = sf::Vector2f(nearestX, nearestY);
 				gameObject->onCollision(checkCollider->getGameObject(), collisionPoint);
+				checkCollider->getGameObject()->onCollision(gameObject, collisionPoint);
 			}
 		}
 		// Rectangle => Rectangle
@@ -40,6 +41,7 @@ namespace Football
 			{
 				const auto collisionPoint = sf::Vector2f(intersectionRect.left + intersectionRect.width/2, intersectionRect.top + intersectionRect.height/2);
 				gameObject->onCollision(checkCollider->getGameObject(), collisionPoint);
+				checkCollider->getGameObject()->onCollision(gameObject, collisionPoint);
 			}
 		}
 	}

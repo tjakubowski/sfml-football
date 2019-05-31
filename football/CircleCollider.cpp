@@ -34,6 +34,7 @@ namespace Football
 			{
 				const auto collisionPoint = getPosition() + thisRadius * normalize(checkCollider->getPosition() - getPosition());
 				gameObject->onCollision(checkCollider->getGameObject(), collisionPoint);
+				checkCollider->getGameObject()->onCollision(gameObject, collisionPoint);
 			}
 		}
 		// Circle => Rectangle
@@ -52,6 +53,7 @@ namespace Football
 			{
 				const auto collisionPoint = sf::Vector2f(nearestX, nearestY);
 				gameObject->onCollision(checkCollider->getGameObject(), collisionPoint);
+				checkCollider->getGameObject()->onCollision(gameObject, collisionPoint);
 			}
 		}
 	}
