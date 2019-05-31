@@ -13,6 +13,7 @@ namespace Football
 	protected:
 		sf::Sprite sprite;
 		std::shared_ptr<Collider> collider;
+		std::string tag;
 		float deceleration;
 		float acceleration;
 		float maxSpeed;

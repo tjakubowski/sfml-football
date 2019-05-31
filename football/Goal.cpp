@@ -4,6 +4,7 @@ namespace Football
 {
 	Goal::Goal()
 	{
+		tag = "goal";
 		deceleration = 0;
 		acceleration = 0;
 		maxSpeed = 0;

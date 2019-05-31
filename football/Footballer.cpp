@@ -4,7 +4,7 @@ namespace Football
 {
 	Footballer::Footballer(std::string name) : name(name)
 	{
-		sprite.setPosition(sf::Vector2f(250, 250));
+		tag = "footballer";
 		deceleration = 0.05;
 		acceleration = 0.1;
 		maxSpeed = 200;
