@@ -28,6 +28,7 @@ namespace Football
 		GameState();
 
 		void init();
+		void initPitch();
 		void initObjects();
 		void initTeams();
 

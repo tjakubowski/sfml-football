@@ -2,6 +2,7 @@
 #include "DEFINITIONS.hpp"
 #include "Goal.hpp"
 #include "Ball.hpp"
+#include "Obstacle.hpp"
 
 namespace Football
 {
@@ -16,20 +17,72 @@ namespace Football
 		GameData::getInstance()->assets.LoadTexture("Football pitch", TEX_FOOTBALL_PITCH);
 		GameData::getInstance()->assets.LoadTexture("Footballer", TEX_FOOTBALLER);
 		GameData::getInstance()->assets.LoadTexture("Player", TEX_PLAYER);
-		GameData::getInstance()->assets.LoadTexture("Goal", TEX_GOAL);
 		GameData::getInstance()->assets.LoadTexture("Ball", TEX_BALL);
 
 		background.setTexture(GameData::getInstance()->assets.GetTexture("Football pitch"));
 
+		initPitch();
 		initObjects();
 		initTeams();
+	}
+
+	void GameState::initPitch()
+	{
+		const auto topObstacle = std::make_shared<Obstacle>(
+			sf::Vector2f(0, 0),
+			sf::Vector2f(GameData::getInstance()->window.getSize().x, 15)
+			);
+
+		const auto bottomObstacle = std::make_shared<Obstacle>(
+			sf::Vector2f(0, GameData::getInstance()->window.getSize().y - 15),
+			sf::Vector2f(GameData::getInstance()->window.getSize().x, 15)
+			);
+
+		const auto leftObstacle = std::make_shared<Obstacle>(
+			sf::Vector2f(0, 0),
+			sf::Vector2f(10, GameData::getInstance()->window.getSize().y)
+			);
+
+		const auto topLeftObstacle = std::make_shared<Obstacle>(
+			sf::Vector2f(0, 0),
+			sf::Vector2f(40, 220)
+			);
+
+		const auto bottomLeftObstacle = std::make_shared<Obstacle>(
+			sf::Vector2f(0, 370),
+			sf::Vector2f(40, 220)
+			);
+
+		const auto rightObstacle = std::make_shared<Obstacle>(
+			sf::Vector2f(GameData::getInstance()->window.getSize().x - 10, 0),
+			sf::Vector2f(10, GameData::getInstance()->window.getSize().y)
+			);
+
+		const auto topRightObstacle = std::make_shared<Obstacle>(
+			sf::Vector2f(GameData::getInstance()->window.getSize().x - 40, 0),
+			sf::Vector2f(40, 220)
+			);
+
+		const auto bottomRightObstacle = std::make_shared<Obstacle>(
+			sf::Vector2f(GameData::getInstance()->window.getSize().x - 40, 370),
+			sf::Vector2f(40, 220)
+			);
+
+		gameObjects.push_back(topObstacle);
+		gameObjects.push_back(bottomObstacle);
+		gameObjects.push_back(leftObstacle);
+		gameObjects.push_back(topLeftObstacle);
+		gameObjects.push_back(bottomLeftObstacle);
+		gameObjects.push_back(rightObstacle);
+		gameObjects.push_back(topRightObstacle);
+		gameObjects.push_back(bottomRightObstacle);
 	}
 
 	void GameState::initObjects()
 	{
 		auto ball = std::make_shared<Ball>(static_cast<sf::Vector2f>(GameData::getInstance()->window.getSize()) / 2.0f);
 		auto goalLeft = std::make_shared<Goal>(sf::Vector2f(10, 220));
-		auto goalRight = std::make_shared<Goal>(sf::Vector2f(300, 220));
+		auto goalRight = std::make_shared<Goal>(sf::Vector2f(GameData::getInstance()->window.getSize().x - 40, 220));
 
 		gameObjects.push_back(ball);
 		gameObjects.push_back(goalLeft);
