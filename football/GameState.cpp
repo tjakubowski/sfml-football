@@ -69,8 +69,8 @@ namespace Football
 	{
 		sortAllGameObjects();
 
-		for(auto& fb : leftTeam->getFootballers())
-			fb->update(dt);
+		for(auto& gameObject : gameObjects)
+			gameObject->update(dt);
 
 		checkCollisions();
 	}
