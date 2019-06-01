@@ -9,8 +9,7 @@ namespace Football
 		acceleration = 0;
 		maxSpeed = 0;
 
-		sprite.setTexture(GameData::getInstance()->assets.GetTexture("Goal"));
-		collider = std::make_shared<RectangleCollider>(this, sf::Vector2f(0, 0), sprite.getLocalBounds().width, sprite.getLocalBounds().height, true);
+		collider = std::make_shared<RectangleCollider>(this, sf::Vector2f(0, 0), 30, 147, true);
 	}
 
 
