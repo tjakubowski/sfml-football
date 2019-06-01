@@ -7,7 +7,7 @@ namespace Football
 	class Player : public Footballer
 	{
 	public:
-		Player(std::string name);
+		Player(sf::Vector2f position, std::string name);
 
 		void update(float dt) override;
 		void go(float dt);

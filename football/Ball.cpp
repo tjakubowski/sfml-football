@@ -2,14 +2,13 @@
 
 namespace Football
 {
-	Ball::Ball()
+	Ball::Ball(sf::Vector2f position) : GameObject(position)
 	{
 		tag = "ball";
 		deceleration = 0.04;
 		acceleration = 0.15;
 		maxSpeed = 300;
 
-		sprite.setPosition(static_cast<sf::Vector2f>(GameData::getInstance()->window.getSize()) / 2.0f);
 		sprite.setTexture(GameData::getInstance()->assets.GetTexture("Ball"));
 		collider = std::make_shared<CircleCollider>(this, sf::Vector2f(0, 0), sprite.getLocalBounds().width, true);
 	}
@@ -49,5 +48,8 @@ namespace Football
 	{
 		if(collisionGameObject->getTag() == "footballer")
 			force = normalize(getPosition() - collisionPoint) * static_cast<float>(magnitude(collisionGameObject->force)) * 1.5f;
+
+		if (collisionGameObject->getTag() == "goal")
+			force = sf::Vector2f(0, 0);
 	}
 }

@@ -10,7 +10,7 @@ namespace Football
 	protected:
 		std::string name;
 	public:
-		Footballer(std::string name);
+		Footballer(sf::Vector2f position, std::string name);
 
 		void setName(const std::string& name);
 

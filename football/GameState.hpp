@@ -28,6 +28,7 @@ namespace Football
 		GameState();
 
 		void init();
+		void initObjects();
 		void initTeams();
 
 		std::vector<std::shared_ptr<GameObject>> getGameObjects() const;

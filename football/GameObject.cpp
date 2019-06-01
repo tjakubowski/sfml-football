@@ -2,9 +2,9 @@
 
 namespace Football
 {
-	GameObject::GameObject() : deceleration(0.05), acceleration(0.1), maxSpeed(150)
+	GameObject::GameObject(sf::Vector2f position) : deceleration(0.05), acceleration(0.1), maxSpeed(150)
 	{
-
+		sprite.setPosition(position);
 	}
 
 	std::string GameObject::getTag() const

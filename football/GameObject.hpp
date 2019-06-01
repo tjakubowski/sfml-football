@@ -20,7 +20,7 @@ namespace Football
 	public:
 		sf::Vector2f force;
 
-		GameObject();
+		GameObject(sf::Vector2f position);
 		virtual ~GameObject() = default;
 
 		virtual void draw() = 0;

@@ -8,7 +8,7 @@ namespace Football
 		public Football::GameObject
 	{
 	public:
-		Goal();
+		Goal(sf::Vector2f position);
 		~Goal();
 		void draw() override;
 		void update(float dt) override;

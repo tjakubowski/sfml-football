@@ -21,7 +21,19 @@ namespace Football
 
 		background.setTexture(GameData::getInstance()->assets.GetTexture("Football pitch"));
 
+		initObjects();
 		initTeams();
+	}
+
+	void GameState::initObjects()
+	{
+		auto ball = std::make_shared<Ball>(static_cast<sf::Vector2f>(GameData::getInstance()->window.getSize()) / 2.0f);
+		auto goalLeft = std::make_shared<Goal>(sf::Vector2f(10, 220));
+		auto goalRight = std::make_shared<Goal>(sf::Vector2f(300, 220));
+
+		gameObjects.push_back(ball);
+		gameObjects.push_back(goalLeft);
+		gameObjects.push_back(goalRight);
 	}
 
 	void GameState::initTeams()
@@ -29,21 +41,14 @@ namespace Football
 		leftTeam = std::make_unique<Team>("Left Team");
 		rightTeam = std::make_unique<Team>("Right Team");
 
-		auto player = std::make_shared<Player>("Player");
-		auto aiPlayer = std::make_shared<AIPlayer>("Bot");
-
-		auto ball = std::make_shared<Ball>();
-		auto goalLeft = std::make_shared<Goal>();
-		auto goalRight = std::make_shared<Goal>();
+		auto player = std::make_shared<Player>(sf::Vector2f(80, 220), "Player");
+		auto aiPlayer = std::make_shared<AIPlayer>(sf::Vector2f(50, 220), "Bot");
 
 		leftTeam->addPlayer(player);
 		leftTeam->addPlayer(aiPlayer);
 
 		gameObjects.push_back(player);
 		gameObjects.push_back(aiPlayer);
-		gameObjects.push_back(ball);
-		gameObjects.push_back(goalLeft);
-		gameObjects.push_back(goalRight);
 	}
 
 	std::vector<std::shared_ptr<GameObject>> GameState::getGameObjects() const

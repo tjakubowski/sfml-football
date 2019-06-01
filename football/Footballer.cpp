@@ -2,7 +2,7 @@
 
 namespace Football
 {
-	Footballer::Footballer(std::string name) : name(name)
+	Footballer::Footballer(sf::Vector2f position, std::string name) : GameObject(position), name(name)
 	{
 		tag = "footballer";
 		deceleration = 0.05;

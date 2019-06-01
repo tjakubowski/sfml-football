@@ -7,7 +7,7 @@ namespace Football
 	class AIPlayer : public Footballer
 	{
 	public:
-		AIPlayer(std::string name);
+		AIPlayer(sf::Vector2f position, std::string name);
 
 		void update(float dt) override;
 	};
