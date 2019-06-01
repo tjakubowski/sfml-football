@@ -26,6 +26,7 @@ namespace Football
 		virtual void draw() = 0;
 		virtual void update(float dt) = 0;
 
+		std::string getTag() const;
 		sf::Vector2f getPosition() const;
 		std::shared_ptr<Collider> getCollider() const;
 

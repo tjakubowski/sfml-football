@@ -7,6 +7,11 @@ namespace Football
 
 	}
 
+	std::string GameObject::getTag() const
+	{
+		return tag;
+	}
+
 	sf::Vector2f GameObject::getPosition() const
 	{
 		return sprite.getPosition();
