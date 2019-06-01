@@ -9,7 +9,9 @@ namespace Football
 		acceleration = 0.15;
 		maxSpeed = 300;
 
+
 		sprite.setTexture(GameData::getInstance()->assets.GetTexture("Ball"));
+		sprite.move(sprite.getLocalBounds().width / -2, sprite.getLocalBounds().height / -2);
 		collider = std::make_shared<CircleCollider>(this, sf::Vector2f(0, 0), sprite.getLocalBounds().width, true);
 	}
 
