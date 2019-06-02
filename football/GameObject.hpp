@@ -2,7 +2,6 @@
 #include "Game.hpp"
 #include "DEFINITIONS.hpp"
 #include "Helpers.hpp"
-#include "Collider.hpp"
 
 namespace Football
 {
