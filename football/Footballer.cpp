@@ -32,15 +32,5 @@ namespace Football
 
 	void Footballer::update(float dt)
 	{
-		auto force = GameData::getInstance()->inputs.getInputAxis();
-		force.Normalize();
-
-		std::cout << force.x << " : " << force.y << std::endl;
-
-		body->ApplyLinearImpulseToCenter(b2Vec2(force), true);
-	}
-
-	void Footballer::onCollision(GameObject* collisionGameObject, sf::Vector2f collisionPoint)
-	{
 	}
 }

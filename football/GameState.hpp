@@ -3,7 +3,7 @@
 #include "DEFINITIONS.hpp"
 #include "State.hpp"
 #include "Game.hpp"
-#include "GameObject.hpp"
+#include "Player.hpp"
 
 namespace Football
 {
@@ -18,6 +18,7 @@ namespace Football
 		sf::Sprite background;
 
 		void sortAllGameObjects();
+		void initPlayers();
 
 	public:
 		GameState();

@@ -1,5 +1,4 @@
 #include "GameState.hpp"
-#include "Footballer.hpp"
 
 namespace Football
 {
@@ -19,8 +18,13 @@ namespace Football
 
 		background.setTexture(GameData::getInstance()->assets.GetTexture("Football pitch"));
 
-		const auto footballer = std::make_shared<Footballer>(sf::Vector2f(50, 50));
-		gameObjects.push_back(footballer);
+		initPlayers();
+	}
+
+	void GameState::initPlayers()
+	{
+		const auto player = std::make_shared<Player>(sf::Vector2f(50, 50));
+		gameObjects.push_back(player);
 	}
 
 	std::vector<std::shared_ptr<GameObject>> GameState::getGameObjects() const

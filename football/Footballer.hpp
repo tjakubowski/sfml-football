@@ -10,7 +10,6 @@ namespace Football
 		~Footballer();
 		void draw() override;
 		void update(float dt) override;
-		void onCollision(GameObject* collisionGameObject, sf::Vector2f collisionPoint) override;
 	};
 
 }

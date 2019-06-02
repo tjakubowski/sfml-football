@@ -22,8 +22,6 @@ namespace Football
 		virtual void update(float dt) = 0;
 
 		std::string getTag() const;
-
-		virtual void onCollision(GameObject* collisionGameObject, sf::Vector2f collisionPoint) = 0;
 	};
 
 }
