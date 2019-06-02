@@ -3,6 +3,7 @@
 #include "Goal.hpp"
 #include "Ball.hpp"
 #include "Obstacle.hpp"
+#include "ScoreUI.hpp"
 
 namespace Football
 {
@@ -18,6 +19,8 @@ namespace Football
 		GameData::getInstance()->assets.LoadTexture("Footballer", TEX_FOOTBALLER);
 		GameData::getInstance()->assets.LoadTexture("Player", TEX_PLAYER);
 		GameData::getInstance()->assets.LoadTexture("Ball", TEX_BALL);
+
+		GameData::getInstance()->assets.LoadFont("RobotoMedium", FONT_ROBOTO_MEDIUM);
 
 		background.setTexture(GameData::getInstance()->assets.GetTexture("Football pitch"));
 
@@ -89,10 +92,12 @@ namespace Football
 			sf::Vector2f(GameData::getInstance()->window.getSize().x - 40, 220),
 			rightTeam
 			);
+		auto scoreUI = std::make_shared<ScoreUI>(sf::Vector2f(GameData::getInstance()->window.getSize().x / 2.0f, 20.0f), leftTeam, rightTeam);
 
 		gameObjects.push_back(ball);
 		gameObjects.push_back(goalLeft);
 		gameObjects.push_back(goalRight);
+		gameObjects.push_back(scoreUI);
 	}
 
 	void GameState::initTeams()
@@ -165,7 +170,8 @@ namespace Football
 	{
 		for (unsigned int i = 0; i < gameObjects.size() - 1; i++)
 			for (unsigned int j = i + 1; j < gameObjects.size(); j++)
-				gameObjects[i]->getCollider()->checkCollision(gameObjects[j]->getCollider());
+				if(gameObjects[i]->getCollider() != nullptr && gameObjects[j]->getCollider() != nullptr)
+					gameObjects[i]->getCollider()->checkCollision(gameObjects[j]->getCollider());
 	}
 
 	void GameState::sortAllGameObjects()

@@ -160,6 +160,7 @@
     <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RectangleCollider.cpp" />
+    <ClCompile Include="ScoreUI.cpp" />
     <ClCompile Include="SplashState.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Team.cpp" />
@@ -183,6 +184,7 @@
     <ClInclude Include="Obstacle.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="RectangleCollider.hpp" />
+    <ClInclude Include="ScoreUI.hpp" />
     <ClInclude Include="SplashState.hpp" />
     <ClInclude Include="State.hpp" />
     <ClInclude Include="StateMachine.hpp" />
