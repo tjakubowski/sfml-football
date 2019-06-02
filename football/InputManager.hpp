@@ -1,12 +1,13 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <Box2D/Common/b2Math.h>
 
 namespace Football
 {
 	class InputManager
 	{
 	private:
-		sf::Vector2f inputAxis;
+		b2Vec2 inputAxis;
 		void updateInputAxis();
 	public:
 		InputManager();
@@ -14,7 +15,7 @@ namespace Football
 
 		void update();
 
-		sf::Vector2f getInputAxis() const;
+		b2Vec2 getInputAxis() const;
 
 		bool isSpriteClicked(sf::Sprite object, sf::Mouse::Button button, sf::RenderWindow& window) const;
 		sf::Vector2i getMousePosition(sf::RenderWindow& window) const;

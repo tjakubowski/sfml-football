@@ -4,11 +4,16 @@ namespace Football
 {
 	WorldManager::WorldManager()
 	{
-		world = std::make_unique<b2World>(b2Vec2(0.f, 9.8f));
+		world = std::make_shared<b2World>(b2Vec2(0.f, 0.f));
 	}
 
 	WorldManager::~WorldManager()
 	{
+	}
+
+	std::shared_ptr<b2World> WorldManager::getWorld() const
+	{
+		return world;
 	}
 
 	void WorldManager::update(float dt) const

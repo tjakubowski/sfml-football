@@ -7,8 +7,9 @@ namespace Football
 	class WorldManager
 	{
 	private:
-		std::unique_ptr<b2World> world;
+		std::shared_ptr<b2World> world;
 	public:
+		std::shared_ptr<b2World> getWorld() const;
 		WorldManager();
 		~WorldManager();
 

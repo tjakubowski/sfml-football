@@ -16,9 +16,6 @@
     <Filter Include="Header Files\States">
       <UniqueIdentifier>{9fff7769-452e-4694-8fff-38c0b52d24ea}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Colliders">
-      <UniqueIdentifier>{d130380a-3b4c-4aa6-ac0f-f980e769a13b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\GameObjects">
       <UniqueIdentifier>{ab84627c-a69b-4d78-a8e5-a814b5045fee}</UniqueIdentifier>
     </Filter>
@@ -27,9 +24,6 @@
     </Filter>
     <Filter Include="Source Files\States">
       <UniqueIdentifier>{a65d1d72-e47a-4864-a026-9c7d2c1ae8a5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Colliders">
-      <UniqueIdentifier>{8df9aeb8-f38a-4eed-aea7-1743fb9392f7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -45,29 +39,8 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Team.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameData.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CircleCollider.cpp">
-      <Filter>Source Files\Colliders</Filter>
-    </ClCompile>
-    <ClCompile Include="Collider.cpp">
-      <Filter>Source Files\Colliders</Filter>
-    </ClCompile>
-    <ClCompile Include="RectangleCollider.cpp">
-      <Filter>Source Files\Colliders</Filter>
-    </ClCompile>
-    <ClCompile Include="Footballer.cpp">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="AIPlayer.cpp">
-      <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files\GameObjects</Filter>
@@ -84,19 +57,10 @@
     <ClCompile Include="StateMachine.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
-    <ClCompile Include="Goal.cpp">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="Ball.cpp">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="Obstacle.cpp">
+    <ClCompile Include="WorldManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ScoreUI.cpp">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldManager.cpp">
+    <ClCompile Include="Footballer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -114,9 +78,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MenuState.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Team.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Helpers.hpp">
@@ -137,40 +98,13 @@
     <ClInclude Include="GameState.hpp">
       <Filter>Header Files\States</Filter>
     </ClInclude>
-    <ClInclude Include="CircleCollider.hpp">
-      <Filter>Header Files\Colliders</Filter>
-    </ClInclude>
-    <ClInclude Include="Collider.hpp">
-      <Filter>Header Files\Colliders</Filter>
-    </ClInclude>
-    <ClInclude Include="RectangleCollider.hpp">
-      <Filter>Header Files\Colliders</Filter>
-    </ClInclude>
-    <ClInclude Include="AIPlayer.hpp">
-      <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="Footballer.hpp">
-      <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
     <ClInclude Include="GameObject.hpp">
       <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="Player.hpp">
-      <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="Goal.hpp">
-      <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="Ball.hpp">
-      <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="Obstacle.hpp">
+    <ClInclude Include="WorldManager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ScoreUI.hpp">
-      <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldManager.hpp">
+    <ClInclude Include="Footballer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

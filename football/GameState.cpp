@@ -1,8 +1,8 @@
 #include "GameState.hpp"
+#include "Footballer.hpp"
 
 namespace Football
 {
-
 	GameState::GameState()
 	{
 
@@ -19,95 +19,8 @@ namespace Football
 
 		background.setTexture(GameData::getInstance()->assets.GetTexture("Football pitch"));
 
-		initTeams();
-		initPitch();
-		initObjects();
-	}
-
-	void GameState::initPitch()
-	{
-		const auto topObstacle = std::make_shared<Obstacle>(
-			sf::Vector2f(0, 0),
-			sf::Vector2f(GameData::getInstance()->window.getSize().x, 15)
-			);
-
-		const auto bottomObstacle = std::make_shared<Obstacle>(
-			sf::Vector2f(0, GameData::getInstance()->window.getSize().y - 15),
-			sf::Vector2f(GameData::getInstance()->window.getSize().x, 15)
-			);
-
-		const auto leftObstacle = std::make_shared<Obstacle>(
-			sf::Vector2f(0, 0),
-			sf::Vector2f(10, GameData::getInstance()->window.getSize().y)
-			);
-
-		const auto topLeftObstacle = std::make_shared<Obstacle>(
-			sf::Vector2f(0, 0),
-			sf::Vector2f(40, 220)
-			);
-
-		const auto bottomLeftObstacle = std::make_shared<Obstacle>(
-			sf::Vector2f(0, 370),
-			sf::Vector2f(40, 220)
-			);
-
-		const auto rightObstacle = std::make_shared<Obstacle>(
-			sf::Vector2f(GameData::getInstance()->window.getSize().x - 10, 0),
-			sf::Vector2f(10, GameData::getInstance()->window.getSize().y)
-			);
-
-		const auto topRightObstacle = std::make_shared<Obstacle>(
-			sf::Vector2f(GameData::getInstance()->window.getSize().x - 40, 0),
-			sf::Vector2f(40, 220)
-			);
-
-		const auto bottomRightObstacle = std::make_shared<Obstacle>(
-			sf::Vector2f(GameData::getInstance()->window.getSize().x - 40, 370),
-			sf::Vector2f(40, 220)
-			);
-
-		gameObjects.push_back(topObstacle);
-		gameObjects.push_back(bottomObstacle);
-		gameObjects.push_back(leftObstacle);
-		gameObjects.push_back(topLeftObstacle);
-		gameObjects.push_back(bottomLeftObstacle);
-		gameObjects.push_back(rightObstacle);
-		gameObjects.push_back(topRightObstacle);
-		gameObjects.push_back(bottomRightObstacle);
-	}
-
-	void GameState::initObjects()
-	{
-		auto ball = std::make_shared<Ball>(static_cast<sf::Vector2f>(GameData::getInstance()->window.getSize()) / 2.0f);
-		auto goalLeft = std::make_shared<Goal>(
-			sf::Vector2f(10, 220),
-			leftTeam
-			);
-		auto goalRight = std::make_shared<Goal>(
-			sf::Vector2f(GameData::getInstance()->window.getSize().x - 40, 220),
-			rightTeam
-			);
-		auto scoreUI = std::make_shared<ScoreUI>(sf::Vector2f(GameData::getInstance()->window.getSize().x / 2.0f, 20.0f), leftTeam, rightTeam);
-
-		gameObjects.push_back(ball);
-		gameObjects.push_back(goalLeft);
-		gameObjects.push_back(goalRight);
-		gameObjects.push_back(scoreUI);
-	}
-
-	void GameState::initTeams()
-	{
-		leftTeam = std::make_shared<Team>("Left Team");
-		rightTeam = std::make_shared<Team>("Right Team");
-
-		auto player = std::make_shared<Player>(sf::Vector2f(80, 220), "Player");
-		auto aiPlayer = std::make_shared<AIPlayer>(sf::Vector2f(50, 220), "Bot");
-
-		leftTeam->addPlayer(player);
-		leftTeam->addPlayer(aiPlayer);
-
-		gameObjects.push_back(player);
-		gameObjects.push_back(aiPlayer);
+		const auto footballer = std::make_shared<Footballer>(sf::Vector2f(50, 50));
+		gameObjects.push_back(footballer);
 	}
 
 	std::vector<std::shared_ptr<GameObject>> GameState::getGameObjects() const
@@ -136,7 +49,6 @@ namespace Football
 		for(auto& gameObject : gameObjects)
 			gameObject->update(dt);
 
-		// checkCollisions();
 		GameData::getInstance()->worldManager.update(dt);
 	}
 
@@ -146,28 +58,10 @@ namespace Football
 
 		GameData::getInstance()->window.draw(background);
 
-		for (auto& fb : gameObjects)
-			fb->draw();
+		for (auto& object : gameObjects)
+			object->draw();
 
 		GameData::getInstance()->window.display();
-	}
-
-	std::shared_ptr<Team> GameState::getLeftTeam() const
-	{
-		return leftTeam;
-	}
-
-	std::shared_ptr<Team> GameState::getRightTeam() const
-	{
-		return rightTeam;
-	}
-
-	void GameState::checkCollisions()
-	{
-		for (unsigned int i = 0; i < gameObjects.size() - 1; i++)
-			for (unsigned int j = i + 1; j < gameObjects.size(); j++)
-				if(gameObjects[i]->getCollider() != nullptr && gameObjects[j]->getCollider() != nullptr)
-					gameObjects[i]->getCollider()->checkCollision(gameObjects[j]->getCollider());
 	}
 
 	void GameState::sortAllGameObjects()
