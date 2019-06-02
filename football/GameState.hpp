@@ -18,8 +18,8 @@ namespace Football
 		sf::Texture backgroundTexture;
 		sf::Sprite background;
 
-		std::unique_ptr<Team> leftTeam;
-		std::unique_ptr<Team> rightTeam;
+		std::shared_ptr<Team> leftTeam;
+		std::shared_ptr<Team> rightTeam;
 
 		void checkCollisions();
 		void sortAllGameObjects();
@@ -37,5 +37,8 @@ namespace Football
 		void handleInput();
 		void update(float dt);
 		void draw(float dt);
+
+		std::shared_ptr<Team> getLeftTeam() const;
+		std::shared_ptr<Team> getRightTeam() const;
 	};
 }

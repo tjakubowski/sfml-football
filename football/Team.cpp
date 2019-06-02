@@ -24,6 +24,11 @@ namespace Football {
 		return points;
 	}
 
+	void Team::scorePoint()
+	{
+		points++;
+	}
+
 	std::vector<std::shared_ptr<Footballer>> const & Team::getFootballers() const
 	{
 		return footballers;

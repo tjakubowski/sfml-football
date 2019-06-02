@@ -21,9 +21,9 @@ namespace Football
 
 		background.setTexture(GameData::getInstance()->assets.GetTexture("Football pitch"));
 
+		initTeams();
 		initPitch();
 		initObjects();
-		initTeams();
 	}
 
 	void GameState::initPitch()
@@ -81,8 +81,14 @@ namespace Football
 	void GameState::initObjects()
 	{
 		auto ball = std::make_shared<Ball>(static_cast<sf::Vector2f>(GameData::getInstance()->window.getSize()) / 2.0f);
-		auto goalLeft = std::make_shared<Goal>(sf::Vector2f(10, 220));
-		auto goalRight = std::make_shared<Goal>(sf::Vector2f(GameData::getInstance()->window.getSize().x - 40, 220));
+		auto goalLeft = std::make_shared<Goal>(
+			sf::Vector2f(10, 220),
+			leftTeam
+			);
+		auto goalRight = std::make_shared<Goal>(
+			sf::Vector2f(GameData::getInstance()->window.getSize().x - 40, 220),
+			rightTeam
+			);
 
 		gameObjects.push_back(ball);
 		gameObjects.push_back(goalLeft);
@@ -91,8 +97,8 @@ namespace Football
 
 	void GameState::initTeams()
 	{
-		leftTeam = std::make_unique<Team>("Left Team");
-		rightTeam = std::make_unique<Team>("Right Team");
+		leftTeam = std::make_shared<Team>("Left Team");
+		rightTeam = std::make_shared<Team>("Right Team");
 
 		auto player = std::make_shared<Player>(sf::Vector2f(80, 220), "Player");
 		auto aiPlayer = std::make_shared<AIPlayer>(sf::Vector2f(50, 220), "Bot");
@@ -143,6 +149,16 @@ namespace Football
 			fb->draw();
 
 		GameData::getInstance()->window.display();
+	}
+
+	std::shared_ptr<Team> GameState::getLeftTeam() const
+	{
+		return leftTeam;
+	}
+
+	std::shared_ptr<Team> GameState::getRightTeam() const
+	{
+		return rightTeam;
 	}
 
 	void GameState::checkCollisions()

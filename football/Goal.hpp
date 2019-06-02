@@ -1,14 +1,17 @@
 #pragma once
 #include "GameObject.hpp"
 #include "RectangleCollider.hpp"
+#include "Team.hpp"
+#include "GameState.hpp"
 
 namespace Football
 {
-	class Goal :
-		public Football::GameObject
+	class Goal : public GameObject
 	{
+	private:
+		std::shared_ptr<Team> team;
 	public:
-		Goal(sf::Vector2f position);
+		Goal(sf::Vector2f position, std::shared_ptr<Team> team);
 		~Goal();
 		void draw() override;
 		void update(float dt) override;
