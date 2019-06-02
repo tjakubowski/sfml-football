@@ -1,10 +1,15 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "DEFINITIONS.hpp"
 #include "State.hpp"
 #include "Game.hpp"
 #include "Player.hpp"
 #include "AIPlayer.hpp"
 #include "Team.hpp"
+#include "Goal.hpp"
+#include "Ball.hpp"
+#include "Obstacle.hpp"
+#include "ScoreUI.hpp"
 
 namespace Football
 {

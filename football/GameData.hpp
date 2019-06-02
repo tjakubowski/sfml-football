@@ -2,20 +2,24 @@
 #include "InputManager.hpp"
 #include "AssetManager.hpp"
 #include "StateMachine.hpp"
+#include "WorldManager.hpp"
 
-class GameData
+namespace Football
 {
-private:
-	static GameData* instance;
-public:
-	GameData();
-	~GameData();
+	class GameData
+	{
+	private:
+		static GameData* instance;
+	public:
+		GameData();
+		~GameData();
 
-	static GameData* getInstance();
+		static GameData* getInstance();
 
-	Football::StateMachine machine;
-	sf::RenderWindow window;
-	Football::AssetManager assets;
-	Football::InputManager inputs;
-};
-
+		StateMachine machine;
+		sf::RenderWindow window;
+		AssetManager assets;
+		InputManager inputs;
+		WorldManager worldManager;
+	};
+}

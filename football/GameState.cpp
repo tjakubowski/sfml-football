@@ -1,9 +1,4 @@
 #include "GameState.hpp"
-#include "DEFINITIONS.hpp"
-#include "Goal.hpp"
-#include "Ball.hpp"
-#include "Obstacle.hpp"
-#include "ScoreUI.hpp"
 
 namespace Football
 {
@@ -141,7 +136,8 @@ namespace Football
 		for(auto& gameObject : gameObjects)
 			gameObject->update(dt);
 
-		checkCollisions();
+		// checkCollisions();
+		GameData::getInstance()->worldManager.update(dt);
 	}
 
 	void GameState::draw(float dt)
