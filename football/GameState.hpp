@@ -20,6 +20,7 @@ namespace Football
 		void sortAllGameObjects();
 		void initPlayers();
 		void initObjects();
+		void initObstacles();
 
 		SFMLDebugDraw* debugDraw;
 

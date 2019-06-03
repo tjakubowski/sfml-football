@@ -154,6 +154,7 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SFMLDebugDraw.cpp" />
     <ClCompile Include="SplashState.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="Helpers.hpp" />
     <ClInclude Include="InputManager.hpp" />
     <ClInclude Include="MenuState.hpp" />
+    <ClInclude Include="Obstacle.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="SFMLDebugDraw.h" />
     <ClInclude Include="SplashState.hpp" />

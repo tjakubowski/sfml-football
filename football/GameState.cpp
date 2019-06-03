@@ -1,6 +1,7 @@
 #include "GameState.hpp"
 #include "Ball.hpp"
 #include "Bot.hpp"
+#include "Obstacle.hpp"
 
 namespace Football
 {
@@ -31,6 +32,7 @@ namespace Football
 
 		initPlayers();
 		initObjects();
+		initObstacles();
 	}
 
 	void GameState::initPlayers()
@@ -46,6 +48,66 @@ namespace Football
 	{
 		const auto ball = std::make_shared<Ball>(sf::Vector2f(300, 300));
 		gameObjects.push_back(ball);
+	}
+
+	void GameState::initObstacles()
+	{
+		const auto obstacleTop = std::make_shared<Obstacle>(
+			sf::Vector2f(0, 0),
+			GameData::getInstance()->window.getSize().x,
+			15
+			);
+
+		const auto obstacleBottom = std::make_shared<Obstacle>(
+			sf::Vector2f(0, GameData::getInstance()->window.getSize().y - 15),
+			GameData::getInstance()->window.getSize().x,
+			15
+			);
+
+		const auto obstacleLeft = std::make_shared<Obstacle>(
+			sf::Vector2f(0, 0),
+			10,
+			GameData::getInstance()->window.getSize().y
+			);
+
+		const auto obstacleRight = std::make_shared<Obstacle>(
+			sf::Vector2f(GameData::getInstance()->window.getSize().x - 10, 0),
+			10,
+			GameData::getInstance()->window.getSize().y
+			);
+
+		const auto obstacleTopLeft = std::make_shared<Obstacle>(
+			sf::Vector2f(0, 0),
+			40,
+			220
+			);
+
+		const auto obstacleBottomLeft = std::make_shared<Obstacle>(
+			sf::Vector2f(0, 367),
+			40,
+			220
+			);
+
+		const auto obstacleTopRight = std::make_shared<Obstacle>(
+			sf::Vector2f(GameData::getInstance()->window.getSize().x - 40, 0),
+			40,
+			220
+			);
+
+		const auto obstacleBottomRight = std::make_shared<Obstacle>(
+			sf::Vector2f(GameData::getInstance()->window.getSize().x - 40, 367),
+			40,
+			220
+			);
+
+		gameObjects.push_back(obstacleTop);
+		gameObjects.push_back(obstacleBottom);
+		gameObjects.push_back(obstacleLeft);
+		gameObjects.push_back(obstacleRight);
+		gameObjects.push_back(obstacleTopLeft);
+		gameObjects.push_back(obstacleBottomLeft);
+		gameObjects.push_back(obstacleTopRight);
+		gameObjects.push_back(obstacleBottomRight);
 	}
 
 	std::vector<std::shared_ptr<GameObject>> GameState::getGameObjects() const
