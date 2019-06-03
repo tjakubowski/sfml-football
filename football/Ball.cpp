@@ -25,13 +25,6 @@ namespace Football
 	{
 	}
 
-	void Ball::draw()
-	{
-		sprite.setPosition(PHYSICS_SCALE * body->GetPosition().x, PHYSICS_SCALE * body->GetPosition().y);
-		sprite.setRotation(body->GetAngle() * 180 / b2_pi);
-		GameData::getInstance()->window.draw(sprite);
-	}
-
 	void Ball::update(float dt)
 	{
 	}

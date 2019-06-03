@@ -18,7 +18,7 @@ namespace Football
 		GameObject(sf::Vector2f position, b2BodyType bodyType = b2_dynamicBody);
 		virtual ~GameObject() = default;
 
-		virtual void draw() = 0;
+		virtual void draw();
 		virtual void update(float dt) = 0;
 
 		std::string getTag() const;

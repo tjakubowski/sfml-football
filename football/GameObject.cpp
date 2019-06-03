@@ -13,6 +13,13 @@ namespace Football
 		sprite.setPosition(position);
 	}
 
+	void GameObject::draw()
+	{
+		sprite.setPosition(PHYSICS_SCALE * body->GetPosition().x, PHYSICS_SCALE * body->GetPosition().y);
+		sprite.setRotation(body->GetAngle() * 180 / b2_pi);
+		GameData::getInstance()->window.draw(sprite);
+	}
+
 	std::string GameObject::getTag() const
 	{
 		return tag;

@@ -8,7 +8,6 @@ namespace Football
 	public:
 		Footballer(sf::Vector2f position);
 		~Footballer();
-		void draw() override;
 		void update(float dt) override;
 	};
 
