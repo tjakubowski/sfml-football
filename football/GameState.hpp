@@ -54,7 +54,7 @@ namespace Football
 		std::vector<std::shared_ptr<GameObject>> getGameObjects() const;
 		std::shared_ptr<b2World> getWorld() const;
 
-		void scorePoint(Team* team);
+		void scorePoint(std::shared_ptr<Team>& team);
 
 		void handleInput();
 		void update(float dt);

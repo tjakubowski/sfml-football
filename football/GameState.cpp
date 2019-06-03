@@ -82,8 +82,8 @@ namespace Football
 		gameObjects.push_back(goalLeft);
 		gameObjects.push_back(goalRight);
 
-		teamLeft->setGoal(goalRight);
-		teamRight->setGoal(goalLeft);
+		goalRight->setTeam(teamLeft);
+		goalLeft->setTeam(teamRight);
 	}
 
 	void GameState::initObstacles()
@@ -194,9 +194,9 @@ namespace Football
 		return world;
 	}
 
-	void GameState::scorePoint(Team* team)
+	void GameState::scorePoint(std::shared_ptr<Team>& team)
 	{
-		if (team == teamLeft.get())
+		if (team.get() == teamLeft.get())
 			teamLeftPoints++;
 		else
 			teamRightPoints++;

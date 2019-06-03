@@ -10,12 +10,12 @@ namespace Football
 	class Goal : public GameObject
 	{
 	private:
-		Team* team;
+		std::shared_ptr<Team> team;
 	public:
 		Goal(sf::Vector2f position, float width, float height);
 		~Goal();
 
-		void setTeam(Team* team);
+		void setTeam(std::shared_ptr<Team>& team);
 
 		void update(float dt) override;
 		void draw() override;
