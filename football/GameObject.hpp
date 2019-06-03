@@ -2,6 +2,7 @@
 #include "Game.hpp"
 #include "DEFINITIONS.hpp"
 #include "Helpers.hpp"
+#include <Box2D/Box2D.h>
 
 namespace Football
 {

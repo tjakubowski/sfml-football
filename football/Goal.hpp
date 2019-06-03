@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.hpp"
 #include "Team.hpp"
+#include "GameState.hpp"
 
 namespace Football
 {

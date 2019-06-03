@@ -1,4 +1,6 @@
 #include "GameObject.hpp"
+#include <utility>
+#include "GameState.hpp"
 
 namespace Football
 {
@@ -7,11 +9,13 @@ namespace Football
 	{
 		tag = "";
 
+		const auto gameState = dynamic_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get());
+
 		b2BodyDef bodyDef;
 		bodyDef.position = b2Vec2(position.x / PHYSICS_SCALE, position.y / PHYSICS_SCALE);
 		bodyDef.type = bodyType;
 		bodyDef.fixedRotation = true;
-		body = GameData::getInstance()->worldManager.getWorld()->CreateBody(&bodyDef);
+		body = gameState->getWorld()->CreateBody(&bodyDef);
 		body->SetUserData(this);
 
 		sprite.setPosition(position);
@@ -36,7 +40,7 @@ namespace Football
 
 	void GameObject::setSpriteTexture(std::string textureName)
 	{
-		sprite.setTexture(GameData::getInstance()->assets.GetTexture(textureName));
+		sprite.setTexture(GameData::getInstance()->assets.GetTexture(std::move(textureName)));
 		sprite.setOrigin(sprite.getGlobalBounds().width / 2, sprite.getGlobalBounds().height / 2);
 	}
 

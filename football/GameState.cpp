@@ -17,13 +17,14 @@ namespace Football
 
 		background.setTexture(GameData::getInstance()->assets.GetTexture("Football pitch"));
 
-		// Set listener
+		// Set Box2D world
+		world = std::make_shared<b2World>(b2Vec2(0.f, 0.f));
 		listener = new CollisionListener();
-		GameData::getInstance()->worldManager.getWorld()->SetContactListener(listener);
+		world->SetContactListener(listener);
 
 		// Add debug drawing
 		debugDraw = new SFMLDebugDraw(GameData::getInstance()->window);
-		GameData::getInstance()->worldManager.getWorld()->SetDebugDraw(debugDraw);
+		world->SetDebugDraw(debugDraw);
 		uint32 flags = 0;
 		flags += b2Draw::e_jointBit;
 		flags += b2Draw::e_aabbBit;
@@ -165,7 +166,7 @@ namespace Football
 		for(auto& gameObject : gameObjects)
 			gameObject->update(dt);
 
-		GameData::getInstance()->worldManager.update(dt);
+		world->Step(dt, 8, 3);
 	}
 
 	void GameState::draw(float dt)
@@ -177,8 +178,13 @@ namespace Football
 		for (auto& object : gameObjects)
 			object->draw();
 
-		GameData::getInstance()->worldManager.getWorld()->DrawDebugData();
+		world->DrawDebugData();
 		GameData::getInstance()->window.display();
+	}
+
+	std::shared_ptr<b2World> GameState::getWorld() const
+	{
+		return world;
 	}
 
 	void GameState::sortAllGameObjects()

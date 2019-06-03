@@ -41,5 +41,9 @@ namespace Football
 
 	void Goal::onCollision(GameObject* collisionObject)
 	{
+		if(collisionObject->getTag() == "ball")
+		{
+			GameState* el = static_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get());
+		}
 	}
 }

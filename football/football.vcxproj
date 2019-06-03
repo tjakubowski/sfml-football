@@ -162,7 +162,6 @@
     <ClCompile Include="SplashState.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Team.cpp" />
-    <ClCompile Include="WorldManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.hpp" />
@@ -186,7 +185,6 @@
     <ClInclude Include="State.hpp" />
     <ClInclude Include="StateMachine.hpp" />
     <ClInclude Include="Team.hpp" />
-    <ClInclude Include="WorldManager.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\SplashBg.jpg" />

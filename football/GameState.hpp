@@ -9,9 +9,13 @@
 #include "Obstacle.hpp"
 #include "Goal.hpp"
 #include "Team.hpp"
+#include "CollisionListener.hpp"
+#include "SFMLDebugDraw.h"
 
 namespace Football
 {
+	class Team;
+
 	class GameState : public State
 	{
 	private:
@@ -21,6 +25,8 @@ namespace Football
 
 		sf::Texture backgroundTexture;
 		sf::Sprite background;
+
+		std::shared_ptr<b2World> world;
 
 		std::shared_ptr<Team> teamLeft;
 		std::shared_ptr<Team> teamRight;
@@ -39,6 +45,7 @@ namespace Football
 		void init();
 
 		std::vector<std::shared_ptr<GameObject>> getGameObjects() const;
+		std::shared_ptr<b2World> getWorld() const;
 
 		void handleInput();
 		void update(float dt);
