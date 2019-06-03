@@ -2,6 +2,7 @@
 
 namespace Football
 {
+
 	GameObject::GameObject(sf::Vector2f position, b2BodyType bodyType)
 	{
 		b2BodyDef bodyDef;
@@ -23,5 +24,11 @@ namespace Football
 	std::string GameObject::getTag() const
 	{
 		return tag;
+	}
+
+	void GameObject::setSpriteTexture(std::string textureName)
+	{
+		sprite.setTexture(GameData::getInstance()->assets.GetTexture(textureName));
+		sprite.setOrigin(sprite.getGlobalBounds().width / 2, sprite.getGlobalBounds().height / 2);
 	}
 }

@@ -14,6 +14,8 @@ namespace Football
 		sf::Sprite sprite;
 		std::string tag;
 		b2Body* body;
+
+		virtual void setSpriteTexture(std::string textureName);
 	public:
 		GameObject(sf::Vector2f position, b2BodyType bodyType = b2_dynamicBody);
 		virtual ~GameObject() = default;

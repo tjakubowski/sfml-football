@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="Bot.cpp" />
     <ClCompile Include="Footballer.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameData.cpp" />
@@ -162,6 +163,7 @@
   <ItemGroup>
     <ClInclude Include="AssetManager.hpp" />
     <ClInclude Include="Ball.hpp" />
+    <ClInclude Include="Bot.hpp" />
     <ClInclude Include="DEFINITIONS.hpp" />
     <ClInclude Include="Footballer.hpp" />
     <ClInclude Include="Game.hpp" />

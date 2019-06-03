@@ -4,10 +4,8 @@ namespace Football
 {
 	Footballer::Footballer(sf::Vector2f position) : GameObject(position, b2BodyType::b2_dynamicBody)
 	{
+		GameObject::setSpriteTexture("Footballer");
 		maxSpeed = 5.0f;
-
-		sprite.setTexture(GameData::getInstance()->assets.GetTexture("Footballer"));
-		sprite.setOrigin(sprite.getGlobalBounds().width / 2, sprite.getGlobalBounds().height / 2);
 
 		b2CircleShape shape;
 		shape.m_radius = sprite.getGlobalBounds().width / (2 * PHYSICS_SCALE);

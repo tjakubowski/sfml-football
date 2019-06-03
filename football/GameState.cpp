@@ -1,5 +1,6 @@
 #include "GameState.hpp"
 #include "Ball.hpp"
+#include "Bot.hpp"
 
 namespace Football
 {
@@ -34,8 +35,11 @@ namespace Football
 
 	void GameState::initPlayers()
 	{
-		const auto player = std::make_shared<Player>(sf::Vector2f(50, 50));
+		const auto player = std::make_shared<Player>(sf::Vector2f(150, 150));
 		gameObjects.push_back(player);
+
+		const auto bot = std::make_shared<Bot>(sf::Vector2f(20, 20));
+		gameObjects.push_back(bot);
 	}
 
 	void GameState::initObjects()
