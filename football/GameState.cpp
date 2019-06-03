@@ -39,11 +39,17 @@ namespace Football
 
 	void GameState::initPlayers()
 	{
+		teamLeft = std::make_shared<Team>();
+		teamRight = std::make_shared<Team>();
+
 		const auto player = std::make_shared<Player>(sf::Vector2f(150, 150));
 		gameObjects.push_back(player);
 
 		const auto bot = std::make_shared<Bot>(sf::Vector2f(60, 60));
 		gameObjects.push_back(bot);
+
+		teamLeft->addFootballer(player);
+		teamLeft->addFootballer(bot);
 	}
 
 	void GameState::initObjects()
@@ -68,6 +74,9 @@ namespace Football
 
 		gameObjects.push_back(goalLeft);
 		gameObjects.push_back(goalRight);
+
+		teamLeft->setGoal(goalRight);
+		teamRight->setGoal(goalLeft);
 	}
 
 	void GameState::initObstacles()

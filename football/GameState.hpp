@@ -8,6 +8,7 @@
 #include "Bot.hpp"
 #include "Obstacle.hpp"
 #include "Goal.hpp"
+#include "Team.hpp"
 
 namespace Football
 {
@@ -20,6 +21,9 @@ namespace Football
 
 		sf::Texture backgroundTexture;
 		sf::Sprite background;
+
+		std::shared_ptr<Team> teamLeft;
+		std::shared_ptr<Team> teamRight;
 
 		void sortAllGameObjects();
 		void initPlayers();

@@ -26,6 +26,11 @@ namespace Football
 	{
 	}
 
+	void Goal::setTeam(Team* team)
+	{
+		this->team = team;
+	}
+
 	void Goal::update(float dt)
 	{
 	}
