@@ -17,7 +17,8 @@ namespace Football
 
 	void Player::move() const
 	{
-		auto force = GameData::getInstance()->inputs.getInputAxis();
+		auto forceTemp = GameData::getInstance()->inputs.getInputAxis();
+		auto force = b2Vec2(forceTemp.x, forceTemp.y);
 		force.Normalize();
 
 		body->ApplyLinearImpulseToCenter(b2Vec2(force), true);

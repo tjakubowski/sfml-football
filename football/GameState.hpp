@@ -19,6 +19,9 @@ namespace Football
 
 		void sortAllGameObjects();
 		void initPlayers();
+		void initObjects();
+
+		SFMLDebugDraw* debugDraw;
 
 	public:
 		GameState();

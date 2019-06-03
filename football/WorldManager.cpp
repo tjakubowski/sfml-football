@@ -9,6 +9,7 @@ namespace Football
 
 	WorldManager::~WorldManager()
 	{
+		
 	}
 
 	std::shared_ptr<b2World> WorldManager::getWorld() const
