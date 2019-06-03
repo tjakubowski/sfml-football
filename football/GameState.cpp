@@ -2,6 +2,7 @@
 #include "Ball.hpp"
 #include "Bot.hpp"
 #include "Obstacle.hpp"
+#include "Goal.hpp"
 
 namespace Football
 {
@@ -46,8 +47,26 @@ namespace Football
 
 	void GameState::initObjects()
 	{
+		const float goalWidth = 30.f;
+		const float goalHeight = 147.f;
+
 		const auto ball = std::make_shared<Ball>(sf::Vector2f(300, 300));
 		gameObjects.push_back(ball);
+
+		const auto goalLeft = std::make_shared<Goal>(
+			sf::Vector2f(10, 220),
+			goalWidth,
+			goalHeight
+			);
+
+		const auto goalRight = std::make_shared<Goal>(
+			sf::Vector2f(GameData::getInstance()->window.getSize().x - 10 - goalWidth, 220),
+			goalWidth,
+			goalHeight
+			);
+
+		gameObjects.push_back(goalLeft);
+		gameObjects.push_back(goalRight);
 	}
 
 	void GameState::initObstacles()
