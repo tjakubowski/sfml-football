@@ -43,7 +43,8 @@ namespace Football
 	{
 		if(collisionObject->getTag() == "ball")
 		{
-			GameState* el = static_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get());
+			const auto gameState = dynamic_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get());
+			gameState->scorePoint(team);
 		}
 	}
 }

@@ -158,6 +158,7 @@
     <ClCompile Include="CollisionListener.cpp" />
     <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="ScorePrinter.cpp" />
     <ClCompile Include="SFMLDebugDraw.cpp" />
     <ClCompile Include="SplashState.cpp" />
     <ClCompile Include="StateMachine.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="CollisionListener.hpp" />
     <ClInclude Include="Obstacle.hpp" />
     <ClInclude Include="Player.hpp" />
+    <ClInclude Include="ScorePrinter.hpp" />
     <ClInclude Include="SFMLDebugDraw.h" />
     <ClInclude Include="SplashState.hpp" />
     <ClInclude Include="State.hpp" />

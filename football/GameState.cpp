@@ -17,6 +17,12 @@ namespace Football
 
 		background.setTexture(GameData::getInstance()->assets.GetTexture("Football pitch"));
 
+		teamLeftPoints = 0;
+		teamRightPoints = 0;
+
+		// Set Score Printer
+		scorePrinter = std::make_unique<ScorePrinter>(teamLeftPoints, teamRightPoints);
+
 		// Set Box2D world
 		world = std::make_shared<b2World>(b2Vec2(0.f, 0.f));
 		listener = new CollisionListener();
@@ -179,12 +185,23 @@ namespace Football
 			object->draw();
 
 		world->DrawDebugData();
+		scorePrinter->draw();
 		GameData::getInstance()->window.display();
 	}
 
 	std::shared_ptr<b2World> GameState::getWorld() const
 	{
 		return world;
+	}
+
+	void GameState::scorePoint(Team* team)
+	{
+		if (team == teamLeft.get())
+			teamLeftPoints++;
+		else
+			teamRightPoints++;
+
+		scorePrinter->updateScore(teamLeftPoints, teamRightPoints);
 	}
 
 	void GameState::sortAllGameObjects()
