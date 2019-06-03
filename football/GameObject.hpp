@@ -23,6 +23,9 @@ namespace Football
 		virtual void onCollision(GameObject* collisionObject) = 0;
 
 		std::string getTag() const;
+		sf::Vector2f getPosition() const;
+
+		friend bool operator<(std::shared_ptr<GameObject>& a, std::shared_ptr<GameObject>& b);
 	};
 
 }

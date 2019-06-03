@@ -29,9 +29,19 @@ namespace Football
 		return tag;
 	}
 
+	sf::Vector2f GameObject::getPosition() const
+	{
+		return sprite.getPosition();
+	}
+
 	void GameObject::setSpriteTexture(std::string textureName)
 	{
 		sprite.setTexture(GameData::getInstance()->assets.GetTexture(textureName));
 		sprite.setOrigin(sprite.getGlobalBounds().width / 2, sprite.getGlobalBounds().height / 2);
+	}
+
+	bool operator<(std::shared_ptr<GameObject>& a, std::shared_ptr<GameObject>& b)
+	{
+		return a->getPosition().y < b->getPosition().y;
 	}
 }
