@@ -4,6 +4,8 @@ namespace Football
 {
 	Ball::Ball(sf::Vector2f position) : GameObject(position, b2BodyType::b2_dynamicBody)
 	{
+		tag = "ball";
+
 		GameObject::setSpriteTexture("Ball");
 		maxSpeed = 7.5f;
 

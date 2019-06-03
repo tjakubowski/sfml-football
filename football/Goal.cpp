@@ -4,6 +4,8 @@ namespace Football
 {
 	Goal::Goal(sf::Vector2f position, float width, float height) : GameObject(position, b2_staticBody)
 	{
+		tag = "goal";
+
 		b2PolygonShape shape;
 		shape.SetAsBox(width / (2.f * PHYSICS_SCALE), height / (2.f * PHYSICS_SCALE));
 

@@ -2,6 +2,7 @@
 #include <Box2D/Box2D.h>
 #include <iostream>
 #include "SFMLDebugDraw.h"
+#include "MyContactListener.hpp"
 
 namespace Football
 {

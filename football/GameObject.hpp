@@ -5,8 +5,6 @@
 
 namespace Football
 {
-	class Collider;
-
 	class GameObject
 	{
 	protected:

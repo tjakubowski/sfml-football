@@ -5,6 +5,8 @@ namespace Football
 
 	Obstacle::Obstacle(sf::Vector2f position, float width, float height) : GameObject(position, b2_staticBody)
 	{
+		tag = "obstacle";
+
 		b2PolygonShape shape;
 		shape.SetAsBox(width / (2.f * PHYSICS_SCALE), height / (2.f * PHYSICS_SCALE));
 

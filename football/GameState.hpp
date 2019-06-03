@@ -4,6 +4,10 @@
 #include "State.hpp"
 #include "Game.hpp"
 #include "Player.hpp"
+#include "Ball.hpp"
+#include "Bot.hpp"
+#include "Obstacle.hpp"
+#include "Goal.hpp"
 
 namespace Football
 {
@@ -23,6 +27,7 @@ namespace Football
 		void initObstacles();
 
 		SFMLDebugDraw* debugDraw;
+		MyContactListener* listener;
 
 	public:
 		GameState();

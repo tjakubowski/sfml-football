@@ -6,7 +6,8 @@ namespace Football
 	{
 		GameObject::setSpriteTexture("Footballer");
 		maxSpeed = 5.0f;
-
+		tag = "footballer";
+		
 		b2CircleShape shape;
 		shape.m_radius = sprite.getGlobalBounds().width / (2 * PHYSICS_SCALE);
 		shape.m_p.Set(0, sprite.getGlobalBounds().height / (2 * PHYSICS_SCALE) - shape.m_radius);

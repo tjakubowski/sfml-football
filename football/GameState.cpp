@@ -1,8 +1,4 @@
 #include "GameState.hpp"
-#include "Ball.hpp"
-#include "Bot.hpp"
-#include "Obstacle.hpp"
-#include "Goal.hpp"
 
 namespace Football
 {
@@ -21,6 +17,11 @@ namespace Football
 
 		background.setTexture(GameData::getInstance()->assets.GetTexture("Football pitch"));
 
+		// Set listener
+		listener = new MyContactListener();
+		GameData::getInstance()->worldManager.getWorld()->SetContactListener(listener);
+
+		// Add debug drawing
 		debugDraw = new SFMLDebugDraw(GameData::getInstance()->window);
 		GameData::getInstance()->worldManager.getWorld()->SetDebugDraw(debugDraw);
 		uint32 flags = 0;
@@ -41,7 +42,7 @@ namespace Football
 		const auto player = std::make_shared<Player>(sf::Vector2f(150, 150));
 		gameObjects.push_back(player);
 
-		const auto bot = std::make_shared<Bot>(sf::Vector2f(20, 20));
+		const auto bot = std::make_shared<Bot>(sf::Vector2f(60, 60));
 		gameObjects.push_back(bot);
 	}
 
