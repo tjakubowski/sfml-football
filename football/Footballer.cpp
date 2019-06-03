@@ -13,7 +13,7 @@ namespace Football
 
 		b2FixtureDef fixtureDef;
 		fixtureDef.density = 1.5f;
-		fixtureDef.friction = 0.8f;
+		fixtureDef.friction = 0.2f;
 		fixtureDef.shape = &shape;
 		body->CreateFixture(&fixtureDef);
 		body->SetLinearDamping(maxSpeed);
