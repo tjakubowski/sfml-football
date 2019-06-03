@@ -9,9 +9,6 @@ namespace Football
 		sprite.setTexture(GameData::getInstance()->assets.GetTexture("Footballer"));
 		sprite.setOrigin(sprite.getGlobalBounds().width / 2, sprite.getGlobalBounds().height / 2);
 
-		// b2PolygonShape shape;
-		// shape.SetAsBox(sprite.getGlobalBounds().width / (2 * PHYSICS_SCALE), sprite.getGlobalBounds().height / (2 * PHYSICS_SCALE));
-
 		b2CircleShape shape;
 		shape.m_radius = sprite.getGlobalBounds().width / (2 * PHYSICS_SCALE);
 		shape.m_p.Set(0, sprite.getGlobalBounds().height / (2 * PHYSICS_SCALE) - shape.m_radius);
