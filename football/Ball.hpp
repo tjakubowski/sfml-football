@@ -9,7 +9,7 @@ namespace Football
 		Ball(sf::Vector2f position);
 		~Ball();
 		void update(float dt) override;
+		void onCollision(GameObject* collisionObject) override;
 	};
-
 
 }

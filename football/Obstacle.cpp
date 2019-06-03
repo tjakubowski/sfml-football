@@ -31,6 +31,10 @@ namespace Football
 	{
 	}
 
+	void Obstacle::onCollision(GameObject* collisionObject)
+	{
+	}
+
 	void Obstacle::setSpriteTexture(std::string textureName)
 	{
 

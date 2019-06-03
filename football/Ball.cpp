@@ -28,4 +28,8 @@ namespace Football
 	void Ball::update(float dt)
 	{
 	}
+
+	void Ball::onCollision(GameObject* collisionObject)
+	{
+	}
 }

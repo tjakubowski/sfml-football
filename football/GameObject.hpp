@@ -20,6 +20,7 @@ namespace Football
 
 		virtual void draw();
 		virtual void update(float dt) = 0;
+		virtual void onCollision(GameObject* collisionObject) = 0;
 
 		std::string getTag() const;
 	};

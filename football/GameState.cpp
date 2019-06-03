@@ -18,7 +18,7 @@ namespace Football
 		background.setTexture(GameData::getInstance()->assets.GetTexture("Football pitch"));
 
 		// Set listener
-		listener = new MyContactListener();
+		listener = new CollisionListener();
 		GameData::getInstance()->worldManager.getWorld()->SetContactListener(listener);
 
 		// Add debug drawing

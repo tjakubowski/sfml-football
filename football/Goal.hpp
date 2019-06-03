@@ -3,7 +3,6 @@
 
 namespace Football
 {
-
 	class Goal : public GameObject
 	{
 	public:
@@ -11,7 +10,6 @@ namespace Football
 		~Goal();
 		void update(float dt) override;
 		void draw() override;
+		void onCollision(GameObject* collisionObject) override;
 	};
-
-
 }

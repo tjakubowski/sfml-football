@@ -27,7 +27,7 @@ namespace Football
 		void initObstacles();
 
 		SFMLDebugDraw* debugDraw;
-		MyContactListener* listener;
+		CollisionListener* listener;
 
 	public:
 		GameState();

@@ -11,5 +11,6 @@ namespace Football
 		Obstacle(sf::Vector2f position, float width, float height);
 		~Obstacle();
 		void update(float dt) override;
+		void onCollision(GameObject* collisionObject) override;
 	};
 }

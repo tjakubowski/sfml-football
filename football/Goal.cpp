@@ -33,4 +33,8 @@ namespace Football
 	void Goal::draw()
 	{
 	}
+
+	void Goal::onCollision(GameObject* collisionObject)
+	{
+	}
 }
