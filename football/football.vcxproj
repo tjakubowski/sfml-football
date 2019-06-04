@@ -144,6 +144,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="AttackerBot.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Bot.cpp" />
     <ClCompile Include="Footballer.cpp" />
@@ -168,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.hpp" />
+    <ClInclude Include="AttackerBot.hpp" />
     <ClInclude Include="Ball.hpp" />
     <ClInclude Include="Bot.hpp" />
     <ClInclude Include="DEFINITIONS.hpp" />

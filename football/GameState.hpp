@@ -1,12 +1,14 @@
 #pragma once
+#include <memory>
 #include <SFML/Graphics.hpp>
 #include "DEFINITIONS.hpp"
 #include "State.hpp"
 #include "Game.hpp"
 #include "Player.hpp"
-#include "Ball.hpp"
-#include "Bot.hpp"
+#include "AttackerBot.hpp"
+#include "Goalkeeper.hpp"
 #include "Obstacle.hpp"
+#include "Ball.hpp"
 #include "Goal.hpp"
 #include "Team.hpp"
 #include "CollisionListener.hpp"
@@ -16,7 +18,6 @@
 
 namespace Football
 {
-	class Team;
 	class ScorePrinter;
 	class MatchTimer;
 
@@ -26,11 +27,12 @@ namespace Football
 		std::vector<std::shared_ptr<GameObject>> gameObjects;
 
 		sf::Clock clock;
-		float matchDuration;
-		float matchStartTime;
 
 		sf::Texture backgroundTexture;
 		sf::Sprite background;
+
+		float goalWidth;
+		float goalHeight;
 
 		std::unique_ptr<MatchTimer> matchTimer;
 		std::unique_ptr<ScorePrinter> scorePrinter;
@@ -44,8 +46,13 @@ namespace Football
 		int teamRightPoints;
 
 		void initGameObjects();
-		void initObjects();
 		void initObstacles();
+
+		std::shared_ptr<Obstacle> createObstacle(sf::Vector2f position, sf::Vector2f dimensions);
+		std::shared_ptr<Goal> createGoal(sf::Vector2f position, std::shared_ptr<Team> team);
+		std::shared_ptr<AttackerBot> createAttackerBot(sf::Vector2f position, std::shared_ptr<Team> team);
+		std::shared_ptr<Goalkeeper> createGoalkeeperBot(std::shared_ptr<Team> team);
+		std::shared_ptr<Player> createPlayer(sf::Vector2f position, std::shared_ptr<Team> team);
 
 		void sortAllGameObjects();
 
@@ -55,19 +62,18 @@ namespace Football
 	public:
 		GameState();
 
-		void init();
+		void init() override;
 
 		std::shared_ptr<Ball> getBall() const;
-		std::shared_ptr<Team> getTeamLeft() const;
-		std::shared_ptr<Team> getTeamRight() const;
+		std::shared_ptr<Team> getTeam(Team::Side side) const;
 		std::vector<std::shared_ptr<GameObject>> getGameObjects() const;
 		std::shared_ptr<b2World> getWorld() const;
 
-		void scorePoint(std::shared_ptr<Team>& team);
-		void endGame();
+		void scoreGoal(Team::Side side);
+		void endGame() const;
 
-		void handleInput();
-		void update(float dt);
-		void draw(float dt);
+		void handleInput() override;
+		void update(float dt) override;
+		void draw(float dt) override;
 	};
 }

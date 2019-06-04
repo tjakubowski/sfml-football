@@ -1,12 +1,12 @@
 #include "Goal.hpp"
+#include "GameState.hpp"
 
 namespace Football
 {
 
-	Goal::Goal(sf::Vector2f position, float width, float height) : GameObject(position, b2_staticBody), width(width), height(height)
+	Goal::Goal(sf::Vector2f position, float width, float height, std::shared_ptr<Team> team) : GameObject(position, b2_staticBody), team(team), width(width), height(height)
 	{
 		tag = "goal";
-		team = nullptr;
 
 		b2PolygonShape shape;
 		shape.SetAsBox(width / (2.f * PHYSICS_SCALE), height / (2.f * PHYSICS_SCALE));
@@ -28,11 +28,6 @@ namespace Football
 	{
 	}
 
-	void Goal::setTeam(std::shared_ptr<Team>& team)
-	{
-		this->team = team;
-	}
-
 	void Goal::update(float dt)
 	{
 	}
@@ -46,7 +41,7 @@ namespace Football
 		if(collisionObject->getTag() == "ball")
 		{
 			const auto gameState = dynamic_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get());
-			gameState->scorePoint(team);
+			gameState->scoreGoal(team->getSide());
 		}
 	}
 

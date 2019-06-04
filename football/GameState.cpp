@@ -1,5 +1,4 @@
 #include "GameState.hpp"
-#include "Goalkeeper.hpp"
 
 namespace Football
 {
@@ -17,6 +16,10 @@ namespace Football
 		GameData::getInstance()->assets.LoadFont("RobotoMedium", FONT_ROBOTO_MEDIUM);
 
 		background.setTexture(GameData::getInstance()->assets.GetTexture("Football pitch"));
+
+		// Goals dimensions
+		goalWidth = 30.f;
+		goalHeight = 147.f;
 
 		// Set teams points
 		teamLeftPoints = 0;
@@ -50,122 +53,142 @@ namespace Football
 
 	void GameState::initGameObjects()
 	{
-		const float goalWidth = 30.f;
-		const float goalHeight = 147.f;
+		// Teams
+		teamLeft = std::make_shared<Team>(Team::Side::Left);
+		teamRight = std::make_shared<Team>(Team::Side::Right);
 
 		// Ball
 		ball = std::make_shared<Ball>(sf::Vector2f(GameData::getInstance()->window.getSize().x, GameData::getInstance()->window.getSize().y) / 2.f);
 		gameObjects.push_back(ball);
 
 		// Goals
-		const auto goalLeft = std::make_shared<Goal>(
+		createGoal(
 			sf::Vector2f(10, 220),
-			goalWidth,
-			goalHeight
-			);
-		gameObjects.push_back(goalLeft);
+			teamLeft
+		);
 
-		const auto goalRight = std::make_shared<Goal>(
+		createGoal(
 			sf::Vector2f(GameData::getInstance()->window.getSize().x - 10 - goalWidth, 220),
-			goalWidth,
-			goalHeight
+			teamRight
 			);
-		gameObjects.push_back(goalRight);
 
 		// Footballers left
-		const auto player = std::make_shared<Player>(sf::Vector2f(150, 100));
-		gameObjects.push_back(player);
-
-		const auto leftBot1 = std::make_shared<Bot>(sf::Vector2f(150, 200));
-		gameObjects.push_back(leftBot1);
-
-		const auto leftGoalkeeperBot = std::make_shared<Goalkeeper>(goalLeft, Goalkeeper::Left);
-		gameObjects.push_back(leftGoalkeeperBot);
+		createPlayer(sf::Vector2f(150, 100), teamLeft);
+		createAttackerBot(sf::Vector2f(150, 200), teamLeft);
+		createGoalkeeperBot(teamLeft);
 
 		// Footballers right
-		const auto rightBot1 = std::make_shared<Bot>(sf::Vector2f(600, 100));
-		gameObjects.push_back(rightBot1);
+		createAttackerBot(sf::Vector2f(600, 100), teamRight);
+		createAttackerBot(sf::Vector2f(600, 200), teamRight);
+		createGoalkeeperBot(teamRight);
 
-		const auto rightBot2 = std::make_shared<Bot>(sf::Vector2f(600, 200));
-		gameObjects.push_back(rightBot2);
-
-		const auto rightGoalkeeperBot = std::make_shared<Goalkeeper>(goalRight, Goalkeeper::Right);
-		gameObjects.push_back(rightGoalkeeperBot);
-
-		// Teams
-		teamLeft = std::make_shared<Team>();
-		teamRight = std::make_shared<Team>();
-
-		teamLeft->addFootballer(player);
-		teamLeft->addFootballer(leftBot1);
-		teamLeft->addFootballer(leftGoalkeeperBot);
-
-		teamRight->addFootballer(rightBot1);
-		teamRight->addFootballer(rightBot2);
-		teamRight->addFootballer(rightGoalkeeperBot);
-
-		goalRight->setTeam(teamLeft);
-		goalLeft->setTeam(teamRight);
+		teamLeft->setFootballersGoalPart();
+		teamRight->setFootballersGoalPart();
 	}
 
 	void GameState::initObstacles()
 	{
-		const auto obstacleTop = std::make_shared<Obstacle>(
+		// top
+		createObstacle(
 			sf::Vector2f(0, 0),
-			GameData::getInstance()->window.getSize().x,
-			15
-			);
+			sf::Vector2f(GameData::getInstance()->window.getSize().x, 15)
+		);
 
-		const auto obstacleBottom = std::make_shared<Obstacle>(
+		// bottom
+		createObstacle(
 			sf::Vector2f(0, GameData::getInstance()->window.getSize().y - 15),
-			GameData::getInstance()->window.getSize().x,
-			15
-			);
+			sf::Vector2f(GameData::getInstance()->window.getSize().x, 15)
+		);
 
-		const auto obstacleLeft = std::make_shared<Obstacle>(
+		// left
+		createObstacle(
 			sf::Vector2f(0, 0),
-			10,
-			GameData::getInstance()->window.getSize().y
-			);
+			sf::Vector2f(10, GameData::getInstance()->window.getSize().y)
+		);
 
-		const auto obstacleRight = std::make_shared<Obstacle>(
+		// right
+		createObstacle(
 			sf::Vector2f(GameData::getInstance()->window.getSize().x - 10, 0),
-			10,
-			GameData::getInstance()->window.getSize().y
-			);
+			sf::Vector2f(10, GameData::getInstance()->window.getSize().y)
+		);
 
-		const auto obstacleTopLeft = std::make_shared<Obstacle>(
+		// top left
+		createObstacle(
 			sf::Vector2f(0, 0),
-			40,
-			220
-			);
+			sf::Vector2f(40, 220)
+		);
 
-		const auto obstacleBottomLeft = std::make_shared<Obstacle>(
+		// bottom left
+		createObstacle(
 			sf::Vector2f(0, 367),
-			40,
-			220
-			);
+			sf::Vector2f(40, 220)
+		);
 
-		const auto obstacleTopRight = std::make_shared<Obstacle>(
+		// top right
+		createObstacle(
 			sf::Vector2f(GameData::getInstance()->window.getSize().x - 40, 0),
-			40,
-			220
-			);
+			sf::Vector2f(40, 220)
+		);
 
-		const auto obstacleBottomRight = std::make_shared<Obstacle>(
+		// bottom right
+		createObstacle(
 			sf::Vector2f(GameData::getInstance()->window.getSize().x - 40, 367),
-			40,
-			220
+			sf::Vector2f(40, 220)
+		);
+	}
+
+	std::shared_ptr<Goal> GameState::createGoal(sf::Vector2f position, std::shared_ptr<Team> team)
+	{
+		const auto goal = std::make_shared<Goal>(
+			position,
+			goalWidth,
+			goalHeight,
+			team
 			);
 
-		gameObjects.push_back(obstacleTop);
-		gameObjects.push_back(obstacleBottom);
-		gameObjects.push_back(obstacleLeft);
-		gameObjects.push_back(obstacleRight);
-		gameObjects.push_back(obstacleTopLeft);
-		gameObjects.push_back(obstacleBottomLeft);
-		gameObjects.push_back(obstacleTopRight);
-		gameObjects.push_back(obstacleBottomRight);
+		team->setGoal(goal);
+		gameObjects.push_back(goal);
+
+		return goal;
+	}
+
+	std::shared_ptr<AttackerBot> GameState::createAttackerBot(sf::Vector2f position, std::shared_ptr<Team> team)
+	{
+		const auto attackerBot = std::make_shared<AttackerBot>(position, team);
+		team->addFootballer(attackerBot);
+		gameObjects.push_back(attackerBot);
+
+		return attackerBot;
+	}
+
+	std::shared_ptr<Goalkeeper> GameState::createGoalkeeperBot(std::shared_ptr<Team> team)
+	{
+		const auto goalkeeperBot = std::make_shared<Goalkeeper>(team);
+		team->addFootballer(goalkeeperBot);
+		gameObjects.push_back(goalkeeperBot);
+
+		return goalkeeperBot;
+	}
+
+	std::shared_ptr<Player> GameState::createPlayer(sf::Vector2f position, std::shared_ptr<Team> team)
+	{
+		const auto player = std::make_shared<Player>(position, team);
+		team->addFootballer(player);
+		gameObjects.push_back(player);
+
+		return player;
+	}
+
+	std::shared_ptr<Obstacle> GameState::createObstacle(sf::Vector2f position, sf::Vector2f dimensions)
+	{
+		const auto obstacle = std::make_shared<Obstacle>(
+			position,
+			dimensions.x,
+			dimensions.y
+			);
+		gameObjects.push_back(obstacle);
+
+		return obstacle;
 	}
 
 	std::vector<std::shared_ptr<GameObject>> GameState::getGameObjects() const
@@ -223,27 +246,25 @@ namespace Football
 		return ball;
 	}
 
-	std::shared_ptr<Team> GameState::getTeamLeft() const
+	std::shared_ptr<Team> GameState::getTeam(Team::Side side) const
 	{
-		return teamLeft;
+		return side == Team::Side::Left ? teamLeft : teamRight;
 	}
 
-	std::shared_ptr<Team> GameState::getTeamRight() const
+	void GameState::scoreGoal(Team::Side side)
 	{
-		return teamRight;
-	}
-
-	void GameState::scorePoint(std::shared_ptr<Team>& team)
-	{
-		if (team.get() == teamLeft.get())
-			teamLeftPoints++;
-		else
+		if (side == Team::Side::Left)
 			teamRightPoints++;
+		else
+			teamLeftPoints++;
 
 		scorePrinter->update(teamLeftPoints, teamRightPoints);
+
+		teamLeft->setFootballersGoalPart();
+		teamRight->setFootballersGoalPart();
 	}
 
-	void GameState::endGame()
+	void GameState::endGame() const
 	{
 		// TODO: Handle ending game
 		ball->resetPosition();

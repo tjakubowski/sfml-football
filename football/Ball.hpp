@@ -10,6 +10,7 @@ namespace Football
 		~Ball();
 		void update(float dt) override;
 		void onCollision(GameObject* collisionObject) override;
+		void getKickFrom(sf::Vector2f fromVector, float force) const;
 	};
 
 }

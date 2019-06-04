@@ -2,7 +2,7 @@
 
 namespace Football
 {
-	Player::Player(sf::Vector2f position) : Footballer(position)
+	Player::Player(sf::Vector2f position, std::shared_ptr<Team> team) : Footballer(position, team)
 	{
 	}
 
@@ -17,7 +17,7 @@ namespace Football
 
 	void Player::move() const
 	{
-		auto forceTemp = GameData::getInstance()->inputs.getInputAxis();
+		const auto forceTemp = GameData::getInstance()->inputs.getInputAxis();
 		auto force = b2Vec2(forceTemp.x, forceTemp.y);
 		force.Normalize();
 

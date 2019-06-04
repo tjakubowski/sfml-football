@@ -1,7 +1,6 @@
 #pragma once
 #include "GameObject.hpp"
 #include "Team.hpp"
-#include "GameState.hpp"
 
 namespace Football
 {
@@ -14,10 +13,8 @@ namespace Football
 		float width;
 		float height;
 	public:
-		Goal(sf::Vector2f position, float width, float height);
+		Goal(sf::Vector2f position, float width, float height, std::shared_ptr<Team> team);
 		~Goal();
-
-		void setTeam(std::shared_ptr<Team>& team);
 
 		void update(float dt) override;
 		void draw() override;

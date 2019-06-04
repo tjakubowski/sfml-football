@@ -32,4 +32,10 @@ namespace Football
 	void Ball::onCollision(GameObject* collisionObject)
 	{
 	}
+
+	void Ball::getKickFrom(sf::Vector2f fromVector, float force) const
+	{
+		const auto impulseForce = normalize(getPosition() - fromVector) * force;
+		body->ApplyLinearImpulseToCenter(b2Vec2(impulseForce.x / PHYSICS_SCALE, impulseForce.y / PHYSICS_SCALE), true);
+	}
 }
