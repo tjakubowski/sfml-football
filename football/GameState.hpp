@@ -15,6 +15,7 @@
 #include "SFMLDebugDraw.h"
 #include "ScorePrinter.hpp"
 #include "MatchTimer.hpp"
+#include "UIManager.hpp"
 
 namespace Football
 {
@@ -27,6 +28,7 @@ namespace Football
 		std::vector<std::shared_ptr<GameObject>> gameObjects;
 
 		sf::Clock clock;
+		bool ended;
 
 		sf::Texture backgroundTexture;
 		sf::Sprite background;
@@ -34,6 +36,7 @@ namespace Football
 		float goalWidth;
 		float goalHeight;
 
+		std::unique_ptr<UIManager> uiManager;
 		std::unique_ptr<MatchTimer> matchTimer;
 		std::unique_ptr<ScorePrinter> scorePrinter;
 		std::shared_ptr<b2World> world;
@@ -47,6 +50,7 @@ namespace Football
 
 		void initGameObjects();
 		void initObstacles();
+		void initUI();
 
 		std::shared_ptr<Obstacle> createObstacle(sf::Vector2f position, sf::Vector2f dimensions, float angleDegrees = 0);
 		std::shared_ptr<Goal> createGoal(sf::Vector2f position, std::shared_ptr<Team> team);
@@ -70,7 +74,7 @@ namespace Football
 		std::shared_ptr<b2World> getWorld() const;
 
 		void scoreGoal(Team::Side side);
-		void endGame() const;
+		void endGame();
 
 		void handleInput() override;
 		void update(float dt) override;

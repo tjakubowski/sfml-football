@@ -18,7 +18,7 @@ namespace Football
 		sf::Vector2f getInputAxis() const;
 
 		bool isPressed(sf::Keyboard::Key key);
-		bool isSpriteClicked(sf::Sprite object, sf::Mouse::Button button, sf::RenderWindow& window) const;
+		bool isClicked(sf::IntRect rect, sf::Mouse::Button button, sf::RenderWindow & window) const;
 		sf::Vector2i getMousePosition(sf::RenderWindow& window) const;
 	};
 }

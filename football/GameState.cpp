@@ -1,4 +1,7 @@
-#include "GameState.hpp"
+﻿#include "GameState.hpp"
+#include "UIItemExit.hpp"
+#include "UIItemPlay.hpp"
+#include "UIItemMenu.hpp"
 
 namespace Football
 {
@@ -17,6 +20,8 @@ namespace Football
 		GameData::getInstance()->assets.LoadFont("RobotoMedium", FONT_ROBOTO_MEDIUM);
 
 		background.setTexture(GameData::getInstance()->assets.GetTexture("Football pitch"));
+		
+		ended = false;
 
 		// Goals dimensions
 		goalWidth = 30.f;
@@ -50,6 +55,7 @@ namespace Football
 
 		initGameObjects();
 		initObstacles();
+		initUI();
 	}
 
 	void GameState::initGameObjects()
@@ -166,6 +172,39 @@ namespace Football
 		);
 	}
 
+	void GameState::initUI()
+	{
+		const auto windowCenter = GameData::getInstance()->window.getSize().x / 2.f;
+		uiManager = std::make_unique<UIManager>();
+
+		std::stringstream ss;
+		ss << teamLeftPoints << ":" << teamRightPoints;
+
+		uiManager->addUIItem(std::make_shared<UIItem>(
+			sf::Vector2f(windowCenter, 100),
+			ss.str(),
+			20.f
+			));
+
+		uiManager->addUIItem(std::make_shared<UIItemPlay>(
+			sf::Vector2f(windowCenter, 200),
+			"Graj",
+			20.f
+			));
+
+		uiManager->addUIItem(std::make_shared<UIItemMenu>(
+			sf::Vector2f(windowCenter, 300),
+			"Menu",
+			20.f
+			));
+
+		uiManager->addUIItem(std::make_shared<UIItemExit>(
+			sf::Vector2f(windowCenter, 400),
+			"Wyjdz",
+			20.f
+			));
+	}
+
 	std::shared_ptr<Goal> GameState::createGoal(sf::Vector2f position, std::shared_ptr<Team> team)
 	{
 		const auto goal = std::make_shared<Goal>(
@@ -242,6 +281,12 @@ namespace Football
 
 	void GameState::update(float dt)
 	{
+		if(ended)
+		{
+			uiManager->update();
+			return;
+		}
+
 		sortAllGameObjects();
 
 		for(auto& gameObject : gameObjects)
@@ -263,6 +308,10 @@ namespace Football
 		world->DrawDebugData();
 		matchTimer->draw();
 		scorePrinter->draw();
+
+		if (ended)
+			uiManager->draw();
+
 		GameData::getInstance()->window.display();
 	}
 
@@ -292,14 +341,15 @@ namespace Football
 
 		teamLeft->setFootballersGoalPart();
 		teamRight->setFootballersGoalPart();
-	}
 
-	void GameState::endGame() const
-	{
-		// TODO: Handle ending game
 		ball->resetPosition();
 		teamLeft->resetPosition();
 		teamRight->resetPosition();
+	}
+
+	void GameState::endGame()
+	{
+		ended = true;
 	}
 
 	void GameState::sortAllGameObjects()

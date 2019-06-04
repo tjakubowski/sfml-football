@@ -30,7 +30,6 @@ namespace Football
 
 	void MenuState::update(float dt)
 	{
-
 	}
 
 	void MenuState::draw(float dt)

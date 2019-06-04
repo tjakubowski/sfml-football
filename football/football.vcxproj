@@ -166,6 +166,11 @@
     <ClCompile Include="SplashState.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Team.cpp" />
+    <ClCompile Include="UIItem.cpp" />
+    <ClCompile Include="UIItemExit.cpp" />
+    <ClCompile Include="UIItemMenu.cpp" />
+    <ClCompile Include="UIItemPlay.cpp" />
+    <ClCompile Include="UIManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.hpp" />
@@ -193,6 +198,11 @@
     <ClInclude Include="State.hpp" />
     <ClInclude Include="StateMachine.hpp" />
     <ClInclude Include="Team.hpp" />
+    <ClInclude Include="UIItem.hpp" />
+    <ClInclude Include="UIItemExit.hpp" />
+    <ClInclude Include="UIItemMenu.hpp" />
+    <ClInclude Include="UIItemPlay.hpp" />
+    <ClInclude Include="UIManager.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\SplashBg.jpg" />

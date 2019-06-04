@@ -24,7 +24,7 @@ namespace Football
 		*stringStream << a << " : " << b;
 
 		scoreText->setString(stringStream->str());
-		scoreText->setPosition( (GameData::getInstance()->window.getSize().x - scoreText->getGlobalBounds().width) / 2.f, 5);
+		scoreText->setPosition( 10, 0);
 	}
 
 	void ScorePrinter::draw()

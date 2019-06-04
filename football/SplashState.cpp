@@ -33,9 +33,7 @@ namespace Football
 	void SplashState::update(float dt)
 	{
 		if (_clock.getElapsedTime().asSeconds() > SPLASH_STATE_SHOW_TIME)
-		{
 			GameData::getInstance()->machine.AddState(StateRef(new GameState()));
-		}
 	}
 
 	void SplashState::draw(float dt)

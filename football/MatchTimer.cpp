@@ -11,7 +11,7 @@ namespace Football
 		scoreText->setCharacterSize(18);
 		scoreText->setFillColor(sf::Color::White);
 
-		matchDuration = 60;
+		matchDuration = 2;
 		matchStartTime = static_cast<int>(clock.getElapsedTime().asSeconds());
 	}
 
@@ -31,7 +31,7 @@ namespace Football
 		*stringStream << std::setfill('0') << std::setw(2) << minutesLeft << ":" << std::setfill('0') << std::setw(2) << secondsLeft;
 
 		scoreText->setString(stringStream->str());
-		scoreText->setPosition((GameData::getInstance()->window.getSize().x - scoreText->getGlobalBounds().width) / 2.f, 10);
+		scoreText->setPosition(GameData::getInstance()->window.getSize().x - scoreText->getGlobalBounds().width - 10, 0);
 
 		if (timeLeft == 0)
 		{
