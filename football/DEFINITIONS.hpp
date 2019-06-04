@@ -11,7 +11,8 @@ const float PHYSICS_SCALE = 30.0f;
 const std::string TEX_SPLASH_SCREEN_BG = "Resources/res/images/splash_bg.jpg";
 const std::string TEX_MENU_BG = "Resources/res/images/menu_bg.png";
 const std::string TEX_FOOTBALL_PITCH = "Resources/res/images/football_pitch.png";
-const std::string TEX_FOOTBALLER = "Resources/res/images/footballer.png";
+const std::string TEX_FOOTBALLER_BLUE = "Resources/res/images/footballer_blue.png";
+const std::string TEX_FOOTBALLER_RED = "Resources/res/images/footballer_red.png";
 const std::string TEX_PLAYER = "Resources/res/images/player.png";
 const std::string TEX_BALL = "Resources/res/images/ball.png";
 

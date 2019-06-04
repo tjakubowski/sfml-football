@@ -5,10 +5,13 @@ namespace Football
 {
 	Footballer::Footballer(sf::Vector2f position, std::shared_ptr<Team> team) : GameObject(position, b2BodyType::b2_dynamicBody), team(team)
 	{
-		GameObject::setSpriteTexture("Footballer");
+		if(team->getSide() == Team::Side::Left)
+			GameObject::setSpriteTexture("Footballer blue");
+		else
+			GameObject::setSpriteTexture("Footballer red");
 		maxSpeed = 5.0f;
 		tag = "footballer";
-		nearBallDistance = 150;
+		nearBallDistance = 300;
 		shootDistance = 60;
 		shootForce = 10;
 		
@@ -59,6 +62,7 @@ namespace Football
 	bool Footballer::isNearBall() const
 	{
 		const auto ball = dynamic_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get())->getBall();
-		return sqrMagnitude(ball->getPosition() - getPosition()) <= nearBallDistance * nearBallDistance;
+		const auto distance = sqrMagnitude(ball->getPosition() - getPosition());
+		return distance <= nearBallDistance * nearBallDistance;
 	}
 }

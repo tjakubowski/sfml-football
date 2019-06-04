@@ -9,7 +9,8 @@ namespace Football
 	void GameState::init()
 	{
 		GameData::getInstance()->assets.LoadTexture("Football pitch", TEX_FOOTBALL_PITCH);
-		GameData::getInstance()->assets.LoadTexture("Footballer", TEX_FOOTBALLER);
+		GameData::getInstance()->assets.LoadTexture("Footballer blue", TEX_FOOTBALLER_BLUE);
+		GameData::getInstance()->assets.LoadTexture("Footballer red", TEX_FOOTBALLER_RED);
 		GameData::getInstance()->assets.LoadTexture("Player", TEX_PLAYER);
 		GameData::getInstance()->assets.LoadTexture("Ball", TEX_BALL);
 
