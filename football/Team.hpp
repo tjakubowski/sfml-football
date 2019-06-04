@@ -14,6 +14,9 @@ namespace Football
 		Team();
 		~Team();
 
+		std::vector<std::shared_ptr<Footballer>> getFootballers() const;
 		void addFootballer(const std::shared_ptr<Footballer>& footballer);
+
+		void resetPosition() const;
 	};
 }

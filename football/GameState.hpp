@@ -36,6 +36,7 @@ namespace Football
 		std::unique_ptr<ScorePrinter> scorePrinter;
 		std::shared_ptr<b2World> world;
 
+		std::shared_ptr<Ball> ball;
 		std::shared_ptr<Team> teamLeft;
 		std::shared_ptr<Team> teamRight;
 		

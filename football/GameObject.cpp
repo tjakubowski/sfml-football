@@ -5,7 +5,7 @@
 namespace Football
 {
 
-	GameObject::GameObject(sf::Vector2f position, b2BodyType bodyType)
+	GameObject::GameObject(sf::Vector2f position, b2BodyType bodyType) : startPosition(position)
 	{
 		tag = "";
 
@@ -46,6 +46,14 @@ namespace Football
 	float GameObject::getHeight() const
 	{
 		return sprite.getGlobalBounds().height;
+	}
+
+	void GameObject::resetPosition() const
+	{
+		body->SetTransform(
+			b2Vec2(startPosition.x / PHYSICS_SCALE, startPosition.y / PHYSICS_SCALE),
+			body->GetAngle()
+		);
 	}
 
 	void GameObject::setSpriteTexture(std::string textureName)

@@ -54,7 +54,7 @@ namespace Football
 		const float goalHeight = 147.f;
 
 		// Ball
-		const auto ball = std::make_shared<Ball>(sf::Vector2f(300, 300));
+		ball = std::make_shared<Ball>(sf::Vector2f(GameData::getInstance()->window.getSize().x, GameData::getInstance()->window.getSize().y) / 2.f);
 		gameObjects.push_back(ball);
 
 		// Goals
@@ -73,20 +73,20 @@ namespace Football
 		gameObjects.push_back(goalRight);
 
 		// Footballers left
-		const auto player = std::make_shared<Player>(sf::Vector2f(150, 150));
+		const auto player = std::make_shared<Player>(sf::Vector2f(150, 100));
 		gameObjects.push_back(player);
 
-		const auto leftBot1 = std::make_shared<Bot>(sf::Vector2f(60, 60));
+		const auto leftBot1 = std::make_shared<Bot>(sf::Vector2f(150, 200));
 		gameObjects.push_back(leftBot1);
 
 		const auto leftGoalkeeperBot = std::make_shared<Goalkeeper>(goalLeft, Goalkeeper::Left);
 		gameObjects.push_back(leftGoalkeeperBot);
 
 		// Footballers right
-		const auto rightBot1 = std::make_shared<Bot>(sf::Vector2f(250, 150));
-		gameObjects.push_back(player);
+		const auto rightBot1 = std::make_shared<Bot>(sf::Vector2f(600, 100));
+		gameObjects.push_back(rightBot1);
 
-		const auto rightBot2 = std::make_shared<Bot>(sf::Vector2f(160, 60));
+		const auto rightBot2 = std::make_shared<Bot>(sf::Vector2f(600, 200));
 		gameObjects.push_back(rightBot2);
 
 		const auto rightGoalkeeperBot = std::make_shared<Goalkeeper>(goalRight, Goalkeeper::Right);
@@ -231,6 +231,9 @@ namespace Football
 	void GameState::endGame()
 	{
 		// TODO: Handle ending game
+		ball->resetPosition();
+		teamLeft->resetPosition();
+		teamRight->resetPosition();
 	}
 
 	void GameState::sortAllGameObjects()

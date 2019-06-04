@@ -4,11 +4,9 @@
 
 namespace Football
 {
-	class Goalkeeper : public Football::Bot
+	class Goalkeeper : public Bot
 	{
 	private:
-		sf::Vector2f startPosition;
-
 		sf::Vector2f calculateGoalkeeperPosition();
 	public:
 		enum Side { Left, Right };

@@ -9,6 +9,7 @@ namespace Football
 	class GameObject
 	{
 	protected:
+		sf::Vector2f startPosition;
 		float maxSpeed;
 		sf::Sprite sprite;
 		std::string tag;
@@ -27,6 +28,8 @@ namespace Football
 		sf::Vector2f getPosition() const;
 		virtual float getWidth() const;
 		virtual float getHeight() const;
+
+		void resetPosition() const;
 
 		friend bool operator<(std::shared_ptr<GameObject>& a, std::shared_ptr<GameObject>& b);
 	};
