@@ -135,6 +135,34 @@ namespace Football
 			sf::Vector2f(GameData::getInstance()->window.getSize().x - 40, 367),
 			sf::Vector2f(40, 220)
 		);
+
+		// top left corner
+		createObstacle(
+			sf::Vector2f(25, 0),
+			sf::Vector2f(30, 30),
+			45.f
+		);
+
+		// top right corner
+		createObstacle(
+			sf::Vector2f(GameData::getInstance()->window.getSize().x - 55, 0),
+			sf::Vector2f(30, 30),
+			45.f
+		);
+
+		// bottom left corner
+		createObstacle(
+			sf::Vector2f(25, GameData::getInstance()->window.getSize().y - 30),
+			sf::Vector2f(30, 30),
+			45.f
+		);
+
+		// bottom right corner
+		createObstacle(
+			sf::Vector2f(GameData::getInstance()->window.getSize().x - 55, GameData::getInstance()->window.getSize().y - 30),
+			sf::Vector2f(30, 30),
+			45.f
+		);
 	}
 
 	std::shared_ptr<Goal> GameState::createGoal(sf::Vector2f position, std::shared_ptr<Team> team)
@@ -179,12 +207,13 @@ namespace Football
 		return player;
 	}
 
-	std::shared_ptr<Obstacle> GameState::createObstacle(sf::Vector2f position, sf::Vector2f dimensions)
+	std::shared_ptr<Obstacle> GameState::createObstacle(sf::Vector2f position, sf::Vector2f dimensions, float angleDegrees)
 	{
 		const auto obstacle = std::make_shared<Obstacle>(
 			position,
 			dimensions.x,
-			dimensions.y
+			dimensions.y,
+			angleDegrees
 			);
 		gameObjects.push_back(obstacle);
 

@@ -48,7 +48,7 @@ namespace Football
 		void initGameObjects();
 		void initObstacles();
 
-		std::shared_ptr<Obstacle> createObstacle(sf::Vector2f position, sf::Vector2f dimensions);
+		std::shared_ptr<Obstacle> createObstacle(sf::Vector2f position, sf::Vector2f dimensions, float angleDegrees = 0);
 		std::shared_ptr<Goal> createGoal(sf::Vector2f position, std::shared_ptr<Team> team);
 		std::shared_ptr<AttackerBot> createAttackerBot(sf::Vector2f position, std::shared_ptr<Team> team);
 		std::shared_ptr<Goalkeeper> createGoalkeeperBot(std::shared_ptr<Team> team);

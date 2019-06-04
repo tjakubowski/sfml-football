@@ -3,7 +3,7 @@
 namespace Football
 {
 
-	Obstacle::Obstacle(sf::Vector2f position, float width, float height) : GameObject(position, b2_staticBody), width(width), height(height)
+	Obstacle::Obstacle(sf::Vector2f position, float width, float height, float angleDegrees) : GameObject(position, b2_staticBody), width(width), height(height)
 	{
 		tag = "obstacle";
 
@@ -16,10 +16,10 @@ namespace Football
 
 		body->SetTransform(
 			b2Vec2(
-				(position.x + (width / 2.f)) / PHYSICS_SCALE,
+			(position.x + (width / 2.f)) / PHYSICS_SCALE,
 				(position.y + (height / 2.f)) / PHYSICS_SCALE
-				),
-				body->GetAngle());
+			),
+			angleDegrees * (3.14 / 180.f));
 	}
 
 
