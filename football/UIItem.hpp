@@ -16,6 +16,8 @@ namespace Football
 		virtual void update() final;
 		virtual void draw() final;
 		virtual void onClick();
+
+		virtual void setText(std::string textToDisplay);
 	};
 
 }

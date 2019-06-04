@@ -22,6 +22,7 @@ namespace Football
 		background.setTexture(GameData::getInstance()->assets.GetTexture("Football pitch"));
 
 		debug = false;
+		pause = false;
 		ended = false;
 
 		// Goals dimensions
@@ -178,15 +179,6 @@ namespace Football
 		const auto windowCenter = GameData::getInstance()->window.getSize().x / 2.f;
 		uiManager = std::make_unique<UIManager>();
 
-		std::stringstream ss;
-		ss << teamLeftPoints << ":" << teamRightPoints;
-
-		uiManager->addUIItem(std::make_shared<UIItem>(
-			sf::Vector2f(windowCenter, 100),
-			ss.str(),
-			20.f
-			));
-
 		uiManager->addUIItem(std::make_shared<UIItemPlay>(
 			sf::Vector2f(windowCenter, 200),
 			"Graj",
@@ -285,7 +277,10 @@ namespace Football
 		if(GameData::getInstance()->inputs.isPressed(sf::Keyboard::Key::F1))
 			debug = !debug;
 
-		if(ended)
+		if(GameData::getInstance()->inputs.isPressed(sf::Keyboard::Key::Escape))
+			pause = !pause;
+
+		if(ended || pause)
 		{
 			uiManager->update();
 			return;
@@ -315,7 +310,7 @@ namespace Football
 		matchTimer->draw();
 		scorePrinter->draw();
 
-		if (ended)
+		if (ended || pause)
 			uiManager->draw();
 
 		GameData::getInstance()->window.display();
@@ -356,6 +351,14 @@ namespace Football
 	void GameState::endGame()
 	{
 		ended = true;
+		std::stringstream ss;
+		ss << teamLeftPoints << ":" << teamRightPoints;
+
+		uiManager->addUIItem(std::make_shared<UIItem>(
+			sf::Vector2f(GameData::getInstance()->window.getSize().x / 2.f, 100),
+			ss.str(),
+			20.f
+			));
 	}
 
 	void GameState::sortAllGameObjects()

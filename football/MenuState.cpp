@@ -1,6 +1,9 @@
 #include <sstream>
 #include "MenuState.hpp"
 #include "DEFINITIONS.hpp"
+#include "UIItemPlay.hpp"
+#include "UIItemMenu.hpp"
+#include "UIItemExit.hpp"
 
 namespace Football
 {
@@ -14,7 +17,23 @@ namespace Football
 	{
 		GameData::getInstance()->assets.LoadTexture("Menu background", TEX_MENU_BG);
 
+		GameData::getInstance()->assets.LoadFont("RobotoMedium", FONT_ROBOTO_MEDIUM);
+
 		_background.setTexture(GameData::getInstance()->assets.GetTexture("Menu background"));
+
+		initUI();
+	}
+
+	void MenuState::initUI()
+	{
+		const auto windowCenter = GameData::getInstance()->window.getSize().x / 2.f;
+		uiManager = std::make_unique<UIManager>();
+
+		uiManager->addUIItem(std::make_shared<UIItemPlay>(
+			sf::Vector2f(windowCenter, 200),
+			"Graj",
+			20.f
+			));
 	}
 
 	void MenuState::handleInput()
@@ -30,6 +49,7 @@ namespace Football
 
 	void MenuState::update(float dt)
 	{
+		uiManager->update();
 	}
 
 	void MenuState::draw(float dt)
@@ -37,6 +57,8 @@ namespace Football
 		GameData::getInstance()->window.clear();
 
 		GameData::getInstance()->window.draw(_background);
+
+		uiManager->draw();
 
 		GameData::getInstance()->window.display();
 	}

@@ -29,6 +29,7 @@ namespace Football
 
 		sf::Clock clock;
 		bool debug;
+		bool pause;
 		bool ended;
 
 		sf::Texture backgroundTexture;
@@ -38,6 +39,7 @@ namespace Football
 		float goalHeight;
 
 		std::unique_ptr<UIManager> uiManager;
+
 		std::unique_ptr<MatchTimer> matchTimer;
 		std::unique_ptr<ScorePrinter> scorePrinter;
 		std::shared_ptr<b2World> world;

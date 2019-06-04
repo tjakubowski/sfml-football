@@ -1,12 +1,12 @@
 #include "Game.hpp"
-#include "SplashState.hpp"
+#include "MenuState.hpp"
 
 namespace Football
 {
 	Game::Game(int width, int height, std::string title)
 	{
 		GameData::getInstance()->window.create(sf::VideoMode(width, height), title, sf::Style::Close | sf::Style::Titlebar);
-		GameData::getInstance()->machine.AddState(StateRef(new SplashState()));
+		GameData::getInstance()->machine.AddState(StateRef(new MenuState()));
 
 		this->Run();
 	}

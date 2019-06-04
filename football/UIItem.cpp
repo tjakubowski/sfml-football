@@ -57,4 +57,9 @@ namespace Football
 	void UIItem::onClick()
 	{
 	}
+
+	void UIItem::setText(std::string textToDisplay)
+	{
+		text->setString(textToDisplay);
+	}
 }
