@@ -12,11 +12,13 @@
 #include "CollisionListener.hpp"
 #include "SFMLDebugDraw.h"
 #include "ScorePrinter.hpp"
+#include "MatchTimer.hpp"
 
 namespace Football
 {
 	class Team;
 	class ScorePrinter;
+	class MatchTimer;
 
 	class GameState : public State
 	{
@@ -24,10 +26,13 @@ namespace Football
 		std::vector<std::shared_ptr<GameObject>> gameObjects;
 
 		sf::Clock clock;
+		float matchDuration;
+		float matchStartTime;
 
 		sf::Texture backgroundTexture;
 		sf::Sprite background;
 
+		std::unique_ptr<MatchTimer> matchTimer;
 		std::unique_ptr<ScorePrinter> scorePrinter;
 		std::shared_ptr<b2World> world;
 

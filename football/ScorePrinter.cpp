@@ -11,14 +11,14 @@ namespace Football
 		scoreText->setCharacterSize(18);
 		scoreText->setFillColor(sf::Color::White);
 
-		updateScore(a, b);
+		update(a, b);
 	}
 
 	ScorePrinter::~ScorePrinter()
 	{
 	}
 
-	void ScorePrinter::updateScore(int a, int b)
+	void ScorePrinter::update(int a, int b)
 	{
 		stringStream->str(std::string());
 		*stringStream << a << " : " << b;

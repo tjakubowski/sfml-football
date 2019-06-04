@@ -17,10 +17,14 @@ namespace Football
 
 		background.setTexture(GameData::getInstance()->assets.GetTexture("Football pitch"));
 
+		// Set teams points
 		teamLeftPoints = 0;
 		teamRightPoints = 0;
 
+		// Set match timer
+
 		// Set Score Printer
+		matchTimer = std::make_unique<MatchTimer>();
 		scorePrinter = std::make_unique<ScorePrinter>(teamLeftPoints, teamRightPoints);
 
 		// Set Box2D world
@@ -172,6 +176,7 @@ namespace Football
 		for(auto& gameObject : gameObjects)
 			gameObject->update(dt);
 
+		matchTimer->update();
 		world->Step(dt, 8, 3);
 	}
 
@@ -185,6 +190,7 @@ namespace Football
 			object->draw();
 
 		world->DrawDebugData();
+		matchTimer->draw();
 		scorePrinter->draw();
 		GameData::getInstance()->window.display();
 	}
@@ -201,7 +207,7 @@ namespace Football
 		else
 			teamRightPoints++;
 
-		scorePrinter->updateScore(teamLeftPoints, teamRightPoints);
+		scorePrinter->update(teamLeftPoints, teamRightPoints);
 	}
 
 	void GameState::sortAllGameObjects()

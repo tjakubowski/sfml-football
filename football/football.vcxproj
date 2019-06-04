@@ -154,6 +154,7 @@
     <ClCompile Include="Goal.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MatchTimer.cpp" />
     <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="CollisionListener.cpp" />
     <ClCompile Include="Obstacle.cpp" />
@@ -177,6 +178,7 @@
     <ClInclude Include="Goal.hpp" />
     <ClInclude Include="Helpers.hpp" />
     <ClInclude Include="InputManager.hpp" />
+    <ClInclude Include="MatchTimer.hpp" />
     <ClInclude Include="MenuState.hpp" />
     <ClInclude Include="CollisionListener.hpp" />
     <ClInclude Include="Obstacle.hpp" />
