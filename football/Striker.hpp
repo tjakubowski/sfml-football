@@ -5,7 +5,7 @@ namespace Football
 {
 	class Team;
 
-	class AttackerBot : public Bot
+	class Striker : public Bot
 	{
 	private:
 		float nearBallDistance;
@@ -13,8 +13,8 @@ namespace Football
 	protected:
 		bool canShoot() override;
 	public:
-		AttackerBot(sf::Vector2f position, std::shared_ptr<Team> team);
-		~AttackerBot();
+		Striker(sf::Vector2f position, std::shared_ptr<Team> team);
+		~Striker();
 
 		sf::Vector2f calculateGoalPosition() const;
 		sf::Vector2f calculatePositionNearBall() const;

@@ -1,9 +1,9 @@
-#include "AttackerBot.hpp"
+#include "Striker.hpp"
 #include "GameState.hpp"
 
 namespace Football
 {
-	bool AttackerBot::isTeammateNearBall()
+	bool Striker::isTeammateNearBall()
 	{
 		for(std::shared_ptr<Footballer> &footballer : team->getFootballers())
 		{
@@ -17,7 +17,7 @@ namespace Football
 		return false;
 	}
 
-	sf::Vector2f AttackerBot::calculateGoalPosition() const
+	sf::Vector2f Striker::calculateGoalPosition() const
 	{
 		const auto opponentGoal = team->getOpponentGoal();
 
@@ -29,14 +29,14 @@ namespace Football
 		return sf::Vector2f(opponentGoal->getPosition().x, goalPositionY);
 	}
 
-	sf::Vector2f AttackerBot::calculatePositionNearBall() const
+	sf::Vector2f Striker::calculatePositionNearBall() const
 	{
 		const auto ball = dynamic_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get())->getBall();
 
 		return ball->getPosition() + normalize(getPosition() - ball->getPosition()) * nearBallDistance;
 	}
 
-	sf::Vector2f AttackerBot::calculateShootPosition() const
+	sf::Vector2f Striker::calculateShootPosition() const
 	{
 		const auto goalPosition = calculateGoalPosition();
 		const auto ballPosition = dynamic_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get())->getBall()->getPosition();
@@ -45,16 +45,16 @@ namespace Football
 		return ballPosition + extensionVector;
 	}
 
-	AttackerBot::AttackerBot(sf::Vector2f position, std::shared_ptr<Team> team) : Bot(position, team)
+	Striker::Striker(sf::Vector2f position, std::shared_ptr<Team> team) : Bot(position, team)
 	{
 		nearBallDistance = 110.f;
 	}
 
-	AttackerBot::~AttackerBot()
+	Striker::~Striker()
 	{
 	}
 
-	void AttackerBot::update(float dt)
+	void Striker::update(float dt)
 	{
 		if(isTeammateNearBall())
 		{
@@ -69,7 +69,7 @@ namespace Football
 		}
 	}
 
-	bool AttackerBot::canShoot()
+	bool Striker::canShoot()
 	{
 		return isInShootDistance() && isCloseToBall();
 	}

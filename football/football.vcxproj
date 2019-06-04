@@ -144,7 +144,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
-    <ClCompile Include="AttackerBot.cpp" />
+    <ClCompile Include="Striker.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Bot.cpp" />
     <ClCompile Include="Footballer.cpp" />
@@ -173,7 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.hpp" />
-    <ClInclude Include="AttackerBot.hpp" />
+    <ClInclude Include="Striker.hpp" />
     <ClInclude Include="Ball.hpp" />
     <ClInclude Include="Bot.hpp" />
     <ClInclude Include="DEFINITIONS.hpp" />
@@ -204,6 +204,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\SplashBg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

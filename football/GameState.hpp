@@ -5,7 +5,7 @@
 #include "State.hpp"
 #include "Game.hpp"
 #include "Player.hpp"
-#include "AttackerBot.hpp"
+#include "Striker.hpp"
 #include "Goalkeeper.hpp"
 #include "Obstacle.hpp"
 #include "Ball.hpp"
@@ -58,7 +58,7 @@ namespace Football
 
 		std::shared_ptr<Obstacle> createObstacle(sf::Vector2f position, sf::Vector2f dimensions, float angleDegrees = 0);
 		std::shared_ptr<Goal> createGoal(sf::Vector2f position, std::shared_ptr<Team> team);
-		std::shared_ptr<AttackerBot> createAttackerBot(sf::Vector2f position, std::shared_ptr<Team> team);
+		std::shared_ptr<Striker> createStriker(sf::Vector2f position, std::shared_ptr<Team> team);
 		std::shared_ptr<Goalkeeper> createGoalkeeperBot(std::shared_ptr<Team> team);
 		std::shared_ptr<Player> createPlayer(sf::Vector2f position, std::shared_ptr<Team> team);
 
