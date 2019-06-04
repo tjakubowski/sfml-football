@@ -16,6 +16,8 @@ namespace Football
 			startPosition.x / PHYSICS_SCALE,
 			startPosition.y / PHYSICS_SCALE
 		), body->GetAngle());
+
+		body->GetFixtureList()->SetDensity(7.f);
 	}
 
 	Goalkeeper::~Goalkeeper()

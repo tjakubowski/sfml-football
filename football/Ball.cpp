@@ -7,14 +7,14 @@ namespace Football
 		tag = "ball";
 
 		GameObject::setSpriteTexture("Ball");
-		maxSpeed = 7.5f;
+		maxSpeed = 6.5f;
 
 		b2CircleShape shape;
 		shape.m_radius = sprite.getGlobalBounds().width / (2 * PHYSICS_SCALE);
 
 		b2FixtureDef fixtureDef;
 		fixtureDef.restitution = 1.0f;
-		fixtureDef.density = .05f;
+		fixtureDef.density = .02f;
 		fixtureDef.friction = 0.2f;
 		fixtureDef.shape = &shape;
 		body->CreateFixture(&fixtureDef);

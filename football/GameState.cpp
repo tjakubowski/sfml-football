@@ -79,8 +79,8 @@ namespace Football
 		createGoalkeeperBot(teamLeft);
 
 		// Footballers right
-		// createAttackerBot(sf::Vector2f(600, 100), teamRight);
-		// createAttackerBot(sf::Vector2f(600, 200), teamRight);
+		createAttackerBot(sf::Vector2f(600, 100), teamRight);
+		createAttackerBot(sf::Vector2f(600, 200), teamRight);
 		createGoalkeeperBot(teamRight);
 
 		teamLeft->setFootballersGoalPart();

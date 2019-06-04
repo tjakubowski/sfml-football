@@ -40,14 +40,14 @@ namespace Football
 	{
 		const auto goalPosition = calculateGoalPosition();
 		const auto ballPosition = dynamic_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get())->getBall()->getPosition();
-		const auto extensionVector = normalize(ballPosition - goalPosition) * 20.f;
+		const auto extensionVector = normalize(ballPosition - goalPosition) * 10.f;
 
 		return ballPosition + extensionVector;
 	}
 
 	AttackerBot::AttackerBot(sf::Vector2f position, std::shared_ptr<Team> team) : Bot(position, team)
 	{
-		nearBallDistance = 100.f;
+		nearBallDistance = 110.f;
 	}
 
 	AttackerBot::~AttackerBot()

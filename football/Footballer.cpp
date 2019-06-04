@@ -11,7 +11,7 @@ namespace Football
 			GameObject::setSpriteTexture("Footballer red");
 		maxSpeed = 6.0f;
 		tag = "footballer";
-		nearBallDistance = 90;
+		nearBallDistance = 70;
 		shootZoneDistance = 250;
 		ballShootDistance = 50;
 		shootForce = 10;
