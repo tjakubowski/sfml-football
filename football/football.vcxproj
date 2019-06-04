@@ -23,7 +23,7 @@
     <ProjectGuid>{9E46870E-56D3-42EF-8FDA-3F7DCC966634}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>football</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -88,14 +88,14 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Programowanie\C++\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Programowanie\C++\Box2D\include;D:\Programowanie\C++\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>D:\Programowanie\C++\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\Programowanie\C++\Box2D\lib;D:\Programowanie\C++\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-audio-d.lib;Box2D.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -143,38 +143,70 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AIPlayer.cpp" />
     <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="Striker.cpp" />
+    <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="Bot.cpp" />
     <ClCompile Include="Footballer.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameData.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="Goal.cpp" />
+    <ClCompile Include="Goalkeeper.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MatchTimer.cpp" />
     <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="CollisionListener.cpp" />
+    <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="SplashState.cpp" />
+    <ClCompile Include="ScorePrinter.cpp" />
+    <ClCompile Include="SFMLDebugDraw.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Team.cpp" />
+    <ClCompile Include="UIItem.cpp" />
+    <ClCompile Include="UIItemExit.cpp" />
+    <ClCompile Include="UIItemMenu.cpp" />
+    <ClCompile Include="UIItemPlay.cpp" />
+    <ClCompile Include="UIManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AIPlayer.hpp" />
     <ClInclude Include="AssetManager.hpp" />
+    <ClInclude Include="Striker.hpp" />
+    <ClInclude Include="Ball.hpp" />
+    <ClInclude Include="Bot.hpp" />
     <ClInclude Include="DEFINITIONS.hpp" />
     <ClInclude Include="Footballer.hpp" />
     <ClInclude Include="Game.hpp" />
+    <ClInclude Include="GameData.hpp" />
     <ClInclude Include="GameObject.hpp" />
     <ClInclude Include="GameState.hpp" />
+    <ClInclude Include="Goal.hpp" />
+    <ClInclude Include="Goalkeeper.hpp" />
+    <ClInclude Include="Helpers.hpp" />
     <ClInclude Include="InputManager.hpp" />
+    <ClInclude Include="MatchTimer.hpp" />
     <ClInclude Include="MenuState.hpp" />
+    <ClInclude Include="CollisionListener.hpp" />
+    <ClInclude Include="Obstacle.hpp" />
     <ClInclude Include="Player.hpp" />
-    <ClInclude Include="SplashState.hpp" />
+    <ClInclude Include="ScorePrinter.hpp" />
+    <ClInclude Include="SFMLDebugDraw.h" />
     <ClInclude Include="State.hpp" />
     <ClInclude Include="StateMachine.hpp" />
     <ClInclude Include="Team.hpp" />
+    <ClInclude Include="UIItem.hpp" />
+    <ClInclude Include="UIItemExit.hpp" />
+    <ClInclude Include="UIItemMenu.hpp" />
+    <ClInclude Include="UIItemPlay.hpp" />
+    <ClInclude Include="UIManager.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\SplashBg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

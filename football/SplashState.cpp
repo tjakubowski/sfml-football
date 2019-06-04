@@ -8,44 +8,41 @@
 namespace Football
 {
 	
-	SplashState::SplashState(GameDataRef data) : _data(data)
+	SplashState::SplashState()
 	{
-		
 	}
 
 	void SplashState::init()
 	{
-		_data->assets.LoadTexture("Splash background", TEX_SPLASH_SCREEN_BG);
+		GameData::getInstance()->assets.LoadTexture("Splash background", TEX_SPLASH_SCREEN_BG);
 
-		_background.setTexture(this->_data->assets.GetTexture( "Splash background" ));
+		_background.setTexture(GameData::getInstance()->assets.GetTexture( "Splash background" ));
 	}
 
 	void SplashState::handleInput()
 	{
 		sf::Event event;
 
-		while(_data->window.pollEvent(event))
+		while(GameData::getInstance()->window.pollEvent(event))
 		{
 			if(sf::Event::Closed == event.type)
-				_data->window.close();
+				GameData::getInstance()->window.close();
 		}
 	}
 
 	void SplashState::update(float dt)
 	{
-		if (_clock.getElapsedTime().asSeconds() > SPLASH_STATE_SHOW_TIME )
-		{
-			_data->machine.AddState(StateRef(new GameState(_data)));
-		}
+		if (_clock.getElapsedTime().asSeconds() > SPLASH_STATE_SHOW_TIME)
+			GameData::getInstance()->machine.AddState(StateRef(new GameState()));
 	}
 
 	void SplashState::draw(float dt)
 	{
-		_data->window.clear();
+		GameData::getInstance()->window.clear();
 
-		_data->window.draw(_background);
+		GameData::getInstance()->window.draw(_background);
 
-		_data->window.display();
+		GameData::getInstance()->window.display();
 	}
 
 

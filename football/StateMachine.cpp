@@ -1,7 +1,12 @@
 #include "StateMachine.hpp"
+#include <iostream>
 
 namespace Football
 {
+	StateMachine::StateMachine() : _isRemoving(false), _isAdding(false), _isReplacing(false)
+	{
+	}
+
 	void StateMachine::AddState( StateRef newState, bool isReplacing )
 	{
 		this->_isAdding = true;

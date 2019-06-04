@@ -12,7 +12,7 @@ namespace Football
 	class StateMachine
 	{
 	public:
-		StateMachine() {};
+		StateMachine();
 		~StateMachine() {};
 
 		void AddState(StateRef newState, bool isReplacing = true);

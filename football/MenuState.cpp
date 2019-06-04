@@ -1,47 +1,72 @@
 #include <sstream>
 #include "MenuState.hpp"
 #include "DEFINITIONS.hpp"
-
-#include <iostream>
+#include "UIItemPlay.hpp"
+#include "UIItemMenu.hpp"
+#include "UIItemExit.hpp"
 
 namespace Football
 {
 
-	MenuState::MenuState(GameDataRef data) : _data(data)
+	MenuState::MenuState()
 	{
 
 	}
 
 	void MenuState::init()
 	{
-		_data->assets.LoadTexture("Menu background", TEX_MENU_BG);
+		GameData::getInstance()->assets.LoadTexture("Menu background", TEX_MENU_BG);
 
-		_background.setTexture(this->_data->assets.GetTexture("Menu background"));
+		GameData::getInstance()->assets.LoadFont("RobotoMedium", FONT_ROBOTO_MEDIUM);
+
+		_background.setTexture(GameData::getInstance()->assets.GetTexture("Menu background"));
+
+		initUI();
+	}
+
+	void MenuState::initUI()
+	{
+		const auto windowCenter = GameData::getInstance()->window.getSize().x / 2.f;
+		uiManager = std::make_unique<UIManager>();
+
+		uiManager->addUIItem(std::make_shared<UIItemPlay>(
+			sf::Vector2f(windowCenter, 200),
+			"Graj",
+			20.f
+			));
+
+		uiManager->addUIItem(std::make_shared<UIItemExit>(
+			sf::Vector2f(windowCenter, 350),
+			"Wyjdz",
+			20.f
+			));
 	}
 
 	void MenuState::handleInput()
 	{
 		sf::Event event;
 
-		while (_data->window.pollEvent(event))
+		while (GameData::getInstance()->window.pollEvent(event))
 		{
 			if (sf::Event::Closed == event.type)
-				_data->window.close();
+				GameData::getInstance()->window.close();
 		}
 	}
 
 	void MenuState::update(float dt)
 	{
-
+		uiManager->update();
 	}
 
 	void MenuState::draw(float dt)
 	{
-		_data->window.clear();
+		GameData::getInstance()->window.clear();
 
-		_data->window.draw(_background);
+		GameData::getInstance()->window.draw(_background);
 
-		_data->window.display();
+		uiManager->draw();
+
+		GameData::getInstance()->window.display();
 	}
 
 

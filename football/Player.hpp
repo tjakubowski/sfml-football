@@ -1,24 +1,18 @@
 #pragma once
 #include "Footballer.hpp"
-#include "DEFINITIONS.hpp"
 
 namespace Football
 {
-	class Player : public Footballer
+	class Player final : public Footballer
 	{
 	private:
-		sf::Vector2f inputAxis;
-		sf::Vector2f inputAxisRaw;
-		float maxSpeed;
-		float speedDelta;
-
-		void handleInput();
-		void handleAxisInput();
-		sf::Vector2f getMoveDirection() const;
+		void move() const;
 	public:
-		Player(GameDataRef data, std::string name);
-
-		void move(float dt);
+		Player(sf::Vector2f position, std::shared_ptr<Team> team);
+		~Player();
 		void update(float dt) override;
+	protected:
+		bool canShoot() override;
 	};
+
 }

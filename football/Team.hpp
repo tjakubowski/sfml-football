@@ -1,24 +1,33 @@
 #pragma once
-#include <string>
+#include "Goal.hpp"
 #include "Footballer.hpp"
 
+namespace Football
+{
+	class Goal;
+	class Footballer;
 
-namespace Football {
 	class Team
 	{
-	private:
-		int points;
-		std::vector<std::shared_ptr<Footballer>> footballers;
-
 	public:
-		Team(const std::string& name);
+		enum Side { Left, Right };
+	private:
+		std::shared_ptr<Goal> goal;
+		std::vector<std::shared_ptr<Footballer>> footballers;
+		Side side;
+	public:
+		Side getSide() const;
+		Team(Side side);
 		~Team();
 
-		void addPlayer(std::shared_ptr<Footballer> footballer);
-		void addPoint();
-		int getPoints() const;
-		std::vector<std::shared_ptr<Footballer>> const& getFootballers() const;
+		std::shared_ptr<Goal> getOpponentGoal() const;
+		std::shared_ptr<Goal> getGoal() const;
+		std::vector<std::shared_ptr<Footballer>> getFootballers() const;
+		void addFootballer(const std::shared_ptr<Footballer>& footballer);
+		void setGoal(std::shared_ptr<Goal> goal);
 
-		std::string name;
+		void setFootballersGoalPart();
+
+		void resetPosition() const;
 	};
 }

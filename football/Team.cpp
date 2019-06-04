@@ -1,36 +1,62 @@
 #include "Team.hpp"
+#include "GameState.hpp"
 
-
-namespace Football {
-
-	Team::Team(const std::string& name) : name(name)
+namespace Football
+{
+	Team::Team(Side side) : side(side)
 	{
-		footballers = std::vector<std::shared_ptr<Footballer>>();
-		points = 0;
 	}
-
 
 	Team::~Team()
 	{
 	}
 
-	void Team::addPoint()
+	std::shared_ptr<Goal> Team::getOpponentGoal() const
 	{
-		points++;
+		const std::shared_ptr<Goal> opponentGoal = (getSide() == Left
+			? dynamic_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get())->getTeam(Right)
+			: dynamic_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get())->getTeam(Left)
+			)->getGoal();
+
+		return opponentGoal;
 	}
 
-	int Team::getPoints() const
+	std::shared_ptr<Goal> Team::getGoal() const
 	{
-		return points;
+		return goal;
 	}
 
-	std::vector<std::shared_ptr<Footballer>> const & Team::getFootballers() const
+	Team::Side Team::getSide() const
+	{
+		return side;
+	}
+
+	std::vector<std::shared_ptr<Footballer>> Team::getFootballers() const
 	{
 		return footballers;
 	}
 
-	void Team::addPlayer(std::shared_ptr<Footballer> footballer)
+	void Team::addFootballer(const std::shared_ptr<Footballer>& footballer)
 	{
-		footballers.push_back(std::move(footballer));
+		footballers.push_back(footballer);
+	}
+
+	void Team::setGoal(const std::shared_ptr<Goal> goal)
+	{
+		this->goal = goal;
+	}
+
+	void Team::setFootballersGoalPart()
+	{
+		auto i = 0;
+
+		for (auto footballer = footballers.begin(); footballer != footballers.end(); ++footballer, i++)
+			footballer->get()->setGoalPart(i);
+	}
+
+	void Team::resetPosition() const
+	{
+		for (auto& footballer : getFootballers())
+			footballer->resetPosition();
 	}
 }
