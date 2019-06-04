@@ -34,6 +34,12 @@ namespace Football
 			"Graj",
 			20.f
 			));
+
+		uiManager->addUIItem(std::make_shared<UIItemExit>(
+			sf::Vector2f(windowCenter, 350),
+			"Wyjdz",
+			20.f
+			));
 	}
 
 	void MenuState::handleInput()
