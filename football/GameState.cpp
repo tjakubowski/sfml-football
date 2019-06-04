@@ -1,4 +1,5 @@
 #include "GameState.hpp"
+#include "Goalkeeper.hpp"
 
 namespace Football
 {
@@ -43,48 +44,65 @@ namespace Football
 		flags += b2Draw::e_shapeBit;
 		debugDraw->SetFlags(flags);
 
-		initPlayers();
-		initObjects();
+		initGameObjects();
 		initObstacles();
 	}
 
-	void GameState::initPlayers()
-	{
-		teamLeft = std::make_shared<Team>();
-		teamRight = std::make_shared<Team>();
-
-		const auto player = std::make_shared<Player>(sf::Vector2f(150, 150));
-		gameObjects.push_back(player);
-
-		const auto bot = std::make_shared<Bot>(sf::Vector2f(60, 60));
-		gameObjects.push_back(bot);
-
-		teamLeft->addFootballer(player);
-		teamLeft->addFootballer(bot);
-	}
-
-	void GameState::initObjects()
+	void GameState::initGameObjects()
 	{
 		const float goalWidth = 30.f;
 		const float goalHeight = 147.f;
 
+		// Ball
 		const auto ball = std::make_shared<Ball>(sf::Vector2f(300, 300));
 		gameObjects.push_back(ball);
 
+		// Goals
 		const auto goalLeft = std::make_shared<Goal>(
 			sf::Vector2f(10, 220),
 			goalWidth,
 			goalHeight
 			);
+		gameObjects.push_back(goalLeft);
 
 		const auto goalRight = std::make_shared<Goal>(
 			sf::Vector2f(GameData::getInstance()->window.getSize().x - 10 - goalWidth, 220),
 			goalWidth,
 			goalHeight
 			);
-
-		gameObjects.push_back(goalLeft);
 		gameObjects.push_back(goalRight);
+
+		// Footballers left
+		const auto player = std::make_shared<Player>(sf::Vector2f(150, 150));
+		gameObjects.push_back(player);
+
+		const auto leftBot1 = std::make_shared<Bot>(sf::Vector2f(60, 60));
+		gameObjects.push_back(leftBot1);
+
+		const auto leftGoalkeeperBot = std::make_shared<Goalkeeper>(goalLeft, Goalkeeper::Left);
+		gameObjects.push_back(leftGoalkeeperBot);
+
+		// Footballers right
+		const auto rightBot1 = std::make_shared<Bot>(sf::Vector2f(250, 150));
+		gameObjects.push_back(player);
+
+		const auto rightBot2 = std::make_shared<Bot>(sf::Vector2f(160, 60));
+		gameObjects.push_back(rightBot2);
+
+		const auto rightGoalkeeperBot = std::make_shared<Goalkeeper>(goalRight, Goalkeeper::Right);
+		gameObjects.push_back(rightGoalkeeperBot);
+
+		// Teams
+		teamLeft = std::make_shared<Team>();
+		teamRight = std::make_shared<Team>();
+
+		teamLeft->addFootballer(player);
+		teamLeft->addFootballer(leftBot1);
+		teamLeft->addFootballer(leftGoalkeeperBot);
+
+		teamRight->addFootballer(rightBot1);
+		teamRight->addFootballer(rightBot2);
+		teamRight->addFootballer(rightGoalkeeperBot);
 
 		goalRight->setTeam(teamLeft);
 		goalLeft->setTeam(teamRight);

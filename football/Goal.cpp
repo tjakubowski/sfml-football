@@ -2,7 +2,8 @@
 
 namespace Football
 {
-	Goal::Goal(sf::Vector2f position, float width, float height) : GameObject(position, b2_staticBody)
+
+	Goal::Goal(sf::Vector2f position, float width, float height) : GameObject(position, b2_staticBody), width(width), height(height)
 	{
 		tag = "goal";
 		team = nullptr;
@@ -47,5 +48,15 @@ namespace Football
 			const auto gameState = dynamic_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get());
 			gameState->scorePoint(team);
 		}
+	}
+
+	float Goal::getWidth() const
+	{
+		return width;
+	}
+
+	float Goal::getHeight() const
+	{
+		return height;
 	}
 }

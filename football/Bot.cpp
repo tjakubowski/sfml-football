@@ -14,7 +14,6 @@ namespace Football
 
 	void Bot::update(float dt)
 	{
-		moveTowards(200, 200);
 	}
 
 	void Bot::moveTowards(sf::Vector2f targetPosition) const

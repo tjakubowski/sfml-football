@@ -35,7 +35,17 @@ namespace Football
 
 	sf::Vector2f GameObject::getPosition() const
 	{
-		return sprite.getPosition();
+		return sf::Vector2f(body->GetPosition().x, body->GetPosition().y) * PHYSICS_SCALE;
+	}
+
+	float GameObject::getWidth() const
+	{
+		return sprite.getGlobalBounds().width;
+	}
+
+	float GameObject::getHeight() const
+	{
+		return sprite.getGlobalBounds().height;
 	}
 
 	void GameObject::setSpriteTexture(std::string textureName)

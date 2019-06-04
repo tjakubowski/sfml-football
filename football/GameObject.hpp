@@ -25,6 +25,8 @@ namespace Football
 
 		std::string getTag() const;
 		sf::Vector2f getPosition() const;
+		virtual float getWidth() const;
+		virtual float getHeight() const;
 
 		friend bool operator<(std::shared_ptr<GameObject>& a, std::shared_ptr<GameObject>& b);
 	};

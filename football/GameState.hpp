@@ -42,7 +42,7 @@ namespace Football
 		int teamLeftPoints;
 		int teamRightPoints;
 
-		void initPlayers();
+		void initGameObjects();
 		void initObjects();
 		void initObstacles();
 

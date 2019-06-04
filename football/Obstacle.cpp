@@ -3,7 +3,7 @@
 namespace Football
 {
 
-	Obstacle::Obstacle(sf::Vector2f position, float width, float height) : GameObject(position, b2_staticBody)
+	Obstacle::Obstacle(sf::Vector2f position, float width, float height) : GameObject(position, b2_staticBody), width(width), height(height)
 	{
 		tag = "obstacle";
 
@@ -33,6 +33,16 @@ namespace Football
 
 	void Obstacle::onCollision(GameObject* collisionObject)
 	{
+	}
+
+	float Obstacle::getWidth() const
+	{
+		return width;
+	}
+
+	float Obstacle::getHeight() const
+	{
+		return height;
 	}
 
 	void Obstacle::setSpriteTexture(std::string textureName)
