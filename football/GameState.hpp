@@ -28,6 +28,7 @@ namespace Football
 		std::vector<std::shared_ptr<GameObject>> gameObjects;
 
 		sf::Clock clock;
+		bool debug;
 		bool ended;
 
 		sf::Texture backgroundTexture;

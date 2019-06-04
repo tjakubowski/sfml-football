@@ -20,7 +20,8 @@ namespace Football
 		GameData::getInstance()->assets.LoadFont("RobotoMedium", FONT_ROBOTO_MEDIUM);
 
 		background.setTexture(GameData::getInstance()->assets.GetTexture("Football pitch"));
-		
+
+		debug = false;
 		ended = false;
 
 		// Goals dimensions
@@ -281,6 +282,9 @@ namespace Football
 
 	void GameState::update(float dt)
 	{
+		if(GameData::getInstance()->inputs.isPressed(sf::Keyboard::Key::F1))
+			debug = !debug;
+
 		if(ended)
 		{
 			uiManager->update();
@@ -305,7 +309,9 @@ namespace Football
 		for (auto& object : gameObjects)
 			object->draw();
 
-		world->DrawDebugData();
+		if(debug)
+			world->DrawDebugData();
+
 		matchTimer->draw();
 		scorePrinter->draw();
 

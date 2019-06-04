@@ -11,7 +11,7 @@ namespace Football
 		scoreText->setCharacterSize(18);
 		scoreText->setFillColor(sf::Color::White);
 
-		matchDuration = 2;
+		matchDuration = 60;
 		matchStartTime = static_cast<int>(clock.getElapsedTime().asSeconds());
 	}
 

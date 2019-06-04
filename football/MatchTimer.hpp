@@ -10,7 +10,7 @@ namespace Football
 	class MatchTimer
 	{
 		sf::Clock clock;
-		int  matchDuration;
+		int matchDuration;
 		int matchStartTime;
 
 		std::shared_ptr<sf::Text> scoreText;
