@@ -13,6 +13,14 @@ namespace Football
 	void Player::update(float dt)
 	{
 		move();
+
+		if (GameData::getInstance()->inputs.isPressed(sf::Keyboard::Space) && canShoot())
+			shoot();
+	}
+
+	bool Player::canShoot()
+	{
+		return isCloseToBall();
 	}
 
 	void Player::move() const

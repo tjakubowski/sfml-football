@@ -20,6 +20,7 @@ namespace Football
 		Team(Side side);
 		~Team();
 
+		std::shared_ptr<Goal> getOpponentGoal() const;
 		std::shared_ptr<Goal> getGoal() const;
 		std::vector<std::shared_ptr<Footballer>> getFootballers() const;
 		void addFootballer(const std::shared_ptr<Footballer>& footballer);

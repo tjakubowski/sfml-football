@@ -1,4 +1,5 @@
 #include "Team.hpp"
+#include "GameState.hpp"
 
 namespace Football
 {
@@ -8,6 +9,16 @@ namespace Football
 
 	Team::~Team()
 	{
+	}
+
+	std::shared_ptr<Goal> Team::getOpponentGoal() const
+	{
+		const std::shared_ptr<Goal> opponentGoal = (getSide() == Left
+			? dynamic_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get())->getTeam(Right)
+			: dynamic_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get())->getTeam(Left)
+			)->getGoal();
+
+		return opponentGoal;
 	}
 
 	std::shared_ptr<Goal> Team::getGoal() const

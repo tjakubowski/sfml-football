@@ -9,10 +9,11 @@ namespace Football
 			GameObject::setSpriteTexture("Footballer blue");
 		else
 			GameObject::setSpriteTexture("Footballer red");
-		maxSpeed = 5.0f;
+		maxSpeed = 6.0f;
 		tag = "footballer";
-		nearBallDistance = 300;
-		shootDistance = 60;
+		nearBallDistance = 90;
+		shootZoneDistance = 250;
+		ballShootDistance = 50;
 		shootForce = 10;
 		
 		b2CircleShape shape;
@@ -20,7 +21,7 @@ namespace Football
 		shape.m_p.Set(0, sprite.getGlobalBounds().height / (2 * PHYSICS_SCALE) - shape.m_radius);
 
 		b2FixtureDef fixtureDef;
-		fixtureDef.density = 1.5f;
+		fixtureDef.density = 1.9f;
 		fixtureDef.friction = 0.2f;
 		fixtureDef.shape = &shape;
 		body->CreateFixture(&fixtureDef);
@@ -45,11 +46,16 @@ namespace Football
 		goalPart = goalPartIndex;
 	}
 
-	bool Footballer::canShoot() const
+	bool Footballer::isCloseToBall() const
 	{
 		const auto ball = dynamic_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get())->getBall();
 
-		return sqrMagnitude(ball->getPosition() - getPosition()) <= shootDistance * shootDistance;
+		return sqrMagnitude(ball->getPosition() - getPosition()) <= ballShootDistance * ballShootDistance;
+	}
+
+	bool Footballer::isInShootDistance() const
+	{
+		return sqrMagnitude(team->getOpponentGoal()->getPosition() - getPosition()) <= shootZoneDistance * shootZoneDistance;
 	}
 
 	void Footballer::shoot() const

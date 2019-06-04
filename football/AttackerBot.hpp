@@ -8,7 +8,10 @@ namespace Football
 	class AttackerBot : public Bot
 	{
 	private:
+		float nearBallDistance;
 		bool isTeammateNearBall();
+	protected:
+		bool canShoot() override;
 	public:
 		AttackerBot(sf::Vector2f position, std::shared_ptr<Team> team);
 		~AttackerBot();

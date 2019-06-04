@@ -19,10 +19,7 @@ namespace Football
 
 	sf::Vector2f AttackerBot::calculateGoalPosition() const
 	{
-		const std::shared_ptr<Goal> opponentGoal = (team->getSide() == Team::Side::Left
-			? dynamic_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get())->getTeam(Team::Side::Right)
-			: dynamic_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get())->getTeam(Team::Side::Left)
-			)->getGoal();
+		const auto opponentGoal = team->getOpponentGoal();
 
 		const auto goalHeight = opponentGoal->getHeight();
 		const auto goalSegmentHeight = goalHeight / team->getFootballers().size();
@@ -36,7 +33,7 @@ namespace Football
 	{
 		const auto ball = dynamic_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get())->getBall();
 
-		return getPosition() + (ball->getPosition() - getPosition()) / 2.f;
+		return ball->getPosition() + normalize(getPosition() - ball->getPosition()) * nearBallDistance;
 	}
 
 	sf::Vector2f AttackerBot::calculateShootPosition() const
@@ -50,6 +47,7 @@ namespace Football
 
 	AttackerBot::AttackerBot(sf::Vector2f position, std::shared_ptr<Team> team) : Bot(position, team)
 	{
+		nearBallDistance = 100.f;
 	}
 
 	AttackerBot::~AttackerBot()
@@ -69,5 +67,10 @@ namespace Football
 			if (canShoot())
 				shoot();
 		}
+	}
+
+	bool AttackerBot::canShoot()
+	{
+		return isInShootDistance() && isCloseToBall();
 	}
 }

@@ -11,11 +11,14 @@ namespace Football
 	{
 	private:
 		float nearBallDistance;
-		float shootDistance;
+		float shootZoneDistance;
+		float ballShootDistance;
 		float shootForce;
 	protected:
 		std::shared_ptr<Team> team;
-		bool canShoot() const;
+		bool isCloseToBall() const;
+		bool isInShootDistance() const;
+		virtual bool canShoot() = 0;
 		void shoot() const;
 		int goalPart;
 	public:

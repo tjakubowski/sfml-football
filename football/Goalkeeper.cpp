@@ -25,6 +25,14 @@ namespace Football
 	void Goalkeeper::update(float dt)
 	{
 		moveTowards(calculateGoalkeeperPosition());
+
+		if (canShoot())
+			shoot();
+	}
+
+	bool Goalkeeper::canShoot()
+	{
+		return isCloseToBall();
 	}
 
 	sf::Vector2f Goalkeeper::calculateGoalkeeperPosition() const

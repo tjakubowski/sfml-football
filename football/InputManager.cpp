@@ -42,6 +42,11 @@ namespace Football
 		return inputAxis;
 	}
 
+	bool InputManager::isPressed(sf::Keyboard::Key key)
+	{
+		return sf::Keyboard::isKeyPressed(key);
+	}
+
 	bool InputManager::isSpriteClicked(sf::Sprite object, sf::Mouse::Button button, sf::RenderWindow & window) const
 	{
 		if(sf::Mouse::isButtonPressed(button))

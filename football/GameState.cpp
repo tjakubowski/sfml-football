@@ -27,9 +27,9 @@ namespace Football
 		teamRightPoints = 0;
 
 		// Set match timer
+		matchTimer = std::make_unique<MatchTimer>();
 
 		// Set Score Printer
-		matchTimer = std::make_unique<MatchTimer>();
 		scorePrinter = std::make_unique<ScorePrinter>(teamLeftPoints, teamRightPoints);
 
 		// Set Box2D world
@@ -79,8 +79,8 @@ namespace Football
 		createGoalkeeperBot(teamLeft);
 
 		// Footballers right
-		createAttackerBot(sf::Vector2f(600, 100), teamRight);
-		createAttackerBot(sf::Vector2f(600, 200), teamRight);
+		// createAttackerBot(sf::Vector2f(600, 100), teamRight);
+		// createAttackerBot(sf::Vector2f(600, 200), teamRight);
 		createGoalkeeperBot(teamRight);
 
 		teamLeft->setFootballersGoalPart();

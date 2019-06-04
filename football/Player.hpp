@@ -11,6 +11,8 @@ namespace Football
 		Player(sf::Vector2f position, std::shared_ptr<Team> team);
 		~Player();
 		void update(float dt) override;
+	protected:
+		bool canShoot() override;
 	};
 
 }
