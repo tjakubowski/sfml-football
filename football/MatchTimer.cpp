@@ -13,8 +13,6 @@ namespace Football
 
 		matchDuration = 60;
 		matchStartTime = static_cast<int>(clock.getElapsedTime().asSeconds());
-
-		// update();
 	}
 
 
@@ -34,6 +32,12 @@ namespace Football
 
 		scoreText->setString(stringStream->str());
 		scoreText->setPosition((GameData::getInstance()->window.getSize().x - scoreText->getGlobalBounds().width) / 2.f, 10);
+
+		if (timeLeft == 0)
+		{
+			const auto gameState = dynamic_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get());
+			gameState->endGame();
+		}
 	}
 
 	void MatchTimer::draw() const

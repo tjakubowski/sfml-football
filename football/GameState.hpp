@@ -60,6 +60,7 @@ namespace Football
 		std::shared_ptr<b2World> getWorld() const;
 
 		void scorePoint(std::shared_ptr<Team>& team);
+		void endGame();
 
 		void handleInput();
 		void update(float dt);

@@ -210,6 +210,11 @@ namespace Football
 		scorePrinter->update(teamLeftPoints, teamRightPoints);
 	}
 
+	void GameState::endGame()
+	{
+		// TODO: Handle ending game
+	}
+
 	void GameState::sortAllGameObjects()
 	{
 		std::sort(gameObjects.begin(), gameObjects.end());
