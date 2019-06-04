@@ -5,7 +5,7 @@ namespace Football
 {
 	class Bot : public Footballer
 	{
-	private:
+	protected:
 		float moveTowardsStopDistance;
 		void moveTowards(sf::Vector2f targetPosition) const;
 		void moveTowards(const float x, const float y) const;

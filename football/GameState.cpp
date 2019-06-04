@@ -218,6 +218,21 @@ namespace Football
 		return world;
 	}
 
+	std::shared_ptr<Ball> GameState::getBall() const
+	{
+		return ball;
+	}
+
+	std::shared_ptr<Team> GameState::getTeamLeft() const
+	{
+		return teamLeft;
+	}
+
+	std::shared_ptr<Team> GameState::getTeamRight() const
+	{
+		return teamRight;
+	}
+
 	void GameState::scorePoint(std::shared_ptr<Team>& team)
 	{
 		if (team.get() == teamLeft.get())

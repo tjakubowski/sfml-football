@@ -39,7 +39,7 @@ namespace Football
 		std::shared_ptr<Ball> ball;
 		std::shared_ptr<Team> teamLeft;
 		std::shared_ptr<Team> teamRight;
-		
+
 		int teamLeftPoints;
 		int teamRightPoints;
 
@@ -57,6 +57,9 @@ namespace Football
 
 		void init();
 
+		std::shared_ptr<Ball> getBall() const;
+		std::shared_ptr<Team> getTeamLeft() const;
+		std::shared_ptr<Team> getTeamRight() const;
 		std::vector<std::shared_ptr<GameObject>> getGameObjects() const;
 		std::shared_ptr<b2World> getWorld() const;
 
