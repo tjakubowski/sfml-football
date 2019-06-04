@@ -10,6 +10,7 @@ namespace Football
 	class MatchTimer
 	{
 		sf::Clock clock;
+		int timeLeft;
 		int matchDuration;
 		int matchStartTime;
 
@@ -18,7 +19,10 @@ namespace Football
 	public:
 		MatchTimer();
 		~MatchTimer();
-		void update() const;
+		void update();
 		void draw() const;
+
+		void stop();
+		void start();
 	};
 }

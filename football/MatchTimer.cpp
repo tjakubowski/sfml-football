@@ -12,6 +12,7 @@ namespace Football
 		scoreText->setFillColor(sf::Color::White);
 
 		matchDuration = 60;
+		timeLeft = matchDuration;
 		matchStartTime = static_cast<int>(clock.getElapsedTime().asSeconds());
 	}
 
@@ -20,11 +21,11 @@ namespace Football
 	{
 	}
 
-	void MatchTimer::update() const
+	void MatchTimer::update()
 	{
 		stringStream->str(std::string());
 
-		const int timeLeft = matchDuration - static_cast<int>(clock.getElapsedTime().asSeconds()) - matchStartTime;
+		timeLeft = matchDuration - static_cast<int>(clock.getElapsedTime().asSeconds()) - matchStartTime;
 		const int minutesLeft = timeLeft / 60;
 		const int secondsLeft = timeLeft % 60;
 
@@ -43,5 +44,15 @@ namespace Football
 	void MatchTimer::draw() const
 	{
 		GameData::getInstance()->window.draw(*scoreText.get());
+	}
+
+	void MatchTimer::stop()
+	{
+		matchDuration = timeLeft;
+	}
+
+	void MatchTimer::start()
+	{
+		clock.restart();
 	}
 }

@@ -278,7 +278,14 @@ namespace Football
 			debug = !debug;
 
 		if(GameData::getInstance()->inputs.isPressed(sf::Keyboard::Key::Escape))
+		{
 			pause = !pause;
+
+			if (pause)
+				matchTimer->stop();
+			else
+				matchTimer->start();
+		}
 
 		if(ended || pause)
 		{
