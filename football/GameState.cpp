@@ -24,6 +24,7 @@ namespace Football
 		debug = false;
 		pause = false;
 		ended = false;
+		reset = false;
 
 		// Goals dimensions
 		goalWidth = 30.f;
@@ -300,6 +301,10 @@ namespace Football
 
 		matchTimer->update();
 		world->Step(dt, 8, 3);
+
+		if(reset && !world->IsLocked())
+			resetGameObjectsPositions();
+
 	}
 
 	void GameState::draw(float dt)
@@ -350,9 +355,16 @@ namespace Football
 		teamLeft->setFootballersGoalPart();
 		teamRight->setFootballersGoalPart();
 
+		reset = true;
+	}
+
+	void GameState::resetGameObjectsPositions()
+	{
 		ball->resetPosition();
 		teamLeft->resetPosition();
 		teamRight->resetPosition();
+
+		reset = false;
 	}
 
 	void GameState::endGame()

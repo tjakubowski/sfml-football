@@ -28,8 +28,8 @@ namespace Football
 	{
 		moveTowards(calculateGoalkeeperPosition());
 
-		if (canShoot())
-			shoot();
+		// if (canShoot())
+			// shoot();
 	}
 
 	bool Goalkeeper::canShoot()

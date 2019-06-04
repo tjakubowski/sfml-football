@@ -31,6 +31,7 @@ namespace Football
 		bool debug;
 		bool pause;
 		bool ended;
+		bool reset;
 
 		sf::Texture backgroundTexture;
 		sf::Sprite background;
@@ -77,6 +78,7 @@ namespace Football
 		std::shared_ptr<b2World> getWorld() const;
 
 		void scoreGoal(Team::Side side);
+		void resetGameObjectsPositions();
 		void endGame();
 
 		void handleInput() override;
