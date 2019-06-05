@@ -30,13 +30,21 @@ namespace Football
 		uiManager = std::make_unique<UIManager>();
 
 		uiManager->addUIItem(std::make_shared<UIItemPlay>(
+			false,
 			sf::Vector2f(windowCenter, 200),
-			"Graj",
+			"Graj z komputerem",
+			20.f
+			));
+
+		uiManager->addUIItem(std::make_shared<UIItemPlay>(
+			true,
+			sf::Vector2f(windowCenter, 350),
+			"Graj z innym graczem",
 			20.f
 			));
 
 		uiManager->addUIItem(std::make_shared<UIItemExit>(
-			sf::Vector2f(windowCenter, 350),
+			sf::Vector2f(windowCenter, 500),
 			"Wyjdz",
 			20.f
 			));

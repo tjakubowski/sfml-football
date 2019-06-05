@@ -5,7 +5,7 @@
 
 namespace Football
 {
-	GameState::GameState()
+	GameState::GameState(const bool multiplayer) : multiplayer(multiplayer)
 	{
 	}
 
@@ -83,12 +83,17 @@ namespace Football
 			);
 
 		// Footballers left
-		createPlayer(sf::Vector2f(150, 100), teamLeft);
+		if (multiplayer)
+			createPlayer(sf::Vector2f(150, 100), teamLeft, { sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::D, sf::Keyboard::A, sf::Keyboard::LShift });
+		else
+			createStriker(sf::Vector2f(150, 100), teamLeft);
+
 		createStriker(sf::Vector2f(150, 200), teamLeft);
 		createGoalkeeperBot(teamLeft);
 
 		// Footballers right
-		createPlayer(sf::Vector2f(600, 100), teamRight, {sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::D, sf::Keyboard::A});
+		createPlayer(sf::Vector2f(600, 100), teamRight);
+		// createStriker(sf::Vector2f(600, 100), teamRight);
 		createStriker(sf::Vector2f(600, 200), teamRight);
 		createGoalkeeperBot(teamRight);
 
@@ -181,19 +186,27 @@ namespace Football
 		uiManager = std::make_unique<UIManager>();
 
 		uiManager->addUIItem(std::make_shared<UIItemPlay>(
+			false,
 			sf::Vector2f(windowCenter, 200),
-			"Graj",
+			"Graj z komputerem",
+			20.f
+			));
+
+		uiManager->addUIItem(std::make_shared<UIItemPlay>(
+			true,
+			sf::Vector2f(windowCenter, 300),
+			"Graj z innym graczem",
 			20.f
 			));
 
 		uiManager->addUIItem(std::make_shared<UIItemMenu>(
-			sf::Vector2f(windowCenter, 300),
+			sf::Vector2f(windowCenter, 400),
 			"Menu",
 			20.f
 			));
 
 		uiManager->addUIItem(std::make_shared<UIItemExit>(
-			sf::Vector2f(windowCenter, 400),
+			sf::Vector2f(windowCenter, 500),
 			"Wyjdz",
 			20.f
 			));

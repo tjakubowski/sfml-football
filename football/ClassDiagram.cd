@@ -25,14 +25,14 @@
     <Position X="22" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAQAIAAIAAAAACAAAAAAAAAAAQAAEAAA=</HashCode>
-      <FileName>GameState.hpp</FileName>
+      <FileName>ScorePrinter.hpp</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Football::MatchTimer">
     <Position X="20.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAQAoAEIAAAAAAAAgAgAAAAQmAAAEAAA=</HashCode>
-      <FileName>GameState.hpp</FileName>
+      <FileName>MatchTimer.hpp</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Football::GameState">
@@ -45,7 +45,7 @@
   <Class Name="Football::InputManager">
     <Position X="16.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAgAAAAgAAAAAAIAAAAAAAAEAAAAAKAAEAgg=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAIAAAAAAAAEAAAAAKAAEAAg=</HashCode>
       <FileName>InputManager.hpp</FileName>
     </TypeIdentifier>
   </Class>
@@ -88,7 +88,7 @@
     </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAAAEEBAIAAAAgAAIAAAAAAEAEAASAEEAAAAAAAAAA=</HashCode>
-      <FileName>Footballer.hpp</FileName>
+      <FileName>Team.hpp</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Football::Footballer">
@@ -101,7 +101,7 @@
   <Class Name="Football::Player">
     <Position X="3.25" Y="10.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAASAAAAAAAAAAAAAAAAAAAAAAQAEABA=</HashCode>
+      <HashCode>AAAAAAAAAAAIAASAAAAAAAAAAAAAAAAAAAAAAQAEABA=</HashCode>
       <FileName>Player.hpp</FileName>
     </TypeIdentifier>
   </Class>
@@ -183,7 +183,7 @@
     </TypeIdentifier>
   </Class>
   <Struct Name="Football::CollisionListener">
-    <Position X="16.75" Y="3.75" Width="1.5" />
+    <Position X="16.75" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
       <FileName>CollisionListener.hpp</FileName>
