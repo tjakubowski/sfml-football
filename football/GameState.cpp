@@ -88,7 +88,8 @@ namespace Football
 		createGoalkeeperBot(teamLeft);
 
 		// Footballers right
-		createPlayer(sf::Vector2f(600, 100), teamRight, {sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::D, sf::Keyboard::A});
+		// createStriker(sf::Vector2f(600, 100), teamRight);
+		createPlayer(sf::Vector2f(600, 100), teamRight, {sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::D, sf::Keyboard::A, sf::Keyboard::LShift});
 		createStriker(sf::Vector2f(600, 200), teamRight);
 		createGoalkeeperBot(teamRight);
 

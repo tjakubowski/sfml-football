@@ -14,7 +14,7 @@ namespace Football
 	{
 		move();
 
-		if (GameData::getInstance()->inputs.isPressed(sf::Keyboard::Space) && canShoot())
+		if (GameData::getInstance()->inputs.isPressed(keys.shoot) && canShoot())
 			shoot();
 	}
 

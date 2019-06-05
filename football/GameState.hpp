@@ -60,7 +60,7 @@ namespace Football
 		std::shared_ptr<Goal> createGoal(sf::Vector2f position, std::shared_ptr<Team> team);
 		std::shared_ptr<Striker> createStriker(sf::Vector2f position, std::shared_ptr<Team> team);
 		std::shared_ptr<Goalkeeper> createGoalkeeperBot(std::shared_ptr<Team> team);
-		std::shared_ptr<Player> createPlayer(sf::Vector2f position, std::shared_ptr<Team> team, AxisKeys keys = { sf::Keyboard::Up, sf::Keyboard::Down, sf::Keyboard::Right, sf::Keyboard::Left });
+		std::shared_ptr<Player> createPlayer(sf::Vector2f position, std::shared_ptr<Team> team, AxisKeys keys = { sf::Keyboard::Up, sf::Keyboard::Down, sf::Keyboard::Right, sf::Keyboard::Left, sf::Keyboard::Space });
 
 		void sortAllGameObjects();
 
