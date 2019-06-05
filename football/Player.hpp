@@ -7,8 +7,9 @@ namespace Football
 	{
 	private:
 		void move() const;
+		AxisKeys keys;
 	public:
-		Player(sf::Vector2f position, std::shared_ptr<Team> team);
+		Player(sf::Vector2f position, std::shared_ptr<Team> team, AxisKeys keys = {sf::Keyboard::Up, sf::Keyboard::Down, sf::Keyboard::Right, sf::Keyboard::Left});
 		~Player();
 		void update(float dt) override;
 	protected:

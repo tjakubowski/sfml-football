@@ -4,7 +4,6 @@ namespace Football
 {
 	InputManager::InputManager()
 	{
-		inputAxis = sf::Vector2f(0, 0);
 	}
 
 	InputManager::~InputManager()
@@ -13,32 +12,28 @@ namespace Football
 
 	void InputManager::update()
 	{
-		updateInputAxis();
 	}
 
-	void InputManager::updateInputAxis()
+	sf::Vector2f InputManager::getInputAxis(AxisKeys keysSetting) const
 	{
-		inputAxis = sf::Vector2f(0, 0);
+		auto inputAxis = sf::Vector2f(0, 0);
 
 		// Go left
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+		if (sf::Keyboard::isKeyPressed(keysSetting.left))
 			inputAxis.x = -1;
 
 		// Go right
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		else if (sf::Keyboard::isKeyPressed(keysSetting.right))
 			inputAxis.x = 1;
 
 		// Go up
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+		if (sf::Keyboard::isKeyPressed(keysSetting.up))
 			inputAxis.y = -1;
 
 		// Go down
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+		else if (sf::Keyboard::isKeyPressed(keysSetting.down))
 			inputAxis.y = 1;
-	}
 
-	sf::Vector2f InputManager::getInputAxis() const
-	{
 		return inputAxis;
 	}
 

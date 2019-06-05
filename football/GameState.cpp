@@ -88,7 +88,7 @@ namespace Football
 		createGoalkeeperBot(teamLeft);
 
 		// Footballers right
-		createStriker(sf::Vector2f(600, 100), teamRight);
+		createPlayer(sf::Vector2f(600, 100), teamRight, {sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::D, sf::Keyboard::A});
 		createStriker(sf::Vector2f(600, 200), teamRight);
 		createGoalkeeperBot(teamRight);
 
@@ -232,9 +232,9 @@ namespace Football
 		return goalkeeperBot;
 	}
 
-	std::shared_ptr<Player> GameState::createPlayer(sf::Vector2f position, std::shared_ptr<Team> team)
+	std::shared_ptr<Player> GameState::createPlayer(sf::Vector2f position, std::shared_ptr<Team> team, AxisKeys keys)
 	{
-		const auto player = std::make_shared<Player>(position, team);
+		const auto player = std::make_shared<Player>(position, team, keys);
 		team->addFootballer(player);
 		gameObjects.push_back(player);
 

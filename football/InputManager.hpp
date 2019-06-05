@@ -4,18 +4,23 @@
 
 namespace Football
 {
+	struct AxisKeys
+	{
+		sf::Keyboard::Key up;
+		sf::Keyboard::Key down;
+		sf::Keyboard::Key right;
+		sf::Keyboard::Key left;
+	};
+
 	class InputManager
 	{
-	private:
-		sf::Vector2f inputAxis;
-		void updateInputAxis();
 	public:
 		InputManager();
 		~InputManager();
 
 		void update();
 
-		sf::Vector2f getInputAxis() const;
+		sf::Vector2f getInputAxis(AxisKeys keysSetting = {sf::Keyboard::Up, sf::Keyboard::Down, sf::Keyboard::Right, sf::Keyboard::Left}) const;
 
 		bool isPressed(sf::Keyboard::Key key);
 		bool isClicked(sf::IntRect rect, sf::Mouse::Button button, sf::RenderWindow & window) const;
