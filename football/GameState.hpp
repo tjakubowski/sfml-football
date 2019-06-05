@@ -28,6 +28,7 @@ namespace Football
 		std::vector<std::shared_ptr<GameObject>> gameObjects;
 
 		sf::Clock clock;
+		bool multiplayer;
 		bool debug;
 		bool pause;
 		bool ended;
@@ -68,7 +69,7 @@ namespace Football
 		CollisionListener* listener;
 
 	public:
-		GameState();
+		GameState(const bool multiplayer = false);
 
 		void init() override;
 

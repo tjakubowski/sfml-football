@@ -3,7 +3,7 @@
 
 namespace Football
 {
-	UIItemPlay::UIItemPlay(sf::Vector2f centerAnchor, std::string textToDisplay, float bgPadding, unsigned fontSize, sf::Color color, sf::Color bgColor) : UIItem(centerAnchor, textToDisplay, bgPadding, fontSize, color, bgColor)
+	UIItemPlay::UIItemPlay(const bool multiplayer, sf::Vector2f centerAnchor, std::string textToDisplay, float bgPadding, unsigned fontSize, sf::Color color, sf::Color bgColor) : UIItem(centerAnchor, textToDisplay, bgPadding, fontSize, color, bgColor), multiplayer(multiplayer)
 	{
 	}
 
@@ -13,6 +13,6 @@ namespace Football
 
 	void UIItemPlay::onClick()
 	{
-		GameData::getInstance()->machine.AddState(StateRef(new GameState()));
+		GameData::getInstance()->machine.AddState(StateRef(new GameState(multiplayer)));
 	}
 }
