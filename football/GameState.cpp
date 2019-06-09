@@ -29,10 +29,6 @@ namespace Football
 		ended = false;
 		reset = false;
 
-		// Goals dimensions
-		goalWidth = 30.f;
-		goalHeight = 147.f;
-
 		// Set teams points
 		teamLeftPoints = 0;
 		teamRightPoints = 0;
@@ -86,12 +82,12 @@ namespace Football
 
 		// Goals
 		createGoal(
-			sf::Vector2f(10, 220),
+			sf::Vector2f(0, pitchSize.sidesHeightBig),
 			teamLeft
 		);
 
 		createGoal(
-			sf::Vector2f(GameData::getInstance()->window.getSize().x - 10 - goalWidth, 220),
+			sf::Vector2f(GameData::getInstance()->window.getSize().x - pitchSize.goalWidth, pitchSize.sidesHeightBig),
 			teamRight
 			);
 
@@ -106,7 +102,6 @@ namespace Football
 
 		// Footballers right
 		createPlayer(sf::Vector2f(600, 100), teamRight);
-		// createStriker(sf::Vector2f(600, 100), teamRight);
 		createStriker(sf::Vector2f(600, 200), teamRight);
 		createGoalkeeperBot(teamRight);
 
@@ -119,76 +114,76 @@ namespace Football
 		// top
 		createObstacle(
 			sf::Vector2f(0, 0),
-			sf::Vector2f(GameData::getInstance()->window.getSize().x, 15)
+			sf::Vector2f(GameData::getInstance()->window.getSize().x, pitchSize.topHeight)
 		);
 
 		// bottom
 		createObstacle(
-			sf::Vector2f(0, GameData::getInstance()->window.getSize().y - 15),
-			sf::Vector2f(GameData::getInstance()->window.getSize().x, 15)
+			sf::Vector2f(0, GameData::getInstance()->window.getSize().y - pitchSize.bottomHeight),
+			sf::Vector2f(GameData::getInstance()->window.getSize().x, pitchSize.bottomHeight)
 		);
 
 		// left
 		createObstacle(
 			sf::Vector2f(0, 0),
-			sf::Vector2f(10, GameData::getInstance()->window.getSize().y)
+			sf::Vector2f(pitchSize.sidesWidth, GameData::getInstance()->window.getSize().y)
 		);
 
 		// right
 		createObstacle(
-			sf::Vector2f(GameData::getInstance()->window.getSize().x - 10, 0),
-			sf::Vector2f(10, GameData::getInstance()->window.getSize().y)
+			sf::Vector2f(GameData::getInstance()->window.getSize().x - pitchSize.sidesWidth, 0),
+			sf::Vector2f(pitchSize.sidesWidth, GameData::getInstance()->window.getSize().y)
 		);
 
 		// top left
 		createObstacle(
 			sf::Vector2f(0, 0),
-			sf::Vector2f(40, 220)
+			sf::Vector2f(pitchSize.sidesWidthBig, pitchSize.sidesHeightBig)
 		);
 
 		// bottom left
 		createObstacle(
-			sf::Vector2f(0, 367),
-			sf::Vector2f(40, 220)
+			sf::Vector2f(0, pitchSize.sidesHeightBig + pitchSize.goalHeight),
+			sf::Vector2f(pitchSize.sidesWidthBig, pitchSize.sidesHeight)
 		);
 
 		// top right
 		createObstacle(
-			sf::Vector2f(GameData::getInstance()->window.getSize().x - 40, 0),
-			sf::Vector2f(40, 220)
+			sf::Vector2f(GameData::getInstance()->window.getSize().x - pitchSize.sidesWidthBig, 0),
+			sf::Vector2f(pitchSize.sidesWidthBig, pitchSize.sidesHeightBig)
 		);
 
 		// bottom right
 		createObstacle(
-			sf::Vector2f(GameData::getInstance()->window.getSize().x - 40, 367),
-			sf::Vector2f(40, 220)
+			sf::Vector2f(GameData::getInstance()->window.getSize().x - pitchSize.sidesWidthBig, pitchSize.sidesHeightBig + pitchSize.goalHeight),
+			sf::Vector2f(pitchSize.sidesWidthBig, pitchSize.sidesHeight)
 		);
 
 		// top left corner
 		createObstacle(
-			sf::Vector2f(25, 0),
-			sf::Vector2f(30, 30),
+			sf::Vector2f(pitchSize.sidesWidthBig, pitchSize.topHeight) - sf::Vector2f(1,1) * pitchSize.cornerSize / 2.f,
+			sf::Vector2f(1,1) * pitchSize.cornerSize,
 			45.f
 		);
 
 		// top right corner
 		createObstacle(
-			sf::Vector2f(GameData::getInstance()->window.getSize().x - 55, 0),
-			sf::Vector2f(30, 30),
+			sf::Vector2f(GameData::getInstance()->window.getSize().x - pitchSize.sidesWidthBig, pitchSize.topHeight) - sf::Vector2f(1, 1) * pitchSize.cornerSize / 2.f,
+			sf::Vector2f(1, 1) * pitchSize.cornerSize,
 			45.f
 		);
 
 		// bottom left corner
 		createObstacle(
-			sf::Vector2f(25, GameData::getInstance()->window.getSize().y - 30),
-			sf::Vector2f(30, 30),
+			sf::Vector2f(pitchSize.sidesWidthBig, GameData::getInstance()->window.getSize().y - pitchSize.bottomHeight) - sf::Vector2f(1, 1) * pitchSize.cornerSize / 2.f,
+			sf::Vector2f(1, 1) * pitchSize.cornerSize,
 			45.f
 		);
 
 		// bottom right corner
 		createObstacle(
-			sf::Vector2f(GameData::getInstance()->window.getSize().x - 55, GameData::getInstance()->window.getSize().y - 30),
-			sf::Vector2f(30, 30),
+			sf::Vector2f(GameData::getInstance()->window.getSize().x - pitchSize.sidesWidthBig, GameData::getInstance()->window.getSize().y - pitchSize.bottomHeight) - sf::Vector2f(1, 1) * pitchSize.cornerSize / 2.f,
+			sf::Vector2f(1, 1) * pitchSize.cornerSize,
 			45.f
 		);
 	}
@@ -229,8 +224,8 @@ namespace Football
 	{
 		const auto goal = std::make_shared<Goal>(
 			position,
-			goalWidth,
-			goalHeight,
+			pitchSize.goalWidth,
+			pitchSize.goalHeight,
 			team
 			);
 

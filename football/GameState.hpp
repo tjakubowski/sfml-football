@@ -37,8 +37,18 @@ namespace Football
 		sf::Texture backgroundTexture;
 		sf::Sprite background;
 
-		float goalWidth;
-		float goalHeight;
+		struct PitchSize
+		{
+			float sidesWidth = 11.f;
+			float sidesWidthBig = 43.f;
+			float sidesHeight = 235.f;
+			float sidesHeightBig = 303.f;
+			float bottomHeight = 17.f;
+			float topHeight = 86.f;
+			float goalWidth = 43.f;
+			float goalHeight = 158.f;
+			float cornerSize = 50.f;
+		} pitchSize;
 
 		std::unique_ptr<UIManager> uiManager;
 
