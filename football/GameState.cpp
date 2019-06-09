@@ -87,7 +87,7 @@ namespace Football
 		);
 
 		createGoal(
-			sf::Vector2f(GameData::getInstance()->window.getSize().x - pitchSize.goalWidth, pitchSize.sidesHeightBig),
+			sf::Vector2f(GameData::getInstance()->window.getSize().x - pitchSize.goalWidth / 1.5f, pitchSize.sidesHeightBig),
 			teamRight
 			);
 
@@ -224,7 +224,7 @@ namespace Football
 	{
 		const auto goal = std::make_shared<Goal>(
 			position,
-			pitchSize.goalWidth,
+			pitchSize.goalWidth / 1.5f,
 			pitchSize.goalHeight,
 			team
 			);
