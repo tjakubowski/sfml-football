@@ -23,7 +23,6 @@ namespace Football
 	void GameObject::draw()
 	{
 		sprite.setPosition(PHYSICS_SCALE * body->GetPosition().x, PHYSICS_SCALE * body->GetPosition().y);
-		sprite.setRotation(body->GetAngle() * 180 / b2_pi);
 		GameData::getInstance()->window.draw(sprite);
 	}
 
@@ -55,10 +54,15 @@ namespace Football
 		);
 	}
 
+	void GameObject::setSpriteTextureOrigin()
+	{
+		sprite.setOrigin(sprite.getGlobalBounds().width / 2, sprite.getGlobalBounds().height / 2);
+	}
+
 	void GameObject::setSpriteTexture(std::string textureName)
 	{
 		sprite.setTexture(GameData::getInstance()->assets.GetTexture(std::move(textureName)));
-		sprite.setOrigin(sprite.getGlobalBounds().width / 2, sprite.getGlobalBounds().height / 2);
+		setSpriteTextureOrigin();
 	}
 
 	bool operator<(std::shared_ptr<GameObject>& a, std::shared_ptr<GameObject>& b)

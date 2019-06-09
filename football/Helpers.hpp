@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/System/Vector2.hpp>
+#include <random>
 
 static double sqrMagnitude(sf::Vector2f vector)
 {
@@ -109,4 +110,16 @@ static sf::Vector2u rotate(sf::Vector2u vector, float angle)
 		vector.x * cos(angle) - vector.y * sin(angle),
 		vector.x * sin(angle) + vector.y * cos(angle)
 	);
+}
+
+static int randomBetween(int min, int max) {
+	static std::default_random_engine e{};
+	std::uniform_int_distribution<int > d(min, max);
+	return d(e);
+}
+
+static float randomBetween(float min, float max) {
+	static std::default_random_engine e{};
+	std::uniform_real_distribution<float> d(min, max);
+	return d(e);
 }

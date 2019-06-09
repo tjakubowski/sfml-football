@@ -1,8 +1,8 @@
 #pragma once
 #include <string>
 
-const int SCREEN_WIDTH = 936;
-const int SCREEN_HEIGHT = 587;
+const int SCREEN_WIDTH = 1001;
+const int SCREEN_HEIGHT = 696;
 
 const float SPLASH_STATE_SHOW_TIME = 1.0f;
 
@@ -10,10 +10,12 @@ const float PHYSICS_SCALE = 30.0f;
 
 const std::string TEX_SPLASH_SCREEN_BG = "Resources/res/images/splash_bg.jpg";
 const std::string TEX_MENU_BG = "Resources/res/images/menu_bg.png";
-const std::string TEX_FOOTBALL_PITCH = "Resources/res/images/football_pitch.png";
+const std::string TEX_PITCH = "Resources/res/images/pitch.png";
 const std::string TEX_FOOTBALLER_BLUE = "Resources/res/images/footballer_blue.png";
 const std::string TEX_FOOTBALLER_RED = "Resources/res/images/footballer_red.png";
-const std::string TEX_PLAYER = "Resources/res/images/player.png";
+const std::string TEX_FAN_BLUE = "Resources/res/images/fan_blue.png";
+const std::string TEX_FAN_RED = "Resources/res/images/fan_red.png";
+const std::string TEX_BENCH = "Resources/res/images/bench.png";
 const std::string TEX_BALL = "Resources/res/images/ball.png";
 
 const std::string FONT_ROBOTO_BLACK = "Resources/res/fonts/Roboto-Black.ttf";

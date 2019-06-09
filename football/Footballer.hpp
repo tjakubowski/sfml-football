@@ -29,6 +29,7 @@ namespace Football
 		void onCollision(GameObject* collisionObject) override;
 
 		void setGoalPart(int goalPartIndex);
+		float getBallDistanceSqr() const;
 		bool isNearBall() const;
 	};
 

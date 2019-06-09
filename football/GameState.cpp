@@ -2,6 +2,7 @@
 #include "UIItemExit.hpp"
 #include "UIItemPlay.hpp"
 #include "UIItemMenu.hpp"
+#include "FansBench.hpp"
 
 namespace Football
 {
@@ -11,17 +12,19 @@ namespace Football
 
 	void GameState::init()
 	{
-		GameData::getInstance()->assets.LoadTexture("Football pitch", TEX_FOOTBALL_PITCH);
-		GameData::getInstance()->assets.LoadTexture("Footballer blue", TEX_FOOTBALLER_BLUE);
-		GameData::getInstance()->assets.LoadTexture("Footballer red", TEX_FOOTBALLER_RED);
-		GameData::getInstance()->assets.LoadTexture("Player", TEX_PLAYER);
-		GameData::getInstance()->assets.LoadTexture("Ball", TEX_BALL);
+		GameData::getInstance()->assets.LoadTexture("pitch", TEX_PITCH);
+		GameData::getInstance()->assets.LoadTexture("footballer_blue", TEX_FOOTBALLER_BLUE);
+		GameData::getInstance()->assets.LoadTexture("footballer_red", TEX_FOOTBALLER_RED);
+		GameData::getInstance()->assets.LoadTexture("fan_blue", TEX_FAN_BLUE);
+		GameData::getInstance()->assets.LoadTexture("fan_red", TEX_FAN_RED);
+		GameData::getInstance()->assets.LoadTexture("ball", TEX_BALL);
+		GameData::getInstance()->assets.LoadTexture("bench", TEX_BENCH);
 
 		GameData::getInstance()->assets.LoadFont("RobotoMedium", FONT_ROBOTO_MEDIUM);
 
-		background.setTexture(GameData::getInstance()->assets.GetTexture("Football pitch"));
+		background.setTexture(GameData::getInstance()->assets.GetTexture("pitch"));
 
-		debug = false;
+		debug = true;
 		pause = false;
 		ended = false;
 		reset = false;
@@ -66,6 +69,16 @@ namespace Football
 		// Teams
 		teamLeft = std::make_shared<Team>(Team::Side::Left);
 		teamRight = std::make_shared<Team>(Team::Side::Right);
+
+		// Fans
+		gameObjects.push_back(std::make_shared<FansBench>(sf::Vector2f(140, 30), Team::Side::Left));
+		gameObjects.push_back(std::make_shared<FansBench>(sf::Vector2f(140, 55), Team::Side::Left));
+		gameObjects.push_back(std::make_shared<FansBench>(sf::Vector2f(320, 30), Team::Side::Left));
+		gameObjects.push_back(std::make_shared<FansBench>(sf::Vector2f(320, 55), Team::Side::Left));
+		gameObjects.push_back(std::make_shared<FansBench>(sf::Vector2f(GameData::getInstance()->window.getSize().x - 140, 30), Team::Side::Right));
+		gameObjects.push_back(std::make_shared<FansBench>(sf::Vector2f(GameData::getInstance()->window.getSize().x - 140, 55), Team::Side::Right));
+		gameObjects.push_back(std::make_shared<FansBench>(sf::Vector2f(GameData::getInstance()->window.getSize().x - 320, 30), Team::Side::Right));
+		gameObjects.push_back(std::make_shared<FansBench>(sf::Vector2f(GameData::getInstance()->window.getSize().x - 320, 55), Team::Side::Right));
 
 		// Ball
 		ball = std::make_shared<Ball>(sf::Vector2f(GameData::getInstance()->window.getSize().x, GameData::getInstance()->window.getSize().y) / 2.f);

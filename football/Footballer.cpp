@@ -1,14 +1,16 @@
 #include "Footballer.hpp"
 #include "GameState.hpp"
+#include "FootballerRaycastCallback.hpp"
 
 namespace Football
 {
-	Footballer::Footballer(sf::Vector2f position, std::shared_ptr<Team> team) : GameObject(position, b2BodyType::b2_dynamicBody), team(team)
+	Footballer::Footballer(sf::Vector2f position, std::shared_ptr<Team> team) : GameObject(position, b2_dynamicBody), team(team)
 	{
-		if(team->getSide() == Team::Side::Left)
-			GameObject::setSpriteTexture("Footballer blue");
+		if (team->getSide() == Team::Side::Left)
+			animation = std::make_unique<Animation>("footballer_blue", &sprite, 3, .1f);
 		else
-			GameObject::setSpriteTexture("Footballer red");
+			animation = std::make_unique<Animation>("footballer_red", &sprite, 3, .1f);
+
 		maxSpeed = 6.0f;
 		tag = "footballer";
 		nearBallDistance = 70;
@@ -35,6 +37,7 @@ namespace Football
 
 	void Footballer::update(float dt)
 	{
+		animation->update(dt);
 	}
 
 	void Footballer::onCollision(GameObject* collisionObject)
@@ -46,11 +49,23 @@ namespace Football
 		goalPart = goalPartIndex;
 	}
 
-	bool Footballer::isCloseToBall() const
+	float Footballer::getBallDistanceSqr() const
 	{
 		const auto ball = dynamic_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get())->getBall();
 
-		return sqrMagnitude(ball->getPosition() - getPosition()) <= ballShootDistance * ballShootDistance;
+		FootballerRaycastCallback cb;
+		b2Vec2 myPos(getPosition().x / PHYSICS_SCALE, getPosition().y / PHYSICS_SCALE);
+		b2Vec2 ballPos(ball->getPosition().x / PHYSICS_SCALE, ball->getPosition().y / PHYSICS_SCALE);
+
+		dynamic_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get())
+			->getWorld()->RayCast(&cb, myPos, ballPos);
+
+		return sqrMagnitude(ball->getPosition() - getPosition());
+	}
+
+	bool Footballer::isCloseToBall() const
+	{
+		return getBallDistanceSqr() <= ballShootDistance * ballShootDistance;
 	}
 
 	bool Footballer::isInShootDistance() const
@@ -67,8 +82,6 @@ namespace Football
 
 	bool Footballer::isNearBall() const
 	{
-		const auto ball = dynamic_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get())->getBall();
-		const auto distance = sqrMagnitude(ball->getPosition() - getPosition());
-		return distance <= nearBallDistance * nearBallDistance;
+		return getBallDistanceSqr() <= nearBallDistance * nearBallDistance;
 	}
 }

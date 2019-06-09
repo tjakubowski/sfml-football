@@ -14,10 +14,4 @@ namespace Football
 		gameObjectA->onCollision(gameObjectB);
 		gameObjectB->onCollision(gameObjectA);
 	}
-
-	void CollisionListener::EndContact(b2Contact* contact)
-	{
-		b2Fixture * fixtureA = contact->GetFixtureA();
-		b2Fixture * fixtureB = contact->GetFixtureB();
-	}
 }

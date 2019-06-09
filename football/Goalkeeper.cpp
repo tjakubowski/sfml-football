@@ -26,10 +26,9 @@ namespace Football
 
 	void Goalkeeper::update(float dt)
 	{
-		moveTowards(calculateGoalkeeperPosition());
+		Bot::update(dt);
 
-		// if (canShoot())
-			// shoot();
+		moveTowards(calculateGoalkeeperPosition());
 	}
 
 	bool Goalkeeper::canShoot()

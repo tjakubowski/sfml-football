@@ -143,7 +143,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="Fan.cpp" />
+    <ClCompile Include="FansBench.cpp" />
+    <ClCompile Include="FootballerRaycastCallback.cpp" />
     <ClCompile Include="Striker.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Bot.cpp" />
@@ -172,7 +176,11 @@
     <ClCompile Include="UIManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.hpp" />
     <ClInclude Include="AssetManager.hpp" />
+    <ClInclude Include="Fan.hpp" />
+    <ClInclude Include="FansBench.hpp" />
+    <ClInclude Include="FootballerRaycastCallback.hpp" />
     <ClInclude Include="Striker.hpp" />
     <ClInclude Include="Ball.hpp" />
     <ClInclude Include="Bot.hpp" />

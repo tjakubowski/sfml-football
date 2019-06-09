@@ -3,19 +3,23 @@
 #include "DEFINITIONS.hpp"
 #include "Helpers.hpp"
 #include <Box2D/Box2D.h>
+#include "Animation.hpp"
 
 namespace Football
 {
 	class GameObject
 	{
 	protected:
+
 		sf::Vector2f startPosition;
 		float maxSpeed;
+		std::unique_ptr<Animation> animation;
 		sf::Sprite sprite;
 		std::string tag;
 		b2Body* body;
 
 		virtual void setSpriteTexture(std::string textureName);
+		virtual void setSpriteTextureOrigin();
 	public:
 		GameObject(sf::Vector2f position, b2BodyType bodyType = b2_dynamicBody);
 		virtual ~GameObject() = default;

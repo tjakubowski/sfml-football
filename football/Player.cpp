@@ -12,6 +12,8 @@ namespace Football
 
 	void Player::update(float dt)
 	{
+		Footballer::update(dt);
+
 		move();
 
 		if (GameData::getInstance()->inputs.isPressed(keys.shoot) && canShoot())

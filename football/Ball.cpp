@@ -2,11 +2,11 @@
 
 namespace Football
 {
-	Ball::Ball(sf::Vector2f position) : GameObject(position, b2BodyType::b2_dynamicBody)
+	Ball::Ball(sf::Vector2f position) : GameObject(position, b2_dynamicBody)
 	{
 		tag = "ball";
 
-		GameObject::setSpriteTexture("Ball");
+		GameObject::setSpriteTexture("ball");
 		maxSpeed = 6.5f;
 
 		b2CircleShape shape;
