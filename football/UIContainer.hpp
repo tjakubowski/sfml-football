@@ -5,13 +5,13 @@
 
 namespace Football
 {
-	class UIManager
+	class UIContainer
 	{
 	private:
 		std::vector<std::shared_ptr<UIItem>> uiItems;
 	public:
-		UIManager();
-		~UIManager();
+		UIContainer();
+		~UIContainer();
 
 		void addUIItem(std::shared_ptr<UIItem> item);
 		void update();

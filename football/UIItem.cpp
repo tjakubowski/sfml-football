@@ -1,13 +1,15 @@
 #include "UIItem.hpp"
+#include <utility>
 
 namespace Football
 {
-	UIItem::UIItem(sf::Vector2f centerAnchor, std::string textToDisplay, float bgPadding, unsigned fontSize, sf::Color color, sf::Color bgColor) : centerAnchor(centerAnchor)
+	UIItem::UIItem(sf::Vector2f centerAnchor, std::string textToDisplay, unsigned fontSize, sf::Color color, std::string fontName, float bgPadding, sf::Color bgColor) : centerAnchor(centerAnchor)
 	{
+		clickable = true;
 		background = nullptr;
 
 		text = std::make_unique<sf::Text>();
-		text->setFont(GameData::getInstance()->assets.GetFont("RobotoMedium"));
+		text->setFont(GameData::getInstance()->assets.GetFont(std::move(fontName)));
 		text->setCharacterSize(fontSize);
 		text->setFillColor(color);
 		text->setString(textToDisplay);
@@ -29,6 +31,9 @@ namespace Football
 
 	void UIItem::update()
 	{
+		if (!clickable)
+			return;
+
 		const auto textRect = sf::IntRect(text->getPosition().x, text->getPosition().y, text->getGlobalBounds().width, text->getGlobalBounds().height);
 
 		if (GameData::getInstance()->inputs.isClicked(textRect, sf::Mouse::Button::Left, GameData::getInstance()->window))

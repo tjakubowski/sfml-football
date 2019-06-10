@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "State.hpp"
 #include "Game.hpp"
-#include "UIManager.hpp"
+#include "UIContainer.hpp"
 
 namespace Football
 {
@@ -15,7 +15,7 @@ namespace Football
 		sf::Texture _backgroundTexture;
 		sf::Sprite _background;
 
-		std::unique_ptr<UIManager> uiManager;
+		std::unique_ptr<UIContainer> uiManager;
 
 		void initUI();
 

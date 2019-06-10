@@ -1,35 +1,26 @@
 #include "ScorePrinter.hpp"
+#include "GameState.hpp"
 
 namespace Football
 {
-	ScorePrinter::ScorePrinter(int a, int b)
+	ScorePrinter::ScorePrinter(sf::Vector2f centerAnchor, std::string textToDisplay, unsigned fontSize, sf::Color color, std::string fontName, float bgPadding, sf::Color bgColor) : UIItem(centerAnchor, textToDisplay, fontSize, color, fontName, bgPadding, bgColor)
 	{
-		scoreText = std::make_shared<sf::Text>();
+		clickable = false;
+
 		stringStream = std::make_unique<std::stringstream>();
-
-		scoreText->setFont(GameData::getInstance()->assets.GetFont("RobotoMedium"));
-		scoreText->setCharacterSize(18);
-		scoreText->setFillColor(sf::Color::White);
-
-		update(a, b);
 	}
 
 	ScorePrinter::~ScorePrinter()
 	{
 	}
 
-	void ScorePrinter::update(int a, int b)
+	void ScorePrinter::update(int a, int b) const
 	{
 		stringStream->str(std::string());
 		*stringStream << a << " : " << b;
 
-		scoreText->setString(stringStream->str());
-		scoreText->setPosition( 10, 0);
-	}
+		text->setString(stringStream->str());
 
-	void ScorePrinter::draw()
-	{
-		GameData::getInstance()->window.draw(*scoreText.get());
+		text->setPosition(centerAnchor - sf::Vector2f(text->getGlobalBounds().width, text->getGlobalBounds().height) / 2.f);
 	}
-
 }

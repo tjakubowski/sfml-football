@@ -18,6 +18,7 @@ namespace Football
 		GameData::getInstance()->assets.LoadTexture("Menu background", TEX_MENU_BG);
 
 		GameData::getInstance()->assets.LoadFont("RobotoMedium", FONT_ROBOTO_MEDIUM);
+		GameData::getInstance()->assets.LoadFont("RobotoBlack", FONT_ROBOTO_BLACK);
 
 		_background.setTexture(GameData::getInstance()->assets.GetTexture("Menu background"));
 
@@ -27,7 +28,7 @@ namespace Football
 	void MenuState::initUI()
 	{
 		const auto windowCenter = GameData::getInstance()->window.getSize().x / 2.f;
-		uiManager = std::make_unique<UIManager>();
+		uiManager = std::make_unique<UIContainer>();
 
 		uiManager->addUIItem(std::make_shared<UIItemPlay>(
 			false,

@@ -1,16 +1,13 @@
 #include "MatchTimer.hpp"
+#include "GameState.hpp"
 
 namespace Football
 {
-	MatchTimer::MatchTimer()
+	MatchTimer::MatchTimer(sf::Vector2f centerAnchor, std::string textToDisplay, unsigned fontSize, sf::Color color, std::string fontName, float bgPadding, sf::Color bgColor) : UIItem(centerAnchor, textToDisplay, fontSize, color, fontName, bgPadding, bgColor)
 	{
-		scoreText = std::make_shared<sf::Text>();
+		clickable = false;
+
 		stringStream = std::make_unique<std::stringstream>();
-
-		scoreText->setFont(GameData::getInstance()->assets.GetFont("RobotoMedium"));
-		scoreText->setCharacterSize(18);
-		scoreText->setFillColor(sf::Color::White);
-
 		matchDuration = 60;
 		timeLeft = matchDuration;
 		matchStartTime = static_cast<int>(clock.getElapsedTime().asSeconds());
@@ -23,6 +20,8 @@ namespace Football
 
 	void MatchTimer::update()
 	{
+		UIItem::update();
+
 		stringStream->str(std::string());
 
 		timeLeft = matchDuration - static_cast<int>(clock.getElapsedTime().asSeconds()) - matchStartTime;
@@ -31,19 +30,14 @@ namespace Football
 
 		*stringStream << std::setfill('0') << std::setw(2) << minutesLeft << ":" << std::setfill('0') << std::setw(2) << secondsLeft;
 
-		scoreText->setString(stringStream->str());
-		scoreText->setPosition(GameData::getInstance()->window.getSize().x - scoreText->getGlobalBounds().width - 10, 0);
+		text->setString(stringStream->str());
+		text->setPosition(centerAnchor - sf::Vector2f(text->getGlobalBounds().width, text->getGlobalBounds().height) / 2.f);
 
 		if (timeLeft == 0)
 		{
 			const auto gameState = dynamic_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get());
 			gameState->endGame();
 		}
-	}
-
-	void MatchTimer::draw() const
-	{
-		GameData::getInstance()->window.draw(*scoreText.get());
 	}
 
 	void MatchTimer::stop()

@@ -84,12 +84,6 @@
     <ClCompile Include="Team.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ScorePrinter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MatchTimer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Goal.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
@@ -108,9 +102,6 @@
     <ClCompile Include="UIItemPlay.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
-    <ClCompile Include="UIManager.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
     <ClCompile Include="Striker.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
@@ -125,6 +116,15 @@
     </ClCompile>
     <ClCompile Include="Fan.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UIContainer.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="MatchTimer.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="ScorePrinter.cpp">
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -188,17 +188,8 @@
     <ClInclude Include="Team.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ScorePrinter.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MatchTimer.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Goalkeeper.hpp">
       <Filter>Header Files\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="UIManager.hpp">
-      <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="UIItem.hpp">
       <Filter>Header Files\UI</Filter>
@@ -226,6 +217,15 @@
     </ClInclude>
     <ClInclude Include="Fan.hpp">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UIContainer.hpp">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchTimer.hpp">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="ScorePrinter.hpp">
+      <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

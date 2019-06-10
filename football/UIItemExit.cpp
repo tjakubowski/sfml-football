@@ -2,7 +2,7 @@
 
 namespace Football
 {
-	UIItemExit::UIItemExit(sf::Vector2f centerAnchor, std::string textToDisplay, float bgPadding, unsigned fontSize, sf::Color color, sf::Color bgColor) : UIItem(centerAnchor, textToDisplay, bgPadding, fontSize, color, bgColor)
+	UIItemExit::UIItemExit(sf::Vector2f centerAnchor, std::string textToDisplay, unsigned fontSize, sf::Color color, std::string fontName, float bgPadding, sf::Color bgColor) : UIItem(centerAnchor, textToDisplay, fontSize, color, fontName, bgPadding, bgColor)
 	{
 	}
 

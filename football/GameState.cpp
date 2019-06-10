@@ -2,7 +2,8 @@
 #include "UIItemExit.hpp"
 #include "UIItemPlay.hpp"
 #include "UIItemMenu.hpp"
-#include "FansBench.hpp"
+#include "MatchTimer.hpp"
+#include "ScorePrinter.hpp"
 
 namespace Football
 {
@@ -21,10 +22,11 @@ namespace Football
 		GameData::getInstance()->assets.LoadTexture("bench", TEX_BENCH);
 
 		GameData::getInstance()->assets.LoadFont("RobotoMedium", FONT_ROBOTO_MEDIUM);
+		GameData::getInstance()->assets.LoadFont("RobotoBlack", FONT_ROBOTO_BLACK);
 
 		background.setTexture(GameData::getInstance()->assets.GetTexture("pitch"));
 
-		debug = true;
+		debug = false;
 		pause = false;
 		ended = false;
 		reset = false;
@@ -32,12 +34,6 @@ namespace Football
 		// Set teams points
 		teamLeftPoints = 0;
 		teamRightPoints = 0;
-
-		// Set match timer
-		matchTimer = std::make_unique<MatchTimer>();
-
-		// Set Score Printer
-		scorePrinter = std::make_unique<ScorePrinter>(teamLeftPoints, teamRightPoints);
 
 		// Set Box2D world
 		world = std::make_shared<b2World>(b2Vec2(0.f, 0.f));
@@ -191,33 +187,53 @@ namespace Football
 	void GameState::initUI()
 	{
 		const auto windowCenter = GameData::getInstance()->window.getSize().x / 2.f;
-		uiManager = std::make_unique<UIManager>();
+		menuManager = std::make_unique<UIContainer>();
 
-		uiManager->addUIItem(std::make_shared<UIItemPlay>(
+		menuManager->addUIItem(std::make_shared<UIItemPlay>(
 			false,
 			sf::Vector2f(windowCenter, 200),
 			"Graj z komputerem",
 			20.f
 			));
 
-		uiManager->addUIItem(std::make_shared<UIItemPlay>(
+		menuManager->addUIItem(std::make_shared<UIItemPlay>(
 			true,
 			sf::Vector2f(windowCenter, 300),
 			"Graj z innym graczem",
 			20.f
 			));
 
-		uiManager->addUIItem(std::make_shared<UIItemMenu>(
+		menuManager->addUIItem(std::make_shared<UIItemMenu>(
 			sf::Vector2f(windowCenter, 400),
 			"Menu",
 			20.f
 			));
 
-		uiManager->addUIItem(std::make_shared<UIItemExit>(
+		menuManager->addUIItem(std::make_shared<UIItemExit>(
 			sf::Vector2f(windowCenter, 500),
 			"Wyjdz",
 			20.f
 			));
+
+
+		uiManager = std::make_unique<UIContainer>();
+
+		scorePrinter = std::make_shared<ScorePrinter>(
+			sf::Vector2f(windowCenter, 25),
+			"0:0",
+			36.f,
+			sf::Color::White
+			);
+		uiManager->addUIItem(scorePrinter);
+		scorePrinter->update(teamLeftPoints, teamRightPoints);
+
+		matchTimer = std::make_shared<MatchTimer>(
+			sf::Vector2f(windowCenter, 55),
+			"00:00",
+			18.f,
+			sf::Color::White
+			);
+		uiManager->addUIItem(matchTimer);
 	}
 
 	std::shared_ptr<Goal> GameState::createGoal(sf::Vector2f position, std::shared_ptr<Team> team)
@@ -311,7 +327,7 @@ namespace Football
 
 		if(ended || pause)
 		{
-			uiManager->update();
+			menuManager->update();
 			return;
 		}
 
@@ -320,12 +336,12 @@ namespace Football
 		for(auto& gameObject : gameObjects)
 			gameObject->update(dt);
 
-		matchTimer->update();
 		world->Step(dt, 8, 3);
+
+		uiManager->update();
 
 		if(reset && !world->IsLocked())
 			resetGameObjectsPositions();
-
 	}
 
 	void GameState::draw(float dt)
@@ -340,12 +356,10 @@ namespace Football
 		if(debug)
 			world->DrawDebugData();
 
-		matchTimer->draw();
-		scorePrinter->draw();
-
 		if (ended || pause)
-			uiManager->draw();
+			menuManager->draw();
 
+		uiManager->draw();
 		GameData::getInstance()->window.display();
 	}
 
@@ -391,14 +405,6 @@ namespace Football
 	void GameState::endGame()
 	{
 		ended = true;
-		std::stringstream ss;
-		ss << teamLeftPoints << ":" << teamRightPoints;
-
-		uiManager->addUIItem(std::make_shared<UIItem>(
-			sf::Vector2f(GameData::getInstance()->window.getSize().x / 2.f, 100),
-			ss.str(),
-			20.f
-			));
 	}
 
 	void GameState::sortAllGameObjects()

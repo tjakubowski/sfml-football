@@ -1,18 +1,16 @@
 #pragma once
-#include <SFML/Graphics/Text.hpp>
-#include "GameState.hpp"
+#include "UIItem.hpp"
 #include <sstream>
 
 namespace Football
 {
-	class ScorePrinter
+	class ScorePrinter : public UIItem
 	{
-		std::shared_ptr<sf::Text> scoreText;
+	private:
 		std::unique_ptr<std::stringstream> stringStream;
 	public:
-		ScorePrinter(const int a, const int b);
+		ScorePrinter(sf::Vector2f centerAnchor, std::string textToDisplay, unsigned fontSize = 20, sf::Color color = sf::Color::Black, std::string fontName = "RobotoBlack", float bgPadding = 0, sf::Color bgColor = sf::Color::White);
 		~ScorePrinter();
-		void update(const int a, const int b);
-		void draw();
+		void update(const int a, const int b) const;
 	};
 }

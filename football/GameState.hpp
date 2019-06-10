@@ -11,17 +11,15 @@
 #include "Ball.hpp"
 #include "Goal.hpp"
 #include "Team.hpp"
+#include "FansBench.hpp"
 #include "CollisionListener.hpp"
 #include "SFMLDebugDraw.h"
-#include "ScorePrinter.hpp"
 #include "MatchTimer.hpp"
-#include "UIManager.hpp"
+#include "ScorePrinter.hpp"
+#include "UIContainer.hpp"
 
 namespace Football
 {
-	class ScorePrinter;
-	class MatchTimer;
-
 	class GameState : public State
 	{
 	private:
@@ -50,10 +48,11 @@ namespace Football
 			float cornerSize = 50.f;
 		} pitchSize;
 
-		std::unique_ptr<UIManager> uiManager;
+		std::unique_ptr<UIContainer> menuManager;
+		std::unique_ptr<UIContainer> uiManager;
 
-		std::unique_ptr<MatchTimer> matchTimer;
-		std::unique_ptr<ScorePrinter> scorePrinter;
+		std::shared_ptr<MatchTimer> matchTimer;
+		std::shared_ptr<ScorePrinter> scorePrinter;
 		std::shared_ptr<b2World> world;
 
 		std::shared_ptr<Ball> ball;

@@ -148,6 +148,7 @@
     <ClCompile Include="Fan.cpp" />
     <ClCompile Include="FansBench.cpp" />
     <ClCompile Include="FootballerRaycastCallback.cpp" />
+    <ClCompile Include="ScorePrinter.cpp" />
     <ClCompile Include="Striker.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Bot.cpp" />
@@ -165,7 +166,6 @@
     <ClCompile Include="CollisionListener.cpp" />
     <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="ScorePrinter.cpp" />
     <ClCompile Include="SFMLDebugDraw.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Team.cpp" />
@@ -173,7 +173,7 @@
     <ClCompile Include="UIItemExit.cpp" />
     <ClCompile Include="UIItemMenu.cpp" />
     <ClCompile Include="UIItemPlay.cpp" />
-    <ClCompile Include="UIManager.cpp" />
+    <ClCompile Include="UIContainer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.hpp" />
@@ -181,6 +181,7 @@
     <ClInclude Include="Fan.hpp" />
     <ClInclude Include="FansBench.hpp" />
     <ClInclude Include="FootballerRaycastCallback.hpp" />
+    <ClInclude Include="ScorePrinter.hpp" />
     <ClInclude Include="Striker.hpp" />
     <ClInclude Include="Ball.hpp" />
     <ClInclude Include="Bot.hpp" />
@@ -199,7 +200,6 @@
     <ClInclude Include="CollisionListener.hpp" />
     <ClInclude Include="Obstacle.hpp" />
     <ClInclude Include="Player.hpp" />
-    <ClInclude Include="ScorePrinter.hpp" />
     <ClInclude Include="SFMLDebugDraw.h" />
     <ClInclude Include="State.hpp" />
     <ClInclude Include="StateMachine.hpp" />
@@ -208,7 +208,7 @@
     <ClInclude Include="UIItemExit.hpp" />
     <ClInclude Include="UIItemMenu.hpp" />
     <ClInclude Include="UIItemPlay.hpp" />
-    <ClInclude Include="UIManager.hpp" />
+    <ClInclude Include="UIContainer.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\SplashBg.jpg" />
