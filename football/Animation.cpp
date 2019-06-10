@@ -5,9 +5,9 @@
 namespace Football
 {
 
-	Animation::Animation(std::string textureName, sf::Sprite* sprite, int columns, float switchTime) : sprite(sprite), columns(columns), switchTime(switchTime)
+	Animation::Animation(std::string textureName, sf::Sprite* sprite, int columns, float switchTime, float presetCurrentTime) : sprite(sprite), columns(columns), switchTime(switchTime)
 	{
-		currentTime = 0;
+		currentTime = presetCurrentTime;
 		currentColumn = 0;
 
 		this->sprite->setTexture(GameData::getInstance()->assets.GetTexture(std::move(textureName)));
