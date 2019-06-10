@@ -7,7 +7,7 @@ namespace Football
 		tag = "ball";
 
 		GameObject::setSpriteTexture("ball");
-		maxSpeed = 6.5f;
+		damping = 6.5f;
 
 		b2CircleShape shape;
 		shape.m_radius = sprite.getGlobalBounds().width / (2 * PHYSICS_SCALE);
@@ -18,7 +18,7 @@ namespace Football
 		fixtureDef.friction = 0.2f;
 		fixtureDef.shape = &shape;
 		body->CreateFixture(&fixtureDef);
-		body->SetLinearDamping(maxSpeed);
+		body->SetLinearDamping(damping);
 	}
 
 	Ball::~Ball()

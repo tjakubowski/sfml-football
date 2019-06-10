@@ -12,7 +12,7 @@ namespace Football
 	protected:
 
 		sf::Vector2f startPosition;
-		float maxSpeed;
+		float damping;
 		std::unique_ptr<Animation> animation;
 		sf::Sprite sprite;
 		std::string tag;

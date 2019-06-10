@@ -32,6 +32,13 @@ namespace Football
 		}
 	}
 
+	void Animation::reset()
+	{
+		currentTime = 0;
+		currentColumn = 0;
+		updateTexturePosition();
+	}
+
 	void Animation::updateTexturePosition() const
 	{
 		const auto textureWidth = sprite->getTexture()->getSize().x;

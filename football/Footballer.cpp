@@ -11,7 +11,7 @@ namespace Football
 		else
 			animation = std::make_unique<Animation>("footballer_red", &sprite, 3, .1f);
 
-		maxSpeed = 6.0f;
+		damping = 6.0f;
 		tag = "footballer";
 		nearBallDistance = 70;
 		shootZoneDistance = 250;
@@ -27,7 +27,7 @@ namespace Football
 		fixtureDef.friction = 0.2f;
 		fixtureDef.shape = &shape;
 		body->CreateFixture(&fixtureDef);
-		body->SetLinearDamping(maxSpeed);
+		body->SetLinearDamping(damping);
 	}
 
 	Footballer::~Footballer()
@@ -37,7 +37,10 @@ namespace Football
 
 	void Footballer::update(float dt)
 	{
-		animation->update(dt);
+		if (body->GetLinearVelocity().Length() > 1.f)
+			animation->update(dt);
+		else
+			animation->reset();
 	}
 
 	void Footballer::onCollision(GameObject* collisionObject)

@@ -20,5 +20,6 @@ namespace Football
 		Animation(std::string textureName, sf::Sprite* sprite, int columns, float switchTime, float presetCurrentTime = 0);
 		~Animation();
 		void update(float dt);
+		void reset();
 	};
 }
