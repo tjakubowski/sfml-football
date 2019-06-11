@@ -7,7 +7,6 @@ namespace Football
 	{
 		clickable = false;
 
-		stringStream = std::make_unique<std::stringstream>();
 		matchDuration = 60;
 		timeLeft = matchDuration;
 		matchStartTime = static_cast<int>(clock.getElapsedTime().asSeconds());

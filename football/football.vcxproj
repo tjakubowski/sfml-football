@@ -148,7 +148,10 @@
     <ClCompile Include="Fan.cpp" />
     <ClCompile Include="FansBench.cpp" />
     <ClCompile Include="FootballerRaycastCallback.cpp" />
+    <ClCompile Include="ScoreManager.cpp" />
     <ClCompile Include="ScorePrinter.cpp" />
+    <ClCompile Include="ScoresState.cpp" />
+    <ClCompile Include="State.cpp" />
     <ClCompile Include="Striker.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Bot.cpp" />
@@ -174,6 +177,7 @@
     <ClCompile Include="UIItemMenu.cpp" />
     <ClCompile Include="UIItemPlay.cpp" />
     <ClCompile Include="UIContainer.cpp" />
+    <ClCompile Include="UIItemScores.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.hpp" />
@@ -181,7 +185,9 @@
     <ClInclude Include="Fan.hpp" />
     <ClInclude Include="FansBench.hpp" />
     <ClInclude Include="FootballerRaycastCallback.hpp" />
+    <ClInclude Include="ScoreManager.hpp" />
     <ClInclude Include="ScorePrinter.hpp" />
+    <ClInclude Include="ScoresState.hpp" />
     <ClInclude Include="Striker.hpp" />
     <ClInclude Include="Ball.hpp" />
     <ClInclude Include="Bot.hpp" />
@@ -209,9 +215,7 @@
     <ClInclude Include="UIItemMenu.hpp" />
     <ClInclude Include="UIItemPlay.hpp" />
     <ClInclude Include="UIContainer.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Resources\SplashBg.jpg" />
+    <ClInclude Include="UIItemScores.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

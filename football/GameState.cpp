@@ -296,25 +296,6 @@ namespace Football
 		return gameObjects;
 	}
 
-	void GameState::handleInput()
-	{
-		sf::Event event;
-
-		GameData::getInstance()->inputs.updateKeyEvents();
-
-		while (GameData::getInstance()->window.pollEvent(event))
-		{
-			if (sf::Event::Closed == event.type)
-				GameData::getInstance()->window.close();
-
-			if (sf::Event::KeyPressed == event.type)
-				GameData::getInstance()->inputs.addKeyEvent(event.key.code);
-
-			if (sf::Event::KeyReleased == event.type)
-				GameData::getInstance()->inputs.removeKeyEvent(event.key.code);
-		}
-	}
-
 	void GameState::update(float dt)
 	{
 		if(GameData::getInstance()->inputs.getKeyDown(sf::Keyboard::Key::F1))
@@ -410,6 +391,7 @@ namespace Football
 	void GameState::endGame()
 	{
 		ended = true;
+		GameData::getInstance()->scores.addScore(teamLeftPoints, teamRightPoints);
 	}
 
 	void GameState::sortAllGameObjects()

@@ -11,6 +11,7 @@ namespace Football
 		std::unique_ptr<sf::Text> text;
 		std::unique_ptr<sf::RectangleShape> background;
 		sf::Vector2f centerAnchor;
+		std::unique_ptr<std::stringstream> stringStream;
 	public:
 		UIItem(sf::Vector2f centerAnchor, std::string textToDisplay, unsigned int fontSize = 20, sf::Color color = sf::Color::Black, std::string fontName = "RobotoBlack", float bgPadding = 0, sf::Color bgColor = sf::Color::White);
 		~UIItem();

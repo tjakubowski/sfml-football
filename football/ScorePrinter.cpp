@@ -6,8 +6,6 @@ namespace Football
 	ScorePrinter::ScorePrinter(sf::Vector2f centerAnchor, std::string textToDisplay, unsigned fontSize, sf::Color color, std::string fontName, float bgPadding, sf::Color bgColor) : UIItem(centerAnchor, textToDisplay, fontSize, color, fontName, bgPadding, bgColor)
 	{
 		clickable = false;
-
-		stringStream = std::make_unique<std::stringstream>();
 	}
 
 	ScorePrinter::~ScorePrinter()

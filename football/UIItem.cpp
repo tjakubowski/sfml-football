@@ -7,6 +7,7 @@ namespace Football
 	{
 		clickable = true;
 		background = nullptr;
+		stringStream = std::make_unique<std::stringstream>();
 
 		text = std::make_unique<sf::Text>();
 		text->setFont(GameData::getInstance()->assets.GetFont(std::move(fontName)));

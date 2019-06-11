@@ -6,8 +6,6 @@ namespace Football
 {
 	class ScorePrinter : public UIItem
 	{
-	private:
-		std::unique_ptr<std::stringstream> stringStream;
 	public:
 		ScorePrinter(sf::Vector2f centerAnchor, std::string textToDisplay, unsigned fontSize = 20, sf::Color color = sf::Color::Black, std::string fontName = "RobotoBlack", float bgPadding = 0, sf::Color bgColor = sf::Color::White);
 		~ScorePrinter();

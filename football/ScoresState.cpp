@@ -1,19 +1,20 @@
-#include <sstream>
-#include "MenuState.hpp"
+#include "ScoresState.hpp"
 #include "DEFINITIONS.hpp"
-#include "UIItemPlay.hpp"
-#include "UIItemExit.hpp"
+#include "UIItemMenu.hpp"
 #include "UIItemScores.hpp"
 
 namespace Football
 {
 
-	MenuState::MenuState()
+	ScoresState::ScoresState()
 	{
-
 	}
 
-	void MenuState::init()
+	ScoresState::~ScoresState()
+	{
+	}
+
+	void ScoresState::init()
 	{
 		GameData::getInstance()->assets.LoadTexture("Menu background", TEX_MENU_BG);
 
@@ -22,47 +23,42 @@ namespace Football
 
 		_background.setTexture(GameData::getInstance()->assets.GetTexture("Menu background"));
 
+		;
 		initUI();
 	}
 
-	void MenuState::initUI()
+	void ScoresState::initUI()
 	{
 		const auto windowCenter = GameData::getInstance()->window.getSize().x / 2.f;
 		uiManager = std::make_unique<UIContainer>();
 
-		uiManager->addUIItem(std::make_shared<UIItemPlay>(
-			false,
-			sf::Vector2f(windowCenter, 200),
-			"Graj z komputerem",
-			20.f
-			));
+		float positionY = 30;
+		const float offsetY = 100;
 
-		uiManager->addUIItem(std::make_shared<UIItemPlay>(
-			true,
-			sf::Vector2f(windowCenter, 300),
-			"Graj z innym graczem",
-			20.f
-			));
+		for(auto& score : GameData::getInstance()->scores.getScores())
+		{
+			uiManager->addUIItem(std::make_shared<UIItemScores>(
+				sf::Vector2f(windowCenter, positionY),
+				"Menu",
+				20.f
+				));
 
-		uiManager->addUIItem(std::make_shared<UIItemScores>(
-			sf::Vector2f(windowCenter, 400),
-			"Wyniki",
-			20.f
-			));
+			positionY += offsetY;
+		}
 
-		uiManager->addUIItem(std::make_shared<UIItemExit>(
-			sf::Vector2f(windowCenter, 500),
-			"Wyjdz",
+		uiManager->addUIItem(std::make_shared<UIItemMenu>(
+			sf::Vector2f(windowCenter, positionY),
+			"Menu",
 			20.f
 			));
 	}
 
-	void MenuState::update(float dt)
+	void ScoresState::update(float dt)
 	{
 		uiManager->update();
 	}
 
-	void MenuState::draw(float dt)
+	void ScoresState::draw(float dt)
 	{
 		GameData::getInstance()->window.clear();
 
@@ -72,8 +68,4 @@ namespace Football
 
 		GameData::getInstance()->window.display();
 	}
-
-
-
-
 }

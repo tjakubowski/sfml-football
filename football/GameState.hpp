@@ -91,7 +91,6 @@ namespace Football
 		void resetGameObjectsPositions();
 		void endGame();
 
-		void handleInput() override;
 		void update(float dt) override;
 		void draw(float dt) override;
 	};

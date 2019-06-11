@@ -37,15 +37,9 @@ namespace Football
 		return inputAxis;
 	}
 
-	bool InputManager::isClicked(sf::IntRect rect, sf::Mouse::Button button, sf::RenderWindow & window) const
+	bool InputManager::isClicked(sf::IntRect rect, sf::Mouse::Button button, sf::RenderWindow & window)
 	{
-		if(sf::Mouse::isButtonPressed(button))
-		{
-			if (rect.contains(sf::Mouse::getPosition(window)))
-				return true;
-		}
-
-		return false;
+		return getButtonDown(button) && rect.contains(sf::Mouse::getPosition(window));
 	}
 
 	sf::Vector2i InputManager::getMousePosition(sf::RenderWindow & window) const
@@ -55,44 +49,84 @@ namespace Football
 
 	bool InputManager::getKeyUp(sf::Keyboard::Key key)
 	{
-		return keys.find(key) != keys.end() && keys[key] == KeyState::Up;
+		return keys.find(key) != keys.end() && keys[key] == InputState::Up;
 	}
 
 	bool InputManager::getKey(sf::Keyboard::Key key)
 	{
-		return keys.find(key) != keys.end() && keys[key] == KeyState::Pressed;
+		return keys.find(key) != keys.end() && keys[key] == InputState::Pressed;
 	}
 
 	bool InputManager::getKeyDown(sf::Keyboard::Key key)
 	{
-		return keys.find(key) != keys.end() && keys[key] == KeyState::Down;
+		return keys.find(key) != keys.end() && keys[key] == InputState::Down;
 	}
 
-	void InputManager::addKeyEvent(sf::Keyboard::Key key)
+	bool InputManager::getButtonUp(sf::Mouse::Button btn)
+	{
+		return buttons.find(btn) != buttons.end() && buttons[btn] == InputState::Up;
+	}
+
+	bool InputManager::getButton(sf::Mouse::Button btn)
+	{
+		return buttons.find(btn) != buttons.end() && buttons[btn] == InputState::Pressed;
+	}
+
+	bool InputManager::getButtonDown(sf::Mouse::Button btn)
+	{
+		return buttons.find(btn) != buttons.end() && buttons[btn] == InputState::Down;
+	}
+
+	void InputManager::addEvent(sf::Keyboard::Key key)
 	{
 		// Key doesn't exist
 		if (keys.find(key) == keys.end())
-			keys[key] = KeyState::Down;
+			keys[key] = InputState::Down;
 	}
 
-	void InputManager::removeKeyEvent(sf::Keyboard::Key key)
+	void InputManager::removeEvent(sf::Keyboard::Key key)
 	{
 		// Key exists
 		if (keys.find(key) != keys.end())
-			keys[key] = KeyState::Up;
+			keys[key] = InputState::Up;
 	}
 
-	void InputManager::updateKeyEvents()
+	void InputManager::addEvent(sf::Mouse::Button btn)
+	{
+		// Button doesn't exist
+		if (buttons.find(btn) == buttons.end())
+			buttons[btn] = InputState::Down;
+	}
+
+	void InputManager::removeEvent(sf::Mouse::Button btn)
+	{
+		// Key exists
+		if (buttons.find(btn) != buttons.end())
+			buttons[btn] = InputState::Up;
+	}
+
+	void InputManager::updateEvents()
 	{
 		for (auto key = keys.begin(); key != keys.end();)
-			if (key->second == KeyState::Down)
+			if (key->second == InputState::Down)
 			{
-				key->second = KeyState::Pressed;
+				key->second = InputState::Pressed;
 				++key;
 			}
-			else if (key->second == KeyState::Up)
+			else if (key->second == InputState::Up)
 				keys.erase(key++);
 			else
 				++key;
+
+		for (auto btn = buttons.begin(); btn != buttons.end();)
+			if (btn->second == InputState::Down)
+			{
+				btn->second = InputState::Pressed;
+				++btn;
+			}
+			else if (btn->second == InputState::Up)
+				buttons.erase(btn++);
+			else
+				++btn;
 	}
 }

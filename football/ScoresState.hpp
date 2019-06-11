@@ -1,5 +1,4 @@
 #pragma once
-
 #include <SFML/Graphics.hpp>
 #include "State.hpp"
 #include "Game.hpp"
@@ -7,7 +6,7 @@
 
 namespace Football
 {
-	class MenuState : public State
+	class ScoresState : public State
 	{
 	private:
 		sf::Texture _backgroundTexture;
@@ -16,14 +15,13 @@ namespace Football
 		std::unique_ptr<UIContainer> uiManager;
 
 		void initUI();
-
 	public:
-		MenuState();
+		ScoresState();
+		~ScoresState();
 
 		void init() override;
-
 		void update(float dt) override;
 		void draw(float dt) override;
-
 	};
+
 }

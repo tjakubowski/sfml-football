@@ -2,6 +2,7 @@
 #include "InputManager.hpp"
 #include "AssetManager.hpp"
 #include "StateMachine.hpp"
+#include "ScoreManager.hpp"
 
 namespace Football
 {
@@ -19,5 +20,6 @@ namespace Football
 		sf::RenderWindow window;
 		AssetManager assets;
 		InputManager inputs;
+		ScoreManager scores;
 	};
 }
