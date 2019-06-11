@@ -258,4 +258,33 @@
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\res\images\pitch.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\res\images\player.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\res\images\ball.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\res\images\bench.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\res\images\fan_blue.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\res\images\fan_red.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\res\images\footballer_blue.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\res\images\footballer_red.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\res\images\menu_bg.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>
