@@ -1,13 +1,16 @@
 #include "ScoresState.hpp"
 #include "DEFINITIONS.hpp"
 #include "UIItemMenu.hpp"
-#include "UIItemScores.hpp"
+#include "UIItemScore.hpp"
 
 namespace Football
 {
 
 	ScoresState::ScoresState()
 	{
+		maxScoresDisplay = 10;
+		positionY = 100;
+		offsetY = 50;
 	}
 
 	ScoresState::~ScoresState()
@@ -32,18 +35,27 @@ namespace Football
 		const auto windowCenter = GameData::getInstance()->window.getSize().x / 2.f;
 		uiManager = std::make_unique<UIContainer>();
 
-		float positionY = 30;
-		const float offsetY = 100;
+		int maxScoresDisplay = this->maxScoresDisplay;
+		float positionY = this->positionY;
+		const float offsetY = this->offsetY;
 
-		for(auto& score : GameData::getInstance()->scores.getScores())
+		auto scores = GameData::getInstance()->scores.getScores();
+		std::reverse(scores.begin(), scores.end());
+
+		for(auto& score : scores)
 		{
-			uiManager->addUIItem(std::make_shared<UIItemScores>(
+			if (maxScoresDisplay == 0)
+				break;
+
+			uiManager->addUIItem(std::make_shared<UIItemScore>(
 				sf::Vector2f(windowCenter, positionY),
-				"Menu",
-				20.f
+				score,
+				20.f,
+				sf::Color::White
 				));
 
 			positionY += offsetY;
+			maxScoresDisplay--;
 		}
 
 		uiManager->addUIItem(std::make_shared<UIItemMenu>(

@@ -11,6 +11,9 @@ namespace Football
 	private:
 		sf::Texture _backgroundTexture;
 		sf::Sprite _background;
+		int maxScoresDisplay;
+		float positionY;
+		float offsetY;
 
 		std::unique_ptr<UIContainer> uiManager;
 

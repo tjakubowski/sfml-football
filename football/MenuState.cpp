@@ -73,7 +73,4 @@ namespace Football
 		GameData::getInstance()->window.display();
 	}
 
-
-
-
 }

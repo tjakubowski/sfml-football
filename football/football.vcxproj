@@ -177,6 +177,7 @@
     <ClCompile Include="UIItemMenu.cpp" />
     <ClCompile Include="UIItemPlay.cpp" />
     <ClCompile Include="UIContainer.cpp" />
+    <ClCompile Include="UIItemScore.cpp" />
     <ClCompile Include="UIItemScores.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -215,6 +216,7 @@
     <ClInclude Include="UIItemMenu.hpp" />
     <ClInclude Include="UIItemPlay.hpp" />
     <ClInclude Include="UIContainer.hpp" />
+    <ClInclude Include="UIItemScore.hpp" />
     <ClInclude Include="UIItemScores.hpp" />
   </ItemGroup>
   <ItemGroup>
