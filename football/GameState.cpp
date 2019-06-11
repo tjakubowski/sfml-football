@@ -88,17 +88,31 @@ namespace Football
 			);
 
 		// Footballers left
-		if (multiplayer)
-			createPlayer(sf::Vector2f(150, 100), teamLeft, { sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::D, sf::Keyboard::A, sf::Keyboard::LShift });
-		else
-			createStriker(sf::Vector2f(150, 100), teamLeft);
+		const int footballersOffsetX = GameData::getInstance()->window.getSize().x / 3;
+		const int footballersOffsetY = GameData::getInstance()->window.getSize().y / 3;
+		const int randomOffset = 50;
 
-		createStriker(sf::Vector2f(150, 200), teamLeft);
+		if (multiplayer)
+			createPlayer(
+				sf::Vector2f(footballersOffsetX, footballersOffsetY) - randomVectorBetween(randomOffset),
+				teamLeft, { sf::Keyboard::W, sf::Keyboard::S, sf::Keyboard::D, sf::Keyboard::A, sf::Keyboard::LShift });
+		else
+			createStriker(
+				sf::Vector2f(footballersOffsetX, footballersOffsetY) - randomVectorBetween(randomOffset),
+				teamLeft);
+
+		createStriker(
+			sf::Vector2f(footballersOffsetX, footballersOffsetY * 2) - randomVectorBetween(randomOffset),
+			teamLeft);
 		createGoalkeeperBot(teamLeft);
 
 		// Footballers right
-		createPlayer(sf::Vector2f(600, 100), teamRight);
-		createStriker(sf::Vector2f(600, 200), teamRight);
+		createPlayer(
+			sf::Vector2f(GameData::getInstance()->window.getSize().x - footballersOffsetX, footballersOffsetY) - randomVectorBetween(randomOffset),
+			teamRight);
+		createStriker(
+			sf::Vector2f(GameData::getInstance()->window.getSize().x - footballersOffsetX, footballersOffsetY * 2) - randomVectorBetween(randomOffset),
+			teamRight);
 		createGoalkeeperBot(teamRight);
 
 		teamLeft->setFootballersGoalPart();

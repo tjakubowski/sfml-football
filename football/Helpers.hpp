@@ -123,3 +123,11 @@ static float randomBetween(float min, float max) {
 	std::uniform_real_distribution<float> d(min, max);
 	return d(e);
 }
+
+static sf::Vector2f randomVectorBetween(float value)
+{
+	return sf::Vector2f(
+		randomBetween(-value, value),
+		randomBetween(-value, value)
+	);
+}

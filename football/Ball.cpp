@@ -19,6 +19,7 @@ namespace Football
 		fixtureDef.shape = &shape;
 		body->CreateFixture(&fixtureDef);
 		body->SetLinearDamping(damping);
+		body->SetBullet(true);
 	}
 
 	Ball::~Ball()
