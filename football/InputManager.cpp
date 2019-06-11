@@ -37,11 +37,6 @@ namespace Football
 		return inputAxis;
 	}
 
-	bool InputManager::isPressed(sf::Keyboard::Key key)
-	{
-		return sf::Keyboard::isKeyPressed(key);
-	}
-
 	bool InputManager::isClicked(sf::IntRect rect, sf::Mouse::Button button, sf::RenderWindow & window) const
 	{
 		if(sf::Mouse::isButtonPressed(button))
@@ -56,5 +51,48 @@ namespace Football
 	sf::Vector2i InputManager::getMousePosition(sf::RenderWindow & window) const
 	{
 		return sf::Mouse::getPosition(window);
+	}
+
+	bool InputManager::getKeyUp(sf::Keyboard::Key key)
+	{
+		return keys.find(key) != keys.end() && keys[key] == KeyState::Up;
+	}
+
+	bool InputManager::getKey(sf::Keyboard::Key key)
+	{
+		return keys.find(key) != keys.end() && keys[key] == KeyState::Pressed;
+	}
+
+	bool InputManager::getKeyDown(sf::Keyboard::Key key)
+	{
+		return keys.find(key) != keys.end() && keys[key] == KeyState::Down;
+	}
+
+	void InputManager::addKeyEvent(sf::Keyboard::Key key)
+	{
+		// Key doesn't exist
+		if (keys.find(key) == keys.end())
+			keys[key] = KeyState::Down;
+	}
+
+	void InputManager::removeKeyEvent(sf::Keyboard::Key key)
+	{
+		// Key exists
+		if (keys.find(key) != keys.end())
+			keys[key] = KeyState::Up;
+	}
+
+	void InputManager::updateKeyEvents()
+	{
+		for (auto key = keys.begin(); key != keys.end();)
+			if (key->second == KeyState::Down)
+			{
+				key->second = KeyState::Pressed;
+				++key;
+			}
+			else if (key->second == KeyState::Up)
+				keys.erase(key++);
+			else
+				++key;
 	}
 }

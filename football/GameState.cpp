@@ -300,22 +300,27 @@ namespace Football
 	{
 		sf::Event event;
 
+		GameData::getInstance()->inputs.updateKeyEvents();
+
 		while (GameData::getInstance()->window.pollEvent(event))
 		{
 			if (sf::Event::Closed == event.type)
 				GameData::getInstance()->window.close();
 
-			if (sf::Event::KeyPressed == event.type || sf::Event::KeyReleased == event.type)
-				GameData::getInstance()->inputs.update();
+			if (sf::Event::KeyPressed == event.type)
+				GameData::getInstance()->inputs.addKeyEvent(event.key.code);
+
+			if (sf::Event::KeyReleased == event.type)
+				GameData::getInstance()->inputs.removeKeyEvent(event.key.code);
 		}
 	}
 
 	void GameState::update(float dt)
 	{
-		if(GameData::getInstance()->inputs.isPressed(sf::Keyboard::Key::F1))
+		if(GameData::getInstance()->inputs.getKeyDown(sf::Keyboard::Key::F1))
 			debug = !debug;
 
-		if(GameData::getInstance()->inputs.isPressed(sf::Keyboard::Key::Escape))
+		if(GameData::getInstance()->inputs.getKeyDown(sf::Keyboard::Key::Escape))
 		{
 			pause = !pause;
 

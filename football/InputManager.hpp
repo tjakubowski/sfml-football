@@ -13,8 +13,17 @@ namespace Football
 		sf::Keyboard::Key shoot;
 	};
 
+	enum KeyState
+	{
+		Down,
+		Pressed,
+		Up
+	};
+
 	class InputManager
 	{
+	private:
+		std::map< sf::Keyboard::Key, KeyState> keys;
 	public:
 		InputManager();
 		~InputManager();
@@ -23,8 +32,16 @@ namespace Football
 
 		sf::Vector2f getInputAxis(AxisKeys keysSetting = {sf::Keyboard::Up, sf::Keyboard::Down, sf::Keyboard::Right, sf::Keyboard::Left, sf::Keyboard::Space}) const;
 
-		bool isPressed(sf::Keyboard::Key key);
 		bool isClicked(sf::IntRect rect, sf::Mouse::Button button, sf::RenderWindow & window) const;
 		sf::Vector2i getMousePosition(sf::RenderWindow& window) const;
+
+		bool getKeyUp(sf::Keyboard::Key key);
+		bool getKey(sf::Keyboard::Key key);
+		bool getKeyDown(sf::Keyboard::Key key);
+
+		void addKeyEvent(sf::Keyboard::Key key);
+		void removeKeyEvent(sf::Keyboard::Key key);
+
+		void updateKeyEvents();
 	};
 }
