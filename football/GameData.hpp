@@ -3,6 +3,7 @@
 #include "AssetManager.hpp"
 #include "StateMachine.hpp"
 #include "ScoreManager.hpp"
+#include "AudioManager.hpp"
 
 namespace Football
 {
@@ -21,5 +22,6 @@ namespace Football
 		AssetManager assets;
 		InputManager inputs;
 		ScoreManager scores;
+		AudioManager audio;
 	};
 }

@@ -18,6 +18,8 @@ const std::string TEX_FAN_RED = "Resources/res/images/fan_red.png";
 const std::string TEX_BENCH = "Resources/res/images/bench.png";
 const std::string TEX_BALL = "Resources/res/images/ball.png";
 
+const std::string SFX_KICK = "Resources/res/sfx/ball_kick_1.wav";
+
 const std::string FONT_ROBOTO_BLACK = "Resources/res/fonts/Roboto-Black.ttf";
 const std::string FONT_ROBOTO_BLACKITALIC = "Resources/res/fonts/Roboto-BlackItalic.ttf";
 const std::string FONT_ROBOTO_BOLD = "Resources/res/fonts/Roboto-Bold.ttf";

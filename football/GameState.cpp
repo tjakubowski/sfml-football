@@ -24,6 +24,8 @@ namespace Football
 		GameData::getInstance()->assets.LoadFont("RobotoMedium", FONT_ROBOTO_MEDIUM);
 		GameData::getInstance()->assets.LoadFont("RobotoBlack", FONT_ROBOTO_BLACK);
 
+		GameData::getInstance()->assets.LoadSound("ball_kick_1", SFX_KICK);
+
 		background.setTexture(GameData::getInstance()->assets.GetTexture("pitch"));
 
 		debug = false;
