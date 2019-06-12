@@ -82,6 +82,7 @@ namespace Football
 
 		void init() override;
 
+		bool isDebug() const;
 		std::shared_ptr<Ball> getBall() const;
 		std::shared_ptr<Team> getTeam(Team::Side side) const;
 		std::vector<std::shared_ptr<GameObject>> getGameObjects() const;

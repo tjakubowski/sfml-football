@@ -34,6 +34,7 @@ namespace Football
 		virtual float getHeight() const;
 
 		void resetPosition() const;
+		GameObject* raycastTo(sf::Vector2f target);
 
 		friend bool operator<(std::shared_ptr<GameObject>& a, std::shared_ptr<GameObject>& b);
 	};

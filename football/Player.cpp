@@ -16,13 +16,8 @@ namespace Football
 
 		move();
 
-		if (GameData::getInstance()->inputs.getKeyDown(keys.shoot) && canShoot())
+		if (GameData::getInstance()->inputs.getKeyDown(keys.shoot) && isPreparedToShoot() && isCloseToBall())
 			shoot();
-	}
-
-	bool Player::canShoot()
-	{
-		return isCloseToBall();
 	}
 
 	void Player::move() const

@@ -12,19 +12,23 @@ namespace Football
 	private:
 		float nearBallDistance;
 		float shootZoneDistance;
-		float ballShootDistance;
 		float shootForce;
 	protected:
 		std::shared_ptr<Team> team;
+		int goalPart;
+		float ballShootDistance;
+		float shootWaitTime;
+		float waitToShootTime;
+
 		bool isCloseToBall() const;
 		bool isInShootDistance() const;
-		virtual bool canShoot() = 0;
-		void shoot() const;
-		int goalPart;
+		void waitForShoot(float dt);
+		void shoot(float force = 1);
+		bool isPreparedToShoot() const;
 	public:
 		Footballer(sf::Vector2f position, std::shared_ptr<Team> team);
 		~Footballer();
-		
+
 		void update(float dt) override = 0;
 		void onCollision(GameObject* collisionObject) override;
 

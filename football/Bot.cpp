@@ -5,7 +5,7 @@ namespace Football
 
 	Bot::Bot(sf::Vector2f position, std::shared_ptr<Team> team) : Footballer(position, team)
 	{
-		moveTowardsStopDistance = 3.0f;
+		moveTowardsStopDistance = 3;
 	}
 
 	Bot::~Bot()

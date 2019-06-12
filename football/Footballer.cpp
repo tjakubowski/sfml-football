@@ -17,6 +17,8 @@ namespace Football
 		shootZoneDistance = 250;
 		ballShootDistance = 50;
 		shootForce = 10;
+		shootWaitTime = .6f;
+		waitToShootTime = 0;
 		
 		b2CircleShape shape;
 		shape.m_radius = sprite.getGlobalBounds().width / (2 * PHYSICS_SCALE);
@@ -37,6 +39,8 @@ namespace Football
 
 	void Footballer::update(float dt)
 	{
+		waitForShoot(dt);
+
 		if (body->GetLinearVelocity().Length() > 1.f)
 			animation->update(dt);
 		else
@@ -76,11 +80,22 @@ namespace Football
 		return sqrMagnitude(team->getOpponentGoal()->getPosition() - getPosition()) <= shootZoneDistance * shootZoneDistance;
 	}
 
-	void Footballer::shoot() const
+	void Footballer::waitForShoot(float dt)
 	{
-		const auto ball = dynamic_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get())->getBall();
+		waitToShootTime -= dt;
+	}
 
-		ball->getKickFrom(getPosition(), shootForce);
+	void Footballer::shoot(float force)
+	{
+		waitToShootTime = shootWaitTime;
+
+		const auto ball = dynamic_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get())->getBall();
+		ball->getKickFrom(getPosition(), shootForce * force);
+	}
+
+	bool Footballer::isPreparedToShoot() const
+	{
+		return waitToShootTime <= 0;
 	}
 
 	bool Footballer::isNearBall() const

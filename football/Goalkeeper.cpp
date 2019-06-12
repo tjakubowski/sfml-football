@@ -31,11 +31,6 @@ namespace Football
 		moveTowards(calculateGoalkeeperPosition());
 	}
 
-	bool Goalkeeper::canShoot()
-	{
-		return isCloseToBall();
-	}
-
 	sf::Vector2f Goalkeeper::calculateGoalkeeperPosition() const
 	{
 		const auto ball = dynamic_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get())->getBall();

@@ -12,6 +12,7 @@ namespace Football
 
 		b2FixtureDef fixtureDef;
 		fixtureDef.shape = &shape;
+		fixtureDef.friction = 0;
 		body->CreateFixture(&fixtureDef);
 
 		body->SetTransform(

@@ -415,4 +415,9 @@ namespace Football
 		std::sort(gameObjects.begin(), gameObjects.end());
 	}
 
+	bool GameState::isDebug() const
+	{
+		return debug;
+	}
+
 }

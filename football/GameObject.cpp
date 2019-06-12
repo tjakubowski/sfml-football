@@ -1,5 +1,6 @@
 #include "GameObject.hpp"
 #include "GameState.hpp"
+#include "FootballerRaycastCallback.hpp"
 
 namespace Football
 {
@@ -22,7 +23,7 @@ namespace Football
 
 	void GameObject::draw()
 	{
-		sprite.setPosition(PHYSICS_SCALE * body->GetPosition().x, PHYSICS_SCALE * body->GetPosition().y);
+		sprite.setPosition(PHYSICS_SCALE * sf::Vector2f(body->GetPosition().x, body->GetPosition().y));
 		GameData::getInstance()->window.draw(sprite);
 	}
 
@@ -52,6 +53,16 @@ namespace Football
 			b2Vec2(startPosition.x / PHYSICS_SCALE, startPosition.y / PHYSICS_SCALE),
 			body->GetAngle()
 		);
+	}
+
+	GameObject* GameObject::raycastTo(sf::Vector2f target)
+	{
+		const auto from = b2Vec2(getPosition().x / PHYSICS_SCALE, getPosition().y / PHYSICS_SCALE);
+		const auto to = b2Vec2(target.x / PHYSICS_SCALE, target.y / PHYSICS_SCALE);
+		FootballerRaycastCallback callback;
+		dynamic_cast<GameState*>(GameData::getInstance()->machine.GetActiveState().get())->getWorld()->RayCast(&callback, from, to);
+
+		return callback.getGameObject();
 	}
 
 	void GameObject::setSpriteTextureOrigin()
