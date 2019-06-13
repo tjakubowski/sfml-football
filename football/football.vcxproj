@@ -233,7 +233,6 @@
     <Image Include="Resources\res\images\footballer_red.png" />
     <Image Include="Resources\res\images\menu_bg.png" />
     <Image Include="Resources\res\images\pitch.png" />
-    <Image Include="Resources\res\images\player.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

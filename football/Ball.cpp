@@ -28,6 +28,11 @@ namespace Football
 
 	void Ball::update(float dt)
 	{
+		const sf::FloatRect a(0, 0, GameData::getInstance()->window.getSize().x, GameData::getInstance()->window.getSize().y);
+
+		if (!a.contains(getPosition()))
+			resetPosition();
+
 	}
 
 	void Ball::onCollision(GameObject* collisionObject)
