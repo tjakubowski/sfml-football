@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Football::GameObject">
+    <Position X="8.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QBAAICAAAAAAADgAAAIAAIAAARAAQAAAACAAAGIEAAA=</HashCode>
+      <FileName>GameObject.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Football::Team">
+    <Position X="6.75" Y="0.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Football::Team::Side" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Striker.hpp</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAEEBAIAAAAgAAIAAAAAAEAEAASAEEAAAAAAAAAA=</HashCode>
+      <FileName>Team.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Football::Footballer" Collapsed="true">
+    <Position X="7.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAiUAABAAAAAAAEAgACAAAQRAABAiAAgAiAEAAA=</HashCode>
+      <FileName>Footballer.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Football::Player" Collapsed="true">
+    <Position X="5.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAACAAAAAAAAAAAAAAAAAAAAAAQAEABA=</HashCode>
+      <FileName>Player.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Football::Ball">
+    <Position X="12.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAACAEAIA=</HashCode>
+      <FileName>Ball.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Football::Bot" Collapsed="true">
+    <Position X="8.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEBAAAICAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Bot.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Football::Obstacle">
+    <Position X="1" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QgAAAAAAAAAAAAQAQAAAAAAAAAAAQAAAACAACCAEAAA=</HashCode>
+      <FileName>Obstacle.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Football::Goal">
+    <Position X="3.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQAAAAEAAAAAAAQAQAIAAAAAAAAQQAAAAAAAACAEAAA=</HashCode>
+      <FileName>Goal.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Football::Goalkeeper" Collapsed="true">
+    <Position X="10" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAgAIAAAAAAAAYEAAA=</HashCode>
+      <FileName>Goalkeeper.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Football::Striker" Collapsed="true">
+    <Position X="7.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAKIAAEAAAAAAAAAAAIAAACAAIAgAIAQAAABAAIEAAE=</HashCode>
+      <FileName>Striker.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Football::Animation">
+    <Position X="10.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAMAAAAAAAAgIAAAAAAABAAAACACAACAAAEAAE=</HashCode>
+      <FileName>Animation.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Football::Fan">
+    <Position X="14.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAADAEAAA=</HashCode>
+      <FileName>Fan.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Football::FansBench">
+    <Position X="16.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AFAAAAAAAAAAAAAAAAIAAAACAAAQAAAAAAAAACAEAAA=</HashCode>
+      <FileName>FansBench.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Football::AxisKeys">
+    <Position X="5.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAACAAAAAAAAAAAAAAAIAAAAAAAAAgAAgAA=</HashCode>
+      <FileName>InputManager.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

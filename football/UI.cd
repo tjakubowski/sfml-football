@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Football::MatchTimer">
+    <Position X="12" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAEAAAAAAAAAgAgAAAAQmAAAEAAA=</HashCode>
+      <FileName>MatchTimer.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Football::UIItem">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAIIAACAAAAAggAIAAAAAACEKAA=</HashCode>
+      <FileName>UIItem.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Football::UIItemExit">
+    <Position X="14.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>UIItemExit.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Football::UIItemMenu">
+    <Position X="0.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAIAAAAAA=</HashCode>
+      <FileName>UIItemMenu.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Football::UIItemPlay">
+    <Position X="3" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAhAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAIAAAAA=</HashCode>
+      <FileName>UIItemPlay.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Football::UIContainer">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAIAEAAAAAAAAgAAAAAAAAAEAAE=</HashCode>
+      <FileName>UIContainer.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Football::ScorePrinter">
+    <Position X="5.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAQAAEAAA=</HashCode>
+      <FileName>ScorePrinter.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Football::UIItemScores">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAAAAAAAAAgAAAAAAEAAAAAA=</HashCode>
+      <FileName>UIItemScores.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Football::UIItemScore">
+    <Position X="9.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAAAgAAAAAgAAAAAAAAAAgAA=</HashCode>
+      <FileName>UIItemScore.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -262,9 +262,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="Resources\res\images\pitch.png">
       <Filter>Resource Files</Filter>
     </Image>
@@ -289,5 +286,12 @@
     <Image Include="Resources\res\images\menu_bg.png">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+    <None Include="GameObjects.cd" />
+    <None Include="Managers.cd" />
+    <None Include="States.cd" />
+    <None Include="UI.cd" />
   </ItemGroup>
 </Project>

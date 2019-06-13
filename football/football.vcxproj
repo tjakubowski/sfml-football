@@ -222,9 +222,6 @@
     <ClInclude Include="UIItemScores.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="Resources\res\images\ball.png" />
     <Image Include="Resources\res\images\bench.png" />
     <Image Include="Resources\res\images\fan_blue.png" />
@@ -233,6 +230,13 @@
     <Image Include="Resources\res\images\footballer_red.png" />
     <Image Include="Resources\res\images\menu_bg.png" />
     <Image Include="Resources\res\images\pitch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+    <None Include="GameObjects.cd" />
+    <None Include="Managers.cd" />
+    <None Include="States.cd" />
+    <None Include="UI.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

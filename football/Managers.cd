@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Football::AssetManager">
+    <Position X="3.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAASAQAABAAAgAAAAAAIAAiAAAAAABAAAAAAAAg=</HashCode>
+      <FileName>AssetManager.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Football::GameData">
+    <Position X="1.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIBAABAAFAADQIAAQAAAAAAAA=</HashCode>
+      <FileName>GameData.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Football::InputManager">
+    <Position X="5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAIAAIAAgAJAAAQIAAAAAAAAEAAAAIKIAGAAg=</HashCode>
+      <FileName>InputManager.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Football::ScoreManager">
+    <Position X="6.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAICAAAABABAIAAAAAAEAEACAAAAAAAAAAAA=</HashCode>
+      <FileName>ScoreManager.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Football::Score">
+    <Position X="6.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAEAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ScoreManager.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="Football::InputState">
+    <Position X="5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAI=</HashCode>
+      <FileName>InputManager.hpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
